@@ -1,5 +1,9 @@
 const express = require("express");
-const MongoDB = require("mongodb"); // check
+const mongoose = require("mongoose"); // check
+const passport = require("passport");
+const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
+const flash = require("express-flash");
 const app = express();
 const connectDB = require("./config/database");
 const mainRoutes = require("./routes/main");
@@ -7,8 +11,11 @@ const mainRoutes = require("./routes/main");
 //env configuration
 require("dotenv").config();
 
-// connec to DB
+// connect to DB
 connectDB();
+
+// passport config
+require("./config/passport")(passport);
 
 //Middleware
 app.set("view engine", "ejs");
@@ -19,8 +26,33 @@ app.use(express.json());
 // set up routes for server
 app.use("/", mainRoutes);
 
+// Passport to send to MongoDB
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
+  })
+);
+
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+// flash messages for errors, info, etc.
+app.use(flash());
+
+// check to reroute this code below
+app.post(
+  "/login",
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/login",
+    failureFlash: true,
+  })
+);
+
 app.listen(process.env.PORT, () => {
   console.log(`Server running on Port ${process.env.PORT}`);
 });
-
-// Mongoose, nodemon, passport
