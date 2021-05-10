@@ -1,30 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Gamer's Hub</title>
-  </head>
-  <body class="bg-darknavy">
-    <div class="container">
-      <nav class="flex justify-between items-center my-3">
-        <img class="w-32" src="img/gamers-hub-logo.png" alt="">
-        <ul class="flex flex-wrap">
-          <li><a class="text-fontcs text-2xl mx-5 cursor-pointer href="">Login</a></li>
-          <li><a class="text-fontcs text-2xl mx-5 cursor-pointer href="">Register</a></li>
-        </ul>
-      </nav>
-      
-    </div>
-    <div class="rounded-lg bg-containcolor p-5 my-10 mx-56">
-      <h1 class="text-fontc mb-5 text-4xl">WELCOME TO GAMER'S HUB</h1>
-      <p class="text-fontc text-2xl">A place to find information about your favorite games and more!</p>
-    </div>
-    
-    <footer class="container flex justify-center">
-      <span class="text-fontcs">&#169 Copyright 2021</span>
-    </footer>
-  </body>
-</html>
+<%- include('partials/header') -%>
+<div class="container">
+  <nav class="flex justify-between items-center my-3">
+    <img class="w-32" src="img/gamers-hub-logo.png" alt="" />
+    <ul class="flex flex-wrap">
+      <li>
+        <a
+          href="login" class="text-fontcs font-semibold text-2xl mx-5 cursor-pointer">Login</a></li> <li><a class="
+          text-fontcs font-semibold
+          text-2xl
+          mx-5
+          cursor-pointer
+          href=""
+          >Register</a
+        >
+      </li>
+    </ul>
+  </nav>
+</div>
+<div class="rounded-lg bg-containcolor py-10 px-5 my-10 mx-56">
+  <h1 class="text-fontc mb-5 text-5xl font-mono font-semibold">WELCOME TO GAMER'S HUB</h1>
+  <p class="text-fontc text-2xl">
+    A place to find information about your favorite games and more!
+  </p>
+</div>
+
+<%- include('partials/footer') -%>

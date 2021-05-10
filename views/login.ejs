@@ -1,0 +1,24 @@
+<%- include("partials/header") -%>
+<div class="container flex flex-row my-64 items-center justify-evenly">
+  <a href="/"> <img class="w-48" src="img/gamers-hub-logo.png" alt="" /></a>
+  <form class="flex flex-col" action="POST">
+    <input
+      class="my-4 py-2 px-3 rounded-lg"
+      type="text"
+      name="username"
+      placeholder="USERNAME"
+    />
+    <input
+      class="py-2 rounded-lg px-3"
+      type="password"
+      name="password"
+      placeholder="PASSWORD"
+    />
+    <button class="btn bg-fontcs hover:bg-gray-700 my-4" type="submit">
+      Login
+    </button>
+    <a class="text-fontc mx-10 hover:text-gray-700" href="">Create Account</a>
+  </form>
+</div>
+
+<%- include("partials/footer") -%>
