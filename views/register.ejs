@@ -1,18 +1,45 @@
-<%- include("partials/header") -%>
-<div class="container my-64">
-  <form
-    class="grid grid-cols-1 gap-2 place-items-center"
-    action="/register"
-    method="POST"
-  >
-    <label class="text-white" for="name">Name</label>
-    <input class="my-3 py-1 rounded" type="name" name="Name" />
-    <label class="text-white" for="email">Email</label>
-    <input class="my-3 py-1 rounded" type="email" name="Email" />
+<%- include("partials/header") -%> <% if (locals.messages.errors) { %> <%
+messages.errors.forEach((el) => {%>
+<div class="alert alert-danger"><%= el.msg %></div>
+<% }) %> <% } %> <% if (locals.messages.info) { %> <% messages.info.forEach((el)
+=> { %>
+<div class="alert alert-info"><%= el.msg %></div>
+<% }) %> <% } %>
+
+<div
+  class="container flex flex-row flex-wrap my-64 items-center justify-evenly"
+>
+  <a href="/"> <img class="w-48" src="img/gamers-hub-logo.png" alt="" /></a>
+  <form class="flex flex-col w-72" action="/register" method="POST">
+    <label class="text-white" for="userName">Username</label>
+    <input
+      class="my-3 py-2 px-3 rounded w-72"
+      type="text"
+      id="userName"
+      name="userName"
+    />
+    <label class="text-white" for="emailInputEmail1">Email</label>
+    <input
+      class="my-3 py-2 px-3 rounded w-72"
+      type="email"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+      name="email"
+    />
     <label class="text-white" for="password">Create Password</label>
-    <input class="my-3 py-1 rounded" type="password" name="password" />
-    <label class="text-white" for="password">Confirm Password</label>
-    <input class="my-3 py-1 rounded" type="password" name="password" />
+    <input
+      class="my-3 py-2 px-3 rounded w-72"
+      type="password"
+      name="password"
+      id="password"
+    />
+    <label class="text-white" for="confirmPassword">Confirm Password</label>
+    <input
+      class="my-3 py-2 px-3 rounded w-72"
+      type="password"
+      name="confirmPassword"
+      id="confirmPassword"
+    />
     <button class="btn bg-fontcs hover:bg-gray-700 my-4">Register</button>
     <a class="text-fontc mx-10 hover:text-gray-700" href="/login"
       >Have an account? Login</a

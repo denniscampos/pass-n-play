@@ -1,7 +1,9 @@
 <%- include("partials/header") -%>
-<div class="container flex flex-row my-64 items-center justify-evenly">
+<div
+  class="container flex flex-row flex-wrap my-64 items-center justify-evenly"
+>
   <a href="/"> <img class="w-48" src="img/gamers-hub-logo.png" alt="" /></a>
-  <form class="flex flex-col" action="/login" method="POST">
+  <form class="flex flex-col w-72" action="/login" method="POST">
     <input
       class="my-4 py-2 px-3 rounded-lg"
       type="text"
@@ -17,7 +19,7 @@
     <button class="btn bg-fontcs hover:bg-gray-700 my-4" type="submit">
       Login
     </button>
-    <a class="text-fontc mx-10 hover:text-gray-700" href="register"
+    <a class="text-fontc text-center hover:text-gray-700" href="register"
       >Create Account</a
     >
   </form>

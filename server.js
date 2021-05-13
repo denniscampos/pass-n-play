@@ -3,6 +3,7 @@ const mongoose = require("mongoose"); // check
 const passport = require("passport");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
+const methodOverride = require("method-override");
 const flash = require("express-flash");
 const app = express();
 const connectDB = require("./config/database");
@@ -25,6 +26,9 @@ app.use(express.json());
 
 // set up routes for server
 app.use("/", mainRoutes);
+
+//Use forms for put / delete
+app.use(methodOverride("_method"));
 
 // Passport to send to MongoDB
 app.use(
