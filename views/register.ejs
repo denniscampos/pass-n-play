@@ -1,10 +1,13 @@
-<%- include("partials/header") -%> <% if (locals.messages.errors) { %> <%
-messages.errors.forEach((el) => {%>
-<div class="alert alert-danger"><%= el.msg %></div>
-<% }) %> <% } %> <% if (locals.messages.info) { %> <% messages.info.forEach((el)
-=> { %>
-<div class="alert alert-info"><%= el.msg %></div>
-<% }) %> <% } %>
+<%- include("partials/header") -%>
+
+<div class="container">
+  <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
+  <div class="alert alert-danger"><%= el.msg %></div>
+  <% }) %> <% } %> <% if (locals.messages.info) { %> <% messages.info.forEach(
+  el => { %>
+  <div class="alert alert-info"><%= el.msg %></div>
+  <% }) %> <% } %>
+</div>
 
 <div
   class="container flex flex-row flex-wrap my-64 items-center justify-evenly"
