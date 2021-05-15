@@ -6,7 +6,6 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const methodOverride = require("method-override");
 const flash = require("express-flash");
-
 const connectDB = require("./config/database");
 const mainRoutes = require("./routes/main");
 

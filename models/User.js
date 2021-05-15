@@ -28,7 +28,6 @@ UserSchema.pre("save", function save(next) {
   });
 });
 
-//helper method
 // Helper method for validating user's password.
 
 UserSchema.methods.comparePassword = function comparePassword(
