@@ -13,11 +13,4 @@ router.get("/logout", authController.logout);
 router.get("/register", authController.getRegister);
 router.post("/register", authController.postRegister);
 
-//API ROUTE
-router.get("", async (req, res) => {
-  try {
-    const gameAPI = await ``;
-  } catch (error) {}
-});
-
 module.exports = router;

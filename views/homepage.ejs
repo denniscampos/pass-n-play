@@ -1,9 +1,17 @@
 <%- include('partials/header') -%>
 
-<h1>Dashboard When User logs in</h1>
-
-<div class="container">
-  <a href="/logout" class="text-white">Logout</a>
+<div class="container flex justify-between items-center my-3">
+  <h1 class="text-fontcs font-semibold text-2xl mx-5">Dashboard</h1>
+  <a
+    href="/logout"
+    class="text-fontcs font-semibold text-2xl mx-5 cursor-pointer"
+    >Logout</a
+  >
 </div>
 
+<div class="container my-10">
+  <% for(let i = 0; i < games.length; i++) { %>
+  <p class="text-white"><%- games[i].name %></p>
+  <% } %>
+</div>
 <%- include('partials/footer') -%>
