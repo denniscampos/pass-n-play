@@ -25,7 +25,7 @@ module.exports = {
 
     try {
       const gameAPI = await axios.get(
-        `https://api.rawg.io/api/games/${search}?key=${process.env.API_GAME_KEY}`
+        `https://api.rawg.io/api/games?key=${process.env.API_GAME_KEY}&search=${search}`
       );
       res.render("search", { games: gameAPI.data });
     } catch (error) {

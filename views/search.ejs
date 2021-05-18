@@ -1,11 +1,26 @@
 <%- include('partials/header') -%>
 
-<div class="container bg-containcolor">
-  <h2 class="text-white text-8xl"><%- games.name.trim() %></h2>
-  <img src="<%- games.background_image %>" alt="" />
-  <span class="text-white"><%- games.released %></span>
-  <!-- Have to use span instead of paragraph element because of data description uses paragraph element -->
-  <span class="text-white text-3xl"><%- games.description %></span>
+<div
+  class="
+    p-10
+    grid grid-cols-1
+    sm:grid-cols-1
+    md:grid-cols-4
+    lg:grid-cols-4
+    xl:grid-cols-4
+    gap-5
+    content-center
+  "
+>
+  <% for(let i = 0; i < games.results.length; i++) { %>
+  <div class="bg-containcolor overflow-hidden shadow-lg rounded-3xl p-4">
+    <h2 class="text-white"><%- games.results[i].name %></h2>
+    <img
+      class="object-cover h-48 w-full"
+      src="<%- games.results[i].background_image %>"
+      alt=""
+    />
+  </div>
+  <% } %>
 </div>
-
 <%- include('partials/footer') -%>
