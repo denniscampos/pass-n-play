@@ -19,4 +19,17 @@ module.exports = {
       console.log(error);
     }
   },
+
+  getSearch: async (req, res) => {
+    let search = req.body.search;
+
+    try {
+      const gameAPI = await axios.get(
+        `https://api.rawg.io/api/games/${search}?key=${process.env.API_GAME_KEY}`
+      );
+      res.render("search", { games: gameAPI.data });
+    } catch (error) {
+      console.log(error);
+    }
+  },
 };

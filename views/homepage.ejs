@@ -2,53 +2,79 @@
 
 <nav class="header flex justify-between items-center mx-8 my-3">
   <h1 class="text-fontcs font-semibold text-2xl">Dashboard</h1>
-  <span class="text-fontcs text-2xl"
-    >Welcome <%- user.userName.toUpperCase() %></span
-  >
+  <span class="text-white text-2xl"
+    >Welcome <%- user.userName.toUpperCase() %>
+  </span>
   <a href="/logout" class="text-fontcs font-semibold text-2xl cursor-pointer"
     >Logout</a
   >
 </nav>
 
-<div class="text-fontcs flex">
+<div class="text-fontcs flex mt-8">
   <nav class="left-nav-bar flex flex-col px-8">
     <h3 class="font-bold text-2xl"><%- user.userName.toUpperCase() %></h3>
     <ul class="">
-      <li class=""><a class="" href="">Library</a></li>
-      <li class=""><a class="" href="">Library</a></li>
-      <li class=""><a class="" href="">Library</a></li>
+      <li><a class="text-white" href="">My Library</a></li>
+      <li><a class="text-white" href="">Library</a></li>
+      <li><a class="text-white" href="">Library</a></li>
     </ul>
-    <h3 class="text-2xl overflow-x-auto">NEW RELEASES</h3>
+    <h3 class="text-2xl overflow-x-auto whitespace-nowrap font-bold">
+      NEW RELEASES
+    </h3>
     <ul>
-      <li><a href="">Library</a></li>
-      <li><a href="">Library</a></li>
-      <li><a href="">Library</a></li>
-      <li><a href="">Library</a></li>
+      <li><a class="text-white" href="">My Library</a></li>
+      <li><a class="text-white" href="">Library</a></li>
+      <li><a class="text-white" href="">Library</a></li>
+      <li><a class="text-white" href="">Library</a></li>
     </ul>
-    <h3 class="text-2xl">TOP GAMES</h3>
+    <h3 class="text-2xl font-bold">TOP GAMES</h3>
     <ul>
-      <li><a href="">Library</a></li>
-      <li><a href="">Library</a></li>
-      <li><a href="">Library</a></li>
-      <li><a href="">Library</a></li>
+      <li><a class="text-white" href="">Library</a></li>
+      <li><a class="text-white" href="">Library</a></li>
+      <li><a class="text-white" href="">Library</a></li>
+      <li><a class="text-white" href="">Library</a></li>
     </ul>
   </nav>
 
-  <div class="mx-8">
-    <!-- <input
-      class="w-full rounded-2xl px-3 py-2"
-      type="text"
-      placeholder="Search Game"
-    /> -->
-    <div class="container-md bg-containcolor flex flex-wrap gap-4">
+  <div class="mx-8 w-full">
+    <form action="/search" method="POST">
+      <input
+        class="w-full rounded-2xl px-3 py-2"
+        type="text"
+        name="search"
+        placeholder="Search Game"
+      />
+    </form>
+
+    <div
+      class="
+        p-10
+        grid grid-cols-1
+        sm:grid-cols-1
+        md:grid-cols-3
+        lg:grid-cols-3
+        xl:grid-cols-3
+        gap-5
+        content-center
+      "
+    >
       <% for(let i = 0; i < games.length; i++) { %>
-      <h2 class="text-fontcs text-4xl"><%- games[i].name %></h2>
-      <p class="text-white">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem animi
-        praesentium aut atque laudantium fuga iste sunt neque. Amet eveniet
-        recusandae vero excepturi tempora hic officia quaerat ex incidunt
-        accusantium.
-      </p>
+      <div class="bg-containcolor overflow-hidden shadow-lg rounded-3xl p-4">
+        <h2 class="text-fontcs text-4xl py-2 minHeight-50">
+          <%- games[i].name %>
+        </h2>
+        <img
+          class="object-cover h-48 w-full"
+          src="<%- games[i].background_image %>"
+          alt="Picture of Game"
+        />
+        <p class="text-white py-2">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem
+          animi praesentium aut atque laudantium fuga iste sunt neque. Amet
+          eveniet recusandae vero excepturi tempora hic officia quaerat ex
+          incidunt accusantium.
+        </p>
+      </div>
       <% } %>
     </div>
   </div>

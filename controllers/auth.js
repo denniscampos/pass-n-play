@@ -111,7 +111,7 @@ exports.postRegister = (req, res, next) => {
           if (err) {
             return next(err);
           }
-          res.redirect("/dashboard");
+          res.redirect("/homepage");
         });
       });
     }

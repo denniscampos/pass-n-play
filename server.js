@@ -7,6 +7,7 @@ const MongoStore = require("connect-mongo")(session);
 const methodOverride = require("method-override");
 const flash = require("express-flash");
 const connectDB = require("./config/database");
+const bodyParser = require("body-parser");
 const mainRoutes = require("./routes/main");
 
 //env configuration
@@ -23,6 +24,9 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //Use forms for put / delete
 app.use(methodOverride("_method"));
@@ -46,16 +50,6 @@ app.use(flash());
 
 // set up routes for server
 app.use("/", mainRoutes);
-
-// check to reroute this code below
-// app.post(
-//   "/login",
-//   passport.authenticate("local", {
-//     successRedirect: "/",
-//     failureRedirect: "/login",
-//     failureFlash: true,
-//   })
-// );
 
 app.listen(process.env.PORT, () => {
   console.log(`Server running on Port ${process.env.PORT}`);

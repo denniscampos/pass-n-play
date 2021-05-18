@@ -1,0 +1,11 @@
+<%- include('partials/header') -%>
+
+<div class="container bg-containcolor">
+  <h2 class="text-white text-8xl"><%- games.name.trim() %></h2>
+  <img src="<%- games.background_image %>" alt="" />
+  <span class="text-white"><%- games.released %></span>
+  <!-- Have to use span instead of paragraph element because of data description uses paragraph element -->
+  <span class="text-white text-3xl"><%- games.description %></span>
+</div>
+
+<%- include('partials/footer') -%>
