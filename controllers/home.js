@@ -27,6 +27,18 @@ module.exports = {
       const gameAPI = await axios.get(
         `https://api.rawg.io/api/games?key=${process.env.API_GAME_KEY}&search=${search}`
       );
+
+      // const games = gameAPI.data.results.map((game) => {
+      //   return {
+      //     background_image: game.background_image,
+      //     platforms: game.platforms
+      //       .map(({ platform }) => platform.name)
+      //       .join(", "),
+      //   };
+      // });
+
+      // res.render("search", { games: games });
+
       res.render("search", { games: gameAPI.data });
     } catch (error) {
       console.log(error);
