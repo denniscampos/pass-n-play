@@ -1,6 +1,8 @@
 <%- include('partials/header') -%>
-<div class="m-5 flex">
-  <img class="w-32" src="img/gamers-hub-logo.png" alt="" />
+<div class="m-5 flex flex-col">
+  <a href="/homepage"
+    ><img class="w-32" src="img/gamers-hub-logo.png" alt=""
+  /></a>
   <h1 class="text-white text-4xl">SEARCH RESULTS:</h1>
 </div>
 
@@ -16,7 +18,7 @@
     content-center
   "
 >
-  <% for(let i = 0; i < games.results.length; i++) { %>
+  <% for(let i = 0; i < games.length; i++) { %>
   <div
     class="
       bg-containcolor
@@ -30,15 +32,20 @@
       hover:scale-105
     "
   >
-    <h2 class="text-white"><%- games.results[i].name %></h2>
+    <h3 class="text-white text-3xl mb-2"><%- games[i].name %></h3>
     <img
       class="object-cover h-48 w-full"
-      src="<%- games.results[i].background_image %>"
+      src="<%- games[i].background_image %> "
       alt=""
     />
-    <i class="fab fa-xbox text-white"></i>
-    <span class="text-white"><%- games.results[i].platforms %></span>
+    <span class="text-white"><%- games[i].platforms %></span>
+    <% if (games[i].platforms === "PC") { %>
+    <i class="fas fa-desktop text-white"></i>
+    <% } else if(games[i].platforms.includes("PlayStation")) { %>
+    <i class="fab fa-playstation text-white"></i>
+    <% } %>
   </div>
   <% } %>
 </div>
+
 <%- include('partials/footer') -%>
