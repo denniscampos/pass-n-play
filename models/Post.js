@@ -5,7 +5,7 @@ const PostSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  caption: {
+  postMessage: {
     type: String,
     required: true,
   },
@@ -13,9 +13,14 @@ const PostSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  user: {
+  userName: {
+    // if code breaks change userName back to user
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
+  },
+  userId: {
+    type: String,
+    required: true,
   },
   createdAt: {
     type: Date,
