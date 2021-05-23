@@ -1,0 +1,12 @@
+<div class="">
+  <div class="">
+    <% posts.forEach(post=> { %>
+    <div class="" data-id="<%= post._id %>">
+      <div class=""><%=post.userName%></div>
+      <div class="">
+        <h4 class=""><%=post.postMessage%></h4>
+      </div>
+    </div>
+    <%}) %>
+  </div>
+</div>

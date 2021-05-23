@@ -9,6 +9,7 @@ const flash = require("express-flash");
 const connectDB = require("./config/database");
 const bodyParser = require("body-parser");
 const mainRoutes = require("./routes/main");
+const homepageRoutes = require("./routes/posts");
 
 //env configuration
 require("dotenv").config();
@@ -50,6 +51,7 @@ app.use(flash());
 
 // set up routes for server
 app.use("/", mainRoutes);
+app.use("/homepage", homepageRoutes);
 
 app.listen(process.env.PORT, () => {
   console.log(`Server running on Port ${process.env.PORT}`);

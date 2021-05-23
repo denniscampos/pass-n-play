@@ -5,7 +5,7 @@ const homeController = require("../controllers/home");
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 //main routes
-router.get("/", homeController.getIndex);
+router.get("/", ensureGuest, homeController.getIndex);
 router.get("/homepage", homeController.getHomepage);
 router.get("/login", authController.getLogin);
 router.post("/login", authController.postLogin);

@@ -49,4 +49,21 @@ module.exports = {
       console.log(error);
     }
   },
+
+  createPost: async (req, res) => {
+    try {
+      await Post.create({
+        postMessage: req.body.newPost,
+        userId: req.user.id,
+        userName: req.user.userName,
+        image: null,
+        likes: 0,
+      });
+
+      console.log("post was created");
+      res.redirect("/");
+    } catch (err) {
+      console.log(err);
+    }
+  },
 };
