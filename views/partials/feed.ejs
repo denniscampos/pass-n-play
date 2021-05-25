@@ -1,10 +1,16 @@
-<div class="">
-  <div class="">
+<div class="container my-3 overflow-y-scroll">
+  <div class="feed-container bg-containcolor rounded-xl mt-3">
     <% posts.forEach(post=> { %>
-    <div class="" data-id="<%= post._id %>">
-      <div class=""><%=post.userName%></div>
+    <div class="my-8 bg-black" data-id="<%= post._id %>">
+      <span class="text-lg text-fontcs"><%= user.userName %></span>
       <div class="">
-        <h4 class=""><%=post.postMessage%></h4>
+        <h4 class="text-2xl"><%=post.postMessage%></h4>
+        <div class="like-delete flex justify-end my-3">
+          <a href=""><i class="fas fa-thumbs-up text-fontcs m-2"></i></a>
+          <a class="" href="/">
+            <i class="fas fa-minus-circle text-red-600 m-2"></i
+          ></a>
+        </div>
       </div>
     </div>
     <%}) %>

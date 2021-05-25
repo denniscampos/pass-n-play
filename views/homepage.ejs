@@ -1,76 +1,11 @@
-<%- include('partials/header') -%>
-
-<nav
-  class="
-    bg-containcolor
-    rounded-b-lg
-    header
-    flex
-    justify-between
-    items-center
-    px-8
-    mb-3
-  "
->
-  <img class="w-32" src="img/gamers-hub-logo.png" alt="" />
-  <h1 class="text-fontcs font-semibold text-2xl">Dashboard</h1>
-  <span class="text-white text-2xl"
-    >Welcome <%- user.userName.toUpperCase() %>
-  </span>
-  <a href="/logout" class="text-fontcs font-semibold text-2xl cursor-pointer"
-    >Logout</a
-  >
-</nav>
+<%- include('partials/header') -%> <%- include("partials/dashboard-header.ejs")
+-%>
 
 <div class="text-fontcs flex mt-8">
-  <nav class="left-nav-bar bg-containcolor rounded-r-lg flex flex-col px-8">
-    <h3 class="my-2 font-bold text-2xl"><%- user.userName.toUpperCase() %></h3>
-    <ul class="">
-      <li>
-        <i class="fas fa-book"></i><a class="text-white" href=""> My Library</a>
-      </li>
-      <li>
-        <i class="fas fa-gift"></i><a class="text-white" href=""> Wishlist</a>
-      </li>
-      <li>
-        <i class="fas fa-users"></i><a class="text-white" href=""> Socials</a>
-      </li>
-    </ul>
-    <h3 class="my-2 text-2xl overflow-x-auto whitespace-nowrap font-bold">
-      NEW RELEASES
-    </h3>
-    <ul>
-      <li>
-        <i class="fas fa-book"></i><a class="text-white" href=""> My Library</a>
-      </li>
-      <li>
-        <i class="fas fa-book"></i><a class="text-white" href=""> Library</a>
-      </li>
-      <li>
-        <i class="fas fa-book"></i><a class="text-white" href=""> Library</a>
-      </li>
-      <li>
-        <i class="fas fa-book"></i><a class="text-white" href=""> Library</a>
-      </li>
-    </ul>
-    <h3 class="my-2 text-2xl font-bold">TOP GAMES</h3>
-    <ul>
-      <li><a class="text-white" href=""> Library</a></li>
-      <li><a class="text-white" href=""> Library</a></li>
-      <li><a class="text-white" href=""> Library</a></li>
-      <li><a class="text-white" href=""> Library</a></li>
-    </ul>
-  </nav>
+  <%- include("partials/sidebar.ejs") %>
 
   <div class="mx-8 w-full">
-    <form action="/search" method="POST">
-      <input
-        class="bg-darknavy w-full rounded-t-none px-3 py-2 opacity-80"
-        type="text"
-        name="search"
-        placeholder="Search Game"
-      />
-    </form>
+    <%- include("partials/searchbar.ejs") %>
 
     <div class="feed">
       <form action="homepage/createPost" method="POST">
@@ -86,6 +21,8 @@
         </label>
       </form>
     </div>
+
+    <div class="text-white"><%- include("partials/feed.ejs") %></div>
 
     <div
       class="

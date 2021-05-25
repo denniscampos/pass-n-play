@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const authController = require("../controllers/auth");
 const homeController = require("../controllers/home");
+const searchController = require("../controllers/search");
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 //main routes
@@ -13,5 +14,6 @@ router.get("/logout", authController.logout);
 router.get("/register", authController.getRegister);
 router.post("/register", authController.postRegister);
 router.post("/search", homeController.getSearch);
+router.post("/search", searchController.getHomepage);
 
 module.exports = router;

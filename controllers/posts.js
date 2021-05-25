@@ -28,7 +28,17 @@ module.exports = {
       });
 
       console.log("post was created");
-      res.redirect("/");
+      res.redirect("/homepage");
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+  deletePost: async (req, res) => {
+    try {
+      await Post.findOneAndDelete({ _id: req.body.postIdFromJSFile });
+      console.log("Deleted Post");
+      res.json("Deleted Post");
     } catch (err) {
       console.log(err);
     }

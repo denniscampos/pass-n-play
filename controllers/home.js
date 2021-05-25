@@ -13,7 +13,12 @@ module.exports = {
 
       // finds user and can be rendered on EJS.
       const users = await Post.find({ user: req.user.id });
-      res.render("homepage", { games: gameAPI.data.results, user: req.user });
+      const allPosts = await Post.find();
+      res.render("homepage", {
+        games: gameAPI.data.results,
+        user: req.user,
+        posts: allPosts,
+      });
       // console.log(gameAPI.data.results[0].name);
     } catch (error) {
       console.log(error);
@@ -47,23 +52,6 @@ module.exports = {
       // res.render("search", { games: gameAPI.data });
     } catch (error) {
       console.log(error);
-    }
-  },
-
-  createPost: async (req, res) => {
-    try {
-      await Post.create({
-        postMessage: req.body.newPost,
-        userId: req.user.id,
-        userName: req.user.userName,
-        image: null,
-        likes: 0,
-      });
-
-      console.log("post was created");
-      res.redirect("/");
-    } catch (err) {
-      console.log(err);
     }
   },
 };
