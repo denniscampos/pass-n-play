@@ -13,14 +13,15 @@ const PostSchema = new mongoose.Schema({
   //   type: Number,
   //   required: true,
   // },
-  user: {
-    // changed userName back to user
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-  },
+  // user: {
+  //   // changed userName back to user
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: "User",
+  // },
   userId: {
-    type: String,
-    required: true,
+    type: mongoose.Schema.Types.ObjectId,
+    // required: true,
+    ref: "User",
   },
   createdAt: {
     type: Date,

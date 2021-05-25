@@ -1,18 +1,14 @@
-<div class="container my-3 overflow-y-scroll">
-  <div class="feed-container bg-containcolor rounded-xl mt-3">
-    <% posts.forEach(post=> { %>
-    <div class="my-8 bg-black" data-id="<%= post._id %>">
-      <span class="text-lg text-fontcs"><%= user.userName %></span>
-      <div class="">
-        <h4 class="text-2xl"><%=post.postMessage%></h4>
-        <div class="like-delete flex justify-end my-3">
-          <a href=""><i class="fas fa-thumbs-up text-fontcs m-2"></i></a>
-          <a class="" href="/">
-            <i class="fas fa-minus-circle text-red-600 m-2"></i
-          ></a>
-        </div>
-      </div>
-    </div>
-    <%}) %>
-  </div>
+<% for(let i = 0; i < posts.length; i++) { %>
+<div data-id="<%= posts[i]._id %>">
+  <h4 class="text-white"><%= posts[i].postMessage %></h4>
+  <% if(posts.userName === posts[i].userName) { %>
+  <form
+    action="homepage/deletePost/<%= posts[i]._id %>?_method=DELETE"
+    method="POST"
+    class=""
+  >
+    <button class="text-white" type="submit">DELETE HERE</button>
+  </form>
+  <% }%>
 </div>
+<% } %>
