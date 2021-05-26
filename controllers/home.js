@@ -12,7 +12,7 @@ module.exports = {
       );
 
       // finds user and can be rendered on EJS.
-      const users = await Post.find({ user: req.user.id });
+      // const users = await Post.find({ user: req.user.id });
       const allPosts = await Post.find();
       res.render("homepage", {
         games: gameAPI.data.results,
