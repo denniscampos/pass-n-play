@@ -7,7 +7,7 @@
   <div class="mx-8 w-full">
     <%- include("partials/searchbar.ejs") %>
 
-    <div class="feed">
+    <div class="container feed">
       <form action="homepage/createPost" method="POST">
         <label for="newPost">
           <textarea
@@ -17,7 +17,7 @@
             rows="4"
             spellcheck="false"
           ></textarea>
-          <button>Post</button>
+          <button class="btn btn-blue">Post</button>
         </label>
       </form>
     </div>

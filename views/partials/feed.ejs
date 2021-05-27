@@ -1,14 +1,25 @@
-<% for(let i = 0; i < posts.length; i++) { %>
-<div data-id="<%= posts[i]._id %>">
-  <h4 class="text-white"><%= posts[i].postMessage %></h4>
-  <% if(String(posts[i].userId) == String(user._id)) { %>
-  <form
-    action="homepage/deletePost/<%= posts[i]._id %>?_method=DELETE"
-    method="POST"
-    class=""
-  >
-    <button class="text-white" type="submit">DELETE HERE</button>
-  </form>
-  <% }%>
+<div class="container flex flex-col-reverse">
+  <h2 class="text-lg">FEED</h2>
+
+  <% for(let i = 0; i < posts.length; i++) { %>
+  <div class="p-3 m-3 bg-containcolor rounded-lg" data-id="<%= posts[i]._id %>">
+    <% if(posts[i].userId) { %>
+    <h2 class="text-white"><%= user.userName %></h2>
+    <% } %>
+
+    <h4 class="text-white text-xl"><%= posts[i].postMessage %></h4>
+    <% if(String(posts[i].userId) == String(user._id)) { %>
+    <span class="text-white"><%= posts[i].createdAt %></span>
+    <form
+      action="homepage/deletePost/<%= posts[i]._id %>?_method=DELETE"
+      method="POST"
+      class="flex justify-end"
+    >
+      <button class="text-white" type="submit">
+        <i class="fas fa-minus-circle text-red-600 m-2"></i>
+      </button>
+    </form>
+    <% }%>
+  </div>
+  <% } %>
 </div>
-<% } %>
