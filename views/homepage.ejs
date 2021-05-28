@@ -7,7 +7,7 @@
   <div class="mx-8 w-full">
     <%- include("partials/searchbar.ejs") %>
 
-    <div class="container feed">
+    <div class="container feed bg-containcolor rounded-lg">
       <form action="homepage/createPost" method="POST">
         <label for="newPost">
           <textarea
@@ -62,7 +62,7 @@
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem
           animi praesentium aut atque laudantium fuga iste sunt neque. Amet
           eveniet recusandae vero excepturi tempora hic officia quaerat ex
-          incidunt accusantium.
+          incidunt accusantium. <%= games[i].id[i] %>
         </p>
       </div>
       <% } %>

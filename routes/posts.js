@@ -6,8 +6,8 @@ const { ensureAuth } = require("../middleware/auth");
 //homepage
 // router.get("/", ensureAuth, postController.getIndex);
 
-// Profile Page
-router.get("/homepage", postController.getProfile);
+// Profile Page NEED TO SET UP PROFILE
+// router.get("/search", postController.getProfile);
 
 //New Post
 router.post("/createPost", postController.createPost);

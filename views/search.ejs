@@ -1,45 +1,53 @@
-<%- include('partials/header') -%> -%> <%- include("partials/searchbar.ejs") -%>
+<%- include('partials/header') -%> <%- include("partials/dashboard-header.ejs")
+-%>
+<div class="text-fontcs flex mt-8">
+  <%- include("partials/sidebar.ejs") -%>
 
-<div
-  class="
-    p-10
-    grid grid-cols-1
-    sm:grid-cols-1
-    md:grid-cols-4
-    lg:grid-cols-4
-    xl:grid-cols-4
-    gap-5
-    content-center
-  "
->
-  <% for(let i = 0; i < games.length; i++) { %>
-  <div
-    class="
-      bg-containcolor
-      overflow-hidden
-      shadow-lg
-      rounded-3xl
-      p-4
-      transform
-      transition
-      duration-500
-      hover:scale-105
-    "
-  >
-    <h3 class="text-white text-3xl mb-2"><%- games[i].name %></h3>
-    <img
-      class="object-cover h-48 w-full"
-      src="<%- games[i].background_image %> "
-      alt=""
-    />
-    <span class="text-white"><%- games[i].platforms %></span>
-    <% if (games[i].platforms === "PC") { %>
-    <i class="fas fa-desktop text-white"></i>
-    <% } else if(games[i].platforms.includes("PlayStation")) { %>
-    <i class="fab fa-playstation text-white"></i>
-    <% } %>
+  <div class="mx-8 w-full">
+    <%- include("partials/searchbar.ejs") -%>
+
+    <div
+      class="
+        p-10
+        grid grid-cols-1
+        sm:grid-cols-1
+        md:grid-cols-4
+        lg:grid-cols-4
+        xl:grid-cols-4
+        gap-5
+        content-center
+      "
+    >
+      <% for(let i = 0; i < games.length; i++) { %>
+      <div
+        class="
+          bg-containcolor
+          overflow-hidden
+          shadow-lg
+          rounded-3xl
+          p-4
+          transform
+          transition
+          duration-500
+          hover:scale-105
+        "
+      >
+        <h3 class="text-white text-3xl mb-2"><%- games[i].name %></h3>
+        <img
+          class="object-cover h-48 w-full"
+          src="<%- games[i].background_image %> "
+          alt=""
+        />
+        <span class="text-white"><%- games[i].platforms %></span>
+        <% if (games[i].platforms === "PC") { %>
+        <i class="fas fa-desktop text-white"></i>
+        <% } else if(games[i].platforms.includes("PlayStation")) { %>
+        <i class="fab fa-playstation text-white"></i>
+        <% } %>
+      </div>
+      <% } %>
+    </div>
   </div>
-  <% } %>
 </div>
 
 <%- include('partials/footer') -%>

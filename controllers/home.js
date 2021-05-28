@@ -11,6 +11,8 @@ module.exports = {
         `https://api.rawg.io/api/games?key=${process.env.API_GAME_KEY}`
       );
 
+      // https://api.rawg.io/api/games/valorant?key=159068bc72d44ffd8bf6ea56ae06e8a2
+
       // finds user and can be rendered on EJS.
       // const users = await Post.find({ user: req.user.id });
       const allPosts = await Post.find();
@@ -46,7 +48,14 @@ module.exports = {
         };
       });
 
-      res.render("search", { games: games });
+      const allPosts = await Post.find({ user: req.user.id });
+      res.render("search", {
+        games: games,
+        userName: req.user.userName,
+        email: req.user.email,
+        posts: allPosts,
+        user: req.user,
+      });
 
       // old version
       // res.render("search", { games: gameAPI.data });
