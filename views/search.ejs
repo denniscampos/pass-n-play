@@ -32,18 +32,20 @@
           hover:scale-105
         "
       >
-        <h3 class="text-white text-3xl mb-2"><%- games[i].name %></h3>
-        <img
-          class="object-cover h-48 w-full"
-          src="<%- games[i].background_image %> "
-          alt=""
-        />
-        <span class="text-white"><%- games[i].platforms %></span>
-        <% if (games[i].platforms === "PC") { %>
-        <i class="fas fa-desktop text-white"></i>
-        <% } else if(games[i].platforms.includes("PlayStation")) { %>
-        <i class="fab fa-playstation text-white"></i>
-        <% } %>
+        <a href="">
+          <h3 class="text-white text-3xl mb-2"><%- games[i].name %></h3>
+          <img
+            class="object-cover h-48 w-full"
+            src="<%- games[i].background_image %> "
+            alt=""
+          />
+          <span class="text-white"><%- games[i].platforms %></span>
+          <% if (games[i].platforms === "PC") { %>
+          <i class="fas fa-desktop text-white"></i>
+          <% } else if(games[i].platforms.includes("PlayStation")) { %>
+          <i class="fab fa-playstation text-white"></i>
+          <% } %>
+        </a>
       </div>
       <% } %>
     </div>

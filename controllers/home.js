@@ -5,13 +5,12 @@ module.exports = {
   getIndex: (req, res) => {
     res.render("index.ejs");
   },
+
   getHomepage: async (req, res) => {
     try {
       const gameAPI = await axios.get(
         `https://api.rawg.io/api/games?key=${process.env.API_GAME_KEY}`
       );
-
-      // https://api.rawg.io/api/games/valorant?key=159068bc72d44ffd8bf6ea56ae06e8a2
 
       // finds user and can be rendered on EJS.
       // const users = await Post.find({ user: req.user.id });
@@ -37,6 +36,7 @@ module.exports = {
 
       const games = gameAPI.data.results.map((game) => {
         return {
+          id: game.id,
           name: game.name,
           background_image: game.background_image,
           platforms:

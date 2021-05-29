@@ -2,20 +2,20 @@ const axios = require("axios").default;
 const Post = require("../models/Post");
 
 module.exports = {
-  // getProfile: async (req, res) => {
-  //   try {
-  //     const allPosts = await Post.find({ user: req.user.id });
+  getProfile: async (req, res) => {
+    try {
+      const allPosts = await Post.find({ user: req.user.id });
 
-  //     res.render("", {
-  //       userName: req.user.userName,
-  //       email: req.user.email,
-  //       posts: allPosts,
-  //       user: req.user,
-  //     });
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // },
+      res.render("profile.ejs", {
+        userName: req.user.userName,
+        email: req.user.email,
+        posts: allPosts,
+        user: req.user,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  },
 
   getIndex: async (req, res) => {
     try {
