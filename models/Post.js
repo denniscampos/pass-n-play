@@ -9,10 +9,6 @@ const PostSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  // likes: {
-  //   type: Number,
-  //   required: true,
-  // },
   userName: {
     type: String,
     required: true,
@@ -21,6 +17,10 @@ const PostSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     // required: true,
     ref: "User",
+  },
+  likes: {
+    type: Number,
+    required: true,
   },
   createdAt: {
     type: Date,

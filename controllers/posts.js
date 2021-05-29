@@ -48,10 +48,25 @@ module.exports = {
         userId: req.user.id,
         userName: req.user.userName,
         // image: null,
-        // likes: 0,
+        likes: 0,
       });
 
       console.log("post was created");
+      res.redirect("/");
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+  likePost: async (req, res) => {
+    try {
+      await Post.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+          $inc: { likes: 1 },
+        }
+      );
+      console.log("Likes +1");
       res.redirect("/");
     } catch (err) {
       console.log(err);
@@ -67,7 +82,7 @@ module.exports = {
       console.log("Deleted Post");
       res.redirect("/homepage");
     } catch (err) {
-      res.redirect("/homepage");
+      console.log(err);
     }
   },
 };
