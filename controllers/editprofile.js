@@ -40,7 +40,6 @@ module.exports = {
         edits: edits,
       });
       console.log(edits);
-      console.log(req.params.id);
     } catch (err) {
       console.log(err);
     }

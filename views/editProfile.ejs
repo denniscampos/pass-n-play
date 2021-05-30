@@ -11,6 +11,7 @@
 <% for(let i = 0; i < edits.length; i++) { %> <% if(String(edits[i].userId) ==
 String(user._id)) { %>
 <p class="text-white">Twitter: <%- edits[i].twitter %></p>
-<a class="text-white" href="/editProfile/edit">Edit</a>
+<a class="text-white" href="/editProfile/edit/<%- edits[i].userId %>">Edit</a>
 
-<% } %> <% } %> <%- include("partials/footer") -%>
+<% console.log(edits[i].userId)%> <% } %> <% } %> <%- include("partials/footer")
+-%>
