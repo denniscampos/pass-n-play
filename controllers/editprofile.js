@@ -35,11 +35,25 @@ module.exports = {
 
   edit: async (req, res) => {
     try {
-      const edits = await Edit.findById(req.params.id);
+      const edits = await Edit.findOne({ userId: req.user.id });
       res.render("edit", {
         edits: edits,
       });
       console.log(edits);
+      // console.log(req.params.id);
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+  update: async (req, res) => {
+    try {
+      const updates = await Edit.findOne({ twitter: req.body.twitter });
+      updates.twitter;
+      await updates.save();
+
+      res.redirect("editProfile");
+      console.log(req.body.twitter);
     } catch (err) {
       console.log(err);
     }

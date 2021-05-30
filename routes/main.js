@@ -23,6 +23,7 @@ router.post("/search/:id", homeController.getSearch);
 router.get("/editProfile", editController.getEdit);
 router.post("/createSocials/", editController.createSocials);
 router.get("/editProfile/edit/:id", editController.edit);
+router.put("/editProfile/edit/:id", editController.update);
 
 // router.put("/editProfile/update", editController.update);
 
