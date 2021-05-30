@@ -47,12 +47,13 @@ module.exports = {
   },
 
   update: async (req, res) => {
+    let updates;
     try {
-      const updates = await Edit.findOne({ twitter: req.body.twitter });
+      updates = await Edit.findOneAndUpdate({ twitter: req.body.twitter });
       updates.twitter;
       await updates.save();
 
-      res.redirect("editProfile");
+      res.redirect("/editprofile");
       console.log(req.body.twitter);
     } catch (err) {
       console.log(err);

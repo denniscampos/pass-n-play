@@ -14,9 +14,12 @@
     ><img class="w-32" src="img/gamers-hub-logo.png" alt="Gamehub's Logo"
   /></a>
   <h1 class="text-fontcs font-semibold text-2xl">Dashboard</h1>
-  <span class="text-white text-2xl"
-    >Welcome <%- user.userName.toUpperCase() %>
-  </span>
+  <div class="flex flex-col">
+    <span class="text-white text-2xl"
+      >Welcome <%- user.userName.toUpperCase() %>
+    </span>
+    <a class="text-white" href="/editProfile">Edit Profile</a>
+  </div>
   <a href="/logout" class="text-fontcs font-semibold text-2xl cursor-pointer"
     >Logout</a
   >
