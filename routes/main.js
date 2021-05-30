@@ -20,7 +20,11 @@ router.post("/search", homeController.getSearch);
 router.post("/search/:id", homeController.getSearch);
 
 //Edit Profile
-router.get("/editProfile/", editController.getEdit);
+router.get("/editProfile", editController.getEdit);
+router.post("/createSocials/", editController.createSocials);
+router.get("/editProfile/edit/", editController.edit);
+
+// router.put("/editProfile/update", editController.update);
 
 // Profile Page NEED TO SET UP PROFILE
 router.get("/profile", postsController.getProfile);

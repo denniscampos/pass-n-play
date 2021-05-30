@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const PostSchema = new mongoose.Schema({
+const EditSchema = new mongoose.Schema({
   userName: {
     type: String,
     required: true,
@@ -12,20 +12,20 @@ const PostSchema = new mongoose.Schema({
   },
   twitch: {
     type: String,
-    required: true,
+    required: false,
   },
   discord: {
     type: String,
-    required: true,
+    required: false,
   },
   twitter: {
     type: String,
-    required: true,
+    required: false,
   },
   instagram: {
     type: String,
-    required: true,
+    required: false,
   },
 });
 
-module.exports = mongoose.model("Edit", PostSchema);
+module.exports = mongoose.model("Edit", EditSchema);

@@ -4,13 +4,13 @@ const Post = require("../models/Post");
 module.exports = {
   getProfile: async (req, res) => {
     try {
-      const allPosts = await Post.find({ user: req.user.id });
+      const allPosts = await Post.find({ userId: req.user.id });
 
       res.render("profile.ejs", {
+        user: req.user,
         userName: req.user.userName,
         email: req.user.email,
         posts: allPosts,
-        user: req.user,
       });
     } catch (err) {
       console.log(err);
@@ -32,15 +32,6 @@ module.exports = {
     }
   },
 
-  getFeed: async (req, res) => {
-    try {
-      const posts = await Post.find().sort({ createdAt: "desc" }).lean();
-      res.render("profile.ejs", { posts: posts });
-    } catch (err) {
-      console.log(err);
-    }
-  },
-
   createPost: async (req, res) => {
     try {
       await Post.create({
@@ -50,7 +41,6 @@ module.exports = {
         // image: null,
         likes: 0,
       });
-
       console.log("post was created");
       res.redirect("/");
     } catch (err) {
@@ -80,7 +70,7 @@ module.exports = {
       // Delete post from db
       await Post.remove({ _id: req.params.id });
       console.log("Deleted Post");
-      res.redirect("/homepage");
+      res.redirect("/");
     } catch (err) {
       console.log(err);
     }

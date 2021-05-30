@@ -1,12 +1,25 @@
 <%- include('partials/header') -%> <%- include("partials/dashboard-header.ejs")
 -%>
+
+<div class="flex">
 <div class="text-fontcs flex mt-8"><%- include("partials/sidebar.ejs") -%></div>
 
-<div class="container">
 
+<div class="w-2/3">
+<%- include('partials/feed.ejs') %>
+<div id="twitch-embed">
+  <script src="https://embed.twitch.tv/embed/v1.js"></script>
+  <script type="text/javascript">
+    new Twitch.Embed("twitch-embed", {
+      width: 854,
+      height: 480,
+      channel: "dnbull",
+    });
+  </script>
+</div>
+</div>
 
-
-  
+ 
   
   </div>
 </div>

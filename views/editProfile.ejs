@@ -1,9 +1,16 @@
 <%- include("partials/header") -%>
 
-<form action="" method="post">
-  <label for="">
-    <input type="text" />
-  </label>
+<form action="editProfile/createSocials" method="POST">
+  <h2 class="text-white">Socials:</h2>
+  <label class="text-white" for="twitter" value="">Twitter</label>
+  <input name="twitter" type="text" id="twitter" />
+
+  <button class="btn text-white" type="submit">create</button>
 </form>
 
-<%- include("partials/footer") -%>
+<% for(let i = 0; i < edits.length; i++) { %> <% if(String(edits[i].userId) ==
+String(user._id)) { %>
+<p class="text-white">Twitter: <%- edits[i].twitter %></p>
+<a class="text-white" href="/editProfile/edit">Edit</a>
+
+<% } %> <% } %> <%- include("partials/footer") -%>
