@@ -32,10 +32,10 @@ module.exports = {
     }
   },
 
-  getPost: async (req, res) => {
+  getFeed: async (req, res) => {
     try {
-      const post = await Post.findById(req.params.id);
-      res.render("feed.ejs", { post: post, user: req.user });
+      const posts = await Post.find().sort({ createdAt: "desc" }).lean();
+      res.render("profile.ejs", { posts: posts });
     } catch (err) {
       console.log(err);
     }

@@ -10,7 +10,7 @@ const { ensureAuth } = require("../middleware/auth");
 router.post("/createPost", postController.createPost);
 
 //Get Post
-router.get("/:id", ensureAuth, postController.getPost);
+// router.get("/:id", ensureAuth, postController.getPost);
 
 // Get Likes
 router.put("/likePost/:id", postController.likePost);
