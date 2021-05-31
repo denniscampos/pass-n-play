@@ -1,7 +1,7 @@
 <div class="data-form">
   <form
     method="POST"
-    action="/editProfile/edit/<% edits.twitter %>
+    action="/editProfile/edit/<%= edits.twitter %>
    ?_method=PUT"
   >
     <h2>Edit user:</h2>
@@ -10,12 +10,9 @@
       type="text"
       name="twitter"
       id="twitter"
-      value="<%=
-    %>"
+      value="<%= edits.twitter%>"
     />
 
     <button type="submit">Update</button>
   </form>
 </div>
-
-<% console.log(edits.twitter) %>

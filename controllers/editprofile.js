@@ -35,7 +35,7 @@ module.exports = {
 
   edit: async (req, res) => {
     try {
-      const edits = await Edit.findOne({ userId: req.user.id });
+      const edits = await Edit.findOneAndUpdate({ userId: req.user.id });
       res.render("edit", {
         edits: edits,
       });
@@ -49,12 +49,11 @@ module.exports = {
   update: async (req, res) => {
     let updates;
     try {
-      updates = await Edit.findOneAndUpdate({ twitter: req.body.twitter });
-      updates.twitter;
+      updates = await Edit.findOneAndUpdate({ userId: req.user.id });
+      updates.twitter = req.body.twitter;
       await updates.save();
-
+      console.log(updates.twitter);
       res.redirect("/editprofile");
-      console.log(req.body.twitter);
     } catch (err) {
       console.log(err);
     }

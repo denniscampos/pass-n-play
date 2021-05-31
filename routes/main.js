@@ -25,8 +25,6 @@ router.post("/createSocials/", editController.createSocials);
 router.get("/editProfile/edit/:id", editController.edit);
 router.put("/editProfile/edit/:id", editController.update);
 
-// router.put("/editProfile/update", editController.update);
-
 // Profile Page NEED TO SET UP PROFILE
 router.get("/profile", postsController.getProfile);
 
