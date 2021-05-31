@@ -52,8 +52,6 @@ module.exports = {
       updates = await Edit.findOneAndUpdate({ twitter: req.body.twitter });
       updates.twitter = req.body.twitter;
       await updates.save();
-      // console.log(updates.twitter);
-      console.log(req.body.twitter);
       console.log(req.user.id);
       res.redirect("/editprofile");
     } catch (err) {
