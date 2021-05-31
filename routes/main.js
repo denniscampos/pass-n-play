@@ -21,7 +21,7 @@ router.post("/search/:id", homeController.getSearch);
 
 //Edit Profile
 router.get("/editProfile", editController.getEdit);
-router.post("/createSocials/", editController.createSocials);
+router.post("/createSocials", editController.createSocials);
 router.get("/editProfile/edit/:id", editController.edit);
 router.put("/editProfile/edit/:id", editController.update);
 

@@ -25,8 +25,8 @@ module.exports = {
         userId: req.user.id,
         userName: req.user.userName,
       });
-
-      // console.log(req.body.twitter);
+      console.log(req.body.twitter);
+      console.log("post was created");
       res.redirect("/editProfile");
     } catch (err) {
       console.log(err);
@@ -35,7 +35,7 @@ module.exports = {
 
   edit: async (req, res) => {
     try {
-      const edits = await Edit.findOneAndUpdate({ userId: req.user.id });
+      const edits = await Edit.findOne({ userId: req.user.id });
       res.render("edit", {
         edits: edits,
       });
@@ -49,35 +49,15 @@ module.exports = {
   update: async (req, res) => {
     let updates;
     try {
-      updates = await Edit.findOneAndUpdate({ userId: req.user.id });
+      updates = await Edit.findOneAndUpdate({ twitter: req.body.twitter });
       updates.twitter = req.body.twitter;
       await updates.save();
-      console.log(updates.twitter);
+      // console.log(updates.twitter);
+      console.log(req.body.twitter);
+      console.log(req.user.id);
       res.redirect("/editprofile");
     } catch (err) {
       console.log(err);
     }
   },
-
-  // update: async (req, res) => {
-  //   try {
-  //     userParams = {
-  //       socials: {
-  //         twitter: req.body.twitter,
-  //       },
-  //     };
-
-  //     const edit = await Edit.findByIdAndUpdate(
-  //       { userId: req.user.id },
-  //       {
-  //         $set: userParams,
-  //       }
-  //     );
-  //     res.locals.redirect(`editProfile/${edit}`);
-  //     res.locals.user = user; // ???
-  //     // console.log(res.locals);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // },
 };

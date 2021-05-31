@@ -1,8 +1,8 @@
 <div class="data-form">
   <form
     method="POST"
-    action="/editProfile/edit/<%= edits.twitter %>
-   ?_method=PUT"
+    action="/editProfile/edit/<%- edits.userId %>
+    ?_method=PUT"
   >
     <h2>Edit user:</h2>
     <label for="inputFirstName">twitter</label>
@@ -10,7 +10,7 @@
       type="text"
       name="twitter"
       id="twitter"
-      value="<%= edits.twitter%>"
+      value="<%- edits.twitter%>"
     />
 
     <button type="submit">Update</button>
