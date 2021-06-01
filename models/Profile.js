@@ -9,18 +9,22 @@ const ProfileSchema = new mongoose.Schema({
   twitch: {
     type: String,
     required: false,
+    default: "",
   },
   discord: {
     type: String,
     required: false,
+    default: "",
   },
   twitter: {
     type: String,
     required: false,
+    default: "",
   },
   instagram: {
     type: String,
     required: false,
+    default: "",
   },
 });
 

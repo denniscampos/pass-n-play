@@ -7,4 +7,8 @@ router.get("/", profileController.getProfile);
 router.post("/createSocials/", profileController.createSocials);
 router.put("/updateSocials/:id", profileController.updateSocials);
 
+//delete below if things stop working.
+
+// router.get("/", profileController.test);
+
 module.exports = router;

@@ -18,7 +18,7 @@ module.exports = {
     try {
       await Profile.create({
         user: req.user,
-        twitter: req.body.twitter,
+        twitter: req.body.twitter || 0,
       });
       res.redirect("/profile");
       console.log("create succesful");
@@ -64,6 +64,20 @@ module.exports = {
       console.log(JSON.stringify(profile));
       res.redirect("/profile");
       console.log("update successful");
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+  // delete things below if things break.
+  test: async (req, res) => {
+    try {
+      const profile = await Profile.findOne();
+      res.render("create", {
+        user: req.user,
+        profile: profile,
+        twitter: "",
+      });
     } catch (err) {
       console.log(err);
     }

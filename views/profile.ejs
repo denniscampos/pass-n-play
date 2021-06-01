@@ -5,7 +5,7 @@
 <div class="text-fontcs flex mt-8"><%- include("partials/sidebar.ejs") -%></div>
 
 
-<!-- <div class="flex flex-row">
+<div class="flex flex-row">
 <%- include('partials/feed.ejs') %>
 <div class="mt-10" id="twitch-embed">
   <script src="https://embed.twitch.tv/embed/v1.js"></script>
@@ -17,25 +17,33 @@
     });
   </script>
 </div>
-</div> -->
+</div>
  
-<h2>hello world</h2>
 
-<form action="profile/createSocials" method="POST">
-  <label for="twitter">twitter: </label>
+
+<form class="flex flex-col" action="profile/createSocials" method="POST">
+  <label class="text-white" for="twitter">TWITTER: </label>
   <input type="text" name="twitter" id="twitter" value="<%= user.userName %>" />
-  <label for="twitch">twitch: </label>
+  <label class="text-white" for="twitch">TWITCH: </label>
   <input type="text" name="twitch" id="twitch" value="<%= user.userName %>" />
-  <a href="/profile">Cancel</a>
-  <button type="submit">create</button>
+  <label class="text-white" for="discord">DISCORD: </label>
+  <input type="text" name="discord" id="discord" value="<%= user.userName %>" />
+  <label class="text-white" for="instagram">INSTAGRAM: </label>
+  <input type="text" name="instagram" id="instagram" value="<%= user.userName %>" />
+  <button class="text-white" type="submit">CREATE</button>
 </form>
 <form action="/profile/updateSocials/<%= user._id %>?_method=PUT" method="POST">
-  <label for="twitter">twitter: </label>
-  <input type="text" name="twitter" id="twitter"  />
-  <button type="submit">update</button>
+  <!-- <label for="twitter">twitter: </label>
+  <input type="text" name="twitter" id="twitter"  /> -->
+  <button class="text-white" type="submit">UPDATE</button>
 </form>
-  
+<a class="text-white" href="/profile">CANCEL</a>
+
   </div>
 </div>
 
+<h3 class="text-white"><a href="/create">Create Socials</a></h3>
+
 <%- include('partials/footer') -%>
+
+
