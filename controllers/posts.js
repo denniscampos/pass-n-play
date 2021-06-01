@@ -50,7 +50,12 @@ module.exports = {
 
   likePost: async (req, res) => {
     try {
-      await Post.findOneAndUpdate({ _id: req.params.id });
+      await Post.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+          $inc: { likes: 1 },
+        }
+      );
       console.log("Likes +1");
       res.redirect("/");
     } catch (err) {
