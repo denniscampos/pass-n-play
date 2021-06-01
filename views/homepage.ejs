@@ -7,22 +7,36 @@
   <div class="mx-8 w-full">
     <%- include("partials/searchbar.ejs") %>
 
-    <div class="container feed bg-containcolor rounded-lg">
+    <div
+      class="
+        container
+        flex
+        justify-center
+        feed
+        bg-containcolor
+        rounded-lg
+        w-4/5
+      "
+    >
       <form action="homepage/createPost" method="POST">
         <label for="newPost">
           <textarea
+            class="mt-6 rounded-md opacity-80 pl-3 pt-3"
             name="newPost"
             id="newPost"
-            cols="50"
-            rows="4"
+            cols="100"
+            rows="3"
             spellcheck="false"
           ></textarea>
-          <button class="btn btn-blue">Post</button>
+          <div>
+            <button class="btn btn-blue">Post</button>
+          </div>
         </label>
       </form>
     </div>
 
-    <div class="text-white"><%- include("partials/feed.ejs") %></div>
+    <div class="feed text-white flex"></div>
+    <%- include("partials/feed.ejs") %>
 
     <div
       class="
@@ -67,6 +81,7 @@
           </p>
         </a>
       </div>
+
       <% } %>
     </div>
   </div>

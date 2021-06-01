@@ -5,21 +5,35 @@
 <div class="text-fontcs flex mt-8"><%- include("partials/sidebar.ejs") -%></div>
 
 
-<div class="w-2/3">
+<!-- <div class="flex flex-row">
 <%- include('partials/feed.ejs') %>
-<div id="twitch-embed">
+<div class="mt-10" id="twitch-embed">
   <script src="https://embed.twitch.tv/embed/v1.js"></script>
   <script type="text/javascript">
     new Twitch.Embed("twitch-embed", {
-      width: 854,
-      height: 480,
-      channel: "dnbull",
+      width: 650,
+      height: 680,
+      channel: "<%- user.userName %>",
     });
   </script>
 </div>
-</div>
-
+</div> -->
  
+<h2>hello world</h2>
+
+<form action="profile/createSocials" method="POST">
+  <label for="twitter">twitter: </label>
+  <input type="text" name="twitter" id="twitter" value="<%= user.userName %>" />
+  <label for="twitch">twitch: </label>
+  <input type="text" name="twitch" id="twitch" value="<%= user.userName %>" />
+  <a href="/profile">Cancel</a>
+  <button type="submit">create</button>
+</form>
+<form action="/profile/updateSocials/<%= user._id %>?_method=PUT" method="POST">
+  <label for="twitter">twitter: </label>
+  <input type="text" name="twitter" id="twitter"  />
+  <button type="submit">update</button>
+</form>
   
   </div>
 </div>

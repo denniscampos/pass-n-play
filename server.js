@@ -10,7 +10,7 @@ const connectDB = require("./config/database");
 const bodyParser = require("body-parser");
 const mainRoutes = require("./routes/main");
 const homepageRoutes = require("./routes/posts");
-const editRoutes = require("./routes/editprofile");
+const profileRoutes = require("./routes/profile");
 
 //env configuration
 require("dotenv").config();
@@ -28,7 +28,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 //Use forms for put / delete
 app.use(methodOverride("_method"));
@@ -53,7 +53,7 @@ app.use(flash());
 // set up routes for server
 app.use("/", mainRoutes);
 app.use("/homepage", homepageRoutes);
-app.use("/editProfile", editRoutes);
+app.use("/profile", profileRoutes);
 
 app.listen(process.env.PORT, () => {
   console.log(`Server running on Port ${process.env.PORT}`);

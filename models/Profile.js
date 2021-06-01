@@ -1,13 +1,9 @@
 const mongoose = require("mongoose");
 
-const EditSchema = new mongoose.Schema({
-  userName: {
-    type: String,
-    required: true,
-  },
-  userId: {
+const ProfileSchema = new mongoose.Schema({
+  user: {
     type: mongoose.Schema.Types.ObjectId,
-    // required: true,
+    required: true,
     ref: "User",
   },
   twitch: {
@@ -28,4 +24,4 @@ const EditSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Edit", EditSchema);
+module.exports = mongoose.model("Profile", ProfileSchema);
