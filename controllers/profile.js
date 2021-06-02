@@ -14,7 +14,7 @@ module.exports = {
         posts: allPosts,
         socials: socials,
       });
-      console.log(socials);
+      // console.log(socials);
     } catch (err) {
       console.log(err);
     }

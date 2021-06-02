@@ -2,6 +2,10 @@
   <h3 class="text-fontcs text-3xl my-2 font-bold">
     <a href="/profile"> <%- user.userName.toUpperCase() %> </a>
   </h3>
+
+  <% for(let i = 0; i < socials.length; i++) { %>
+
+ 
   <ul class="">
     <li>
       <i class="fas fa-book"></i><a class="text-white" href=""> My Library</a>
@@ -13,22 +17,22 @@
       <i class="fas fa-users"></i><a class="text-white" href=""> Socials</a>
       <ul class="ml-6">
         <li>
-          <i class="fab fa-twitter"> <a href="https://twitter.com/<%= socials.twitter %>"
-            ><%= socials.twitter %></i> </a
+          <i class="fab fa-twitter"> <a href="https://twitter.com/<%= socials[i].twitter %>"
+            ><%= (socials[i] === null) ? "none" : socials[i].twitter %></i> </a
           >
         </li>
-        <li><i class="fab fa-twitch"> <a href="https://twitch.tv/<%= socials.twitch %>"
-          ><%= socials.twitch %></i>
+        <li><i class="fab fa-twitch"> <a href="https://twitch.tv/<%= socials[i].twitch %>"
+          ><%= (socials[i] === null) ? "none" : socials[i].twitch %></i>
           </a
           >
         </li>
-        <li><i class="fab fa-discord"> <a href="https://discord.com/<%= socials.discord %>"
-          ><%= socials.discord %></i>
+        <li><i class="fab fa-discord"> <a href="https://discord.com/<%= socials[i].discord %>"
+          ><%= (socials[i] === null) ? "none" : socials[i].discord %></i>
           </a
           >
         </li>
-        <li><i class="fab fa-instagram"> <a href="https://instagram.com/<%= socials.instagram %>"
-          ><%= socials.instagram %></i>
+        <li><i class="fab fa-instagram"> <a href="https://instagram.com/<%= socials[i].instagram %>"
+          ><%= (socials[i] === null) ? "none" : socials[i].instagram %></i>
           </a
           >
         </li>
@@ -59,4 +63,5 @@
     <li><a class="text-white" href=""> Library</a></li>
     <li><a class="text-white" href=""> Library</a></li>
   </ul>
+  <% } %>
 </nav>
