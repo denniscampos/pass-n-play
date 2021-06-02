@@ -4,7 +4,7 @@ const Post = require("../models/Post");
 module.exports = {
   getProfile: async (req, res) => {
     try {
-      const socials = await Profile.findOne({ user: req.user.id });
+      const socials = await Profile.find({ user: req.user.id });
       const allPosts = await Post.find({ userId: req.user.id });
 
       res.render("profile.ejs", {
