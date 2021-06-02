@@ -4,11 +4,17 @@ const Post = require("../models/Post");
 module.exports = {
   getProfile: async (req, res) => {
     try {
-      const profile = await Profile.findOne();
-      res.render("profile", {
+      const socials = await Profile.findOne({ user: req.user.id });
+      const allPosts = await Post.find({ userId: req.user.id });
+
+      res.render("profile.ejs", {
         user: req.user,
-        profile: profile,
+        userName: req.user.userName,
+        email: req.user.email,
+        posts: allPosts,
+        socials: socials,
       });
+      console.log(socials);
     } catch (err) {
       console.log(err);
     }
@@ -18,7 +24,10 @@ module.exports = {
     try {
       await Profile.create({
         user: req.user,
-        twitter: req.body.twitter || 0,
+        twitter: req.body.twitter,
+        twitch: req.body.twitch,
+        discord: req.body.discord,
+        instagram: req.body.instagram,
       });
       res.redirect("/profile");
       console.log("create succesful");
@@ -57,9 +66,12 @@ module.exports = {
         { user: req.params.id },
         {
           twitter: req.body.twitter,
+          twitch: req.body.twitch,
+          discord: req.body.discord,
+          instagram: req.body.instagram,
         }
       );
-      //lean convers to object
+      //lean converts to object
       const profile = await Profile.find({ user: req.params.id });
       console.log(JSON.stringify(profile));
       res.redirect("/profile");
@@ -76,7 +88,7 @@ module.exports = {
       res.render("create", {
         user: req.user,
         profile: profile,
-        twitter: "",
+        // twitter: "",
       });
     } catch (err) {
       console.log(err);

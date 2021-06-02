@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const authController = require("../controllers/auth");
 const homeController = require("../controllers/home");
-const postsController = require("../controllers/posts");
 const profileController = require("../controllers/profile");
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
@@ -19,8 +18,8 @@ router.post("/register", authController.postRegister);
 router.post("/search", homeController.getSearch);
 router.post("/search/:id", homeController.getSearch);
 
-// Profile Page NEED TO SET UP PROFILE
-router.get("/profile", postsController.getProfile);
+// Profile
+router.get("/profile", profileController.getProfile);
 router.get("/create", profileController.test);
 
 module.exports = router;

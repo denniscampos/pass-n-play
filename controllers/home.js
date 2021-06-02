@@ -1,5 +1,6 @@
 const axios = require("axios").default;
 const Post = require("../models/Post");
+const Profile = require("../models/Profile");
 
 module.exports = {
   getIndex: (req, res) => {
@@ -14,12 +15,17 @@ module.exports = {
 
       // finds user and can be rendered on EJS.
       // const users = await Post.find({ user: req.user.id });
+      const socials = await Profile.findOne({ user: req.user.id });
       const allPosts = await Post.find();
+
       res.render("homepage", {
         games: gameAPI.data.results,
         user: req.user,
         posts: allPosts,
+        socials: socials,
       });
+
+      console.log(socials);
       // console.log(gameAPI.data.results[0].name);
     } catch (error) {
       console.log(error);

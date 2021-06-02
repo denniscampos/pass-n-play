@@ -1,6 +1,5 @@
 <%- include('partials/header') -%> <%- include("partials/dashboard-header.ejs")
 -%>
-
 <div class="text-fontcs flex mt-8">
   <%- include("partials/sidebar.ejs") %>
 
@@ -21,7 +20,7 @@
       <form action="homepage/createPost" method="POST">
         <label for="newPost">
           <textarea
-            class="mt-6 rounded-md opacity-80 pl-3 pt-3"
+            class="mt-6 rounded-md opacity-80 pl-3 pt-3 w-full md:w-32"
             name="newPost"
             id="newPost"
             cols="100"
@@ -86,5 +85,4 @@
     </div>
   </div>
 </div>
-
 <%- include('partials/footer') -%>
