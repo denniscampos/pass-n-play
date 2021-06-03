@@ -26,6 +26,25 @@ const ProfileSchema = new mongoose.Schema({
     required: false,
     default: "",
   },
+  // platform_name: {
+  //   type: String,
+  //   required: false,
+  //   default: "",
+  // },
+  // url: {
+  //   type: String,
+  //   required: false,
+  //   default: "",
+  // },
+  // username: {
+  //   type: String,
+  //   required: false,
+  //   default: "",
+  // },
+  timestamps: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 module.exports = mongoose.model("Profile", ProfileSchema);

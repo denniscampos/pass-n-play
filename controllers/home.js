@@ -15,6 +15,7 @@ module.exports = {
 
       // finds user and can be rendered on EJS.
       // const users = await Post.find({ user: req.user.id });
+
       const socials = await Profile.find({ user: req.user.id });
       const allPosts = await Post.find();
 

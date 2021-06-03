@@ -3,7 +3,7 @@
     <a href="/profile"> <%- user.userName.toUpperCase() %> </a>
   </h3>
 
-  <% for(let i = 0; i < socials.length; i++) { %>
+  
 
  
   <ul class="">
@@ -15,6 +15,7 @@
     </li>
     <li>
       <i class="fas fa-users"></i><a class="text-white" href=""> Socials</a>
+      <% for(let i = 0; i < socials.length; i++) { %>
       <ul class="ml-6">
         <li>
           <i class="fab fa-twitter"> <a href="https://twitter.com/<%= socials[i].twitter %>"
@@ -37,8 +38,10 @@
           >
         </li>
       </ul>
+      <% } %>
     </li>
   </ul>
+  
   <h3 class="my-2 text-2xl overflow-x-auto whitespace-nowrap font-bold">
     NEW RELEASES
   </h3>
@@ -63,5 +66,5 @@
     <li><a class="text-white" href=""> Library</a></li>
     <li><a class="text-white" href=""> Library</a></li>
   </ul>
-  <% } %>
+  
 </nav>
