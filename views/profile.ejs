@@ -1,63 +1,83 @@
-
 <%- include('partials/header') -%> <%- include("partials/dashboard-header.ejs")
 -%>
 
-<div class="">
-<div class="text-fontcs flex mt-8"><%- include("partials/sidebar.ejs") -%></div>
-
-
-<div class="">
-<%- include('partials/feed.ejs') %>
-<div class="mt-10" id="twitch-embed">
-  <script src="https://embed.twitch.tv/embed/v1.js"></script>
-  <script type="text/javascript">
-    new Twitch.Embed("twitch-embed", {
-      width: 650,
-      height: 680,
-      channel: "<%- user.userName %>",
-    });
-  </script>
-</div>
-</div>
-
-<form action="profile/createSocials" method="POST">
-  <label class="text-white" for="twitter">TWITTER: </label>
-  <input type="text" name="twitter" id="twitter" value="<%= socials.twitter %>" />
-  <label class="text-white" for="twitch">TWITCH: </label>
-  <input type="text" name="twitch" id="twitch" value="<%= socials.twitch %>" />
-  <label class="text-white" for="discord">DISCORD: </label>
-  <input type="text" name="discord" id="discord" value="<%= socials.discord %>" />
-  <label class="text-white" for="instagram">INSTAGRAM: </label>
-  <input type="text" name="instagram" id="instagram" value="<%= socials.instagram %>" />
-  <button class="text-white" type="submit">CREATE</button>
-</form>
-<form action="/profile/updateSocials/<%= user._id %>?_method=PUT" method="POST">
-  <label class="text-white" for="twitter">TWITTER: </label>
-  <input type="text" name="twitter" id="twitter"  />
-  <label class="text-white" for="twitch">TWITCH: </label>
-  <input type="text" name="twitch" id="twitch"  />
-  <label class="text-white" for="discord">DISCORD: </label>
-  <input type="text" name="discord" id="discord"  />
-  <label class="text-white" for="instagram">INSTAGRAM: </label>
-  <input type="text" name="instagram" id="instagram" />
-  <button class="text-white" type="submit">UPDATE</button>
-</form>
-<a class="text-white" href="/profile">CANCEL</a>
-
-<div class="flex flex-col">
-<span class="text-white">TWITTER: <%= socials.twitter %></span>
-<span class="text-white">TWITCH: <%= socials.twitch %></span>
-<span class="text-white">DISCORD: <%= socials.discord %></span>
-<span class="text-white">INSTAGRAM: <%= socials.instagram %></span>
-</div>
-
-
-
+<div class="homepage-container text-white flex">
+  <%- include("partials/sidebar.ejs") -%> <%- include('partials/feed.ejs') %>
+  <div class="mt-10" id="twitch-embed">
+    <script src="https://embed.twitch.tv/embed/v1.js"></script>
+    <script type="text/javascript">
+      new Twitch.Embed("twitch-embed", {
+        width: 650,
+        height: 680,
+        channel: "<%- user.userName %>",
+      });
+    </script>
   </div>
 </div>
+<div class="container form-container mt-10">
+  <div class="create-container flex justify-center w-1/2 bg-containcolor">
+    <form class="flex flex-col" action="profile/createSocials" method="POST">
+      <% if(socials) { %>
+      <label class="text-white" for="twitter">TWITTER: </label>
+      <input
+        type="text"
+        name="twitter"
+        id="twitter"
+        value="<%= socials.twitter %>"
+      />
+      <label class="text-white" for="twitch">TWITCH: </label>
+      <input
+        type="text"
+        name="twitch"
+        id="twitch"
+        value="<%= socials.twitch %>"
+      />
+      <label class="text-white" for="discord">DISCORD: </label>
+      <input
+        type="text"
+        name="discord"
+        id="discord"
+        value="<%= socials.discord %>"
+      />
+      <label class="text-white" for="instagram">INSTAGRAM: </label>
+      <input
+        type="text"
+        name="instagram"
+        id="instagram"
+        value="<%= socials.instagram %>"
+      />
 
-<h3 class="text-white"><a href="/create">Create Socials</a></h3>
+      <button class="text-white" type="submit">CREATE</button>
+
+      <% } else { %> <% console.log("socials exists") %> <% } %>
+    </form>
+  </div>
+
+  <div class="edit-container flex justify-center w-1/2 bg-containcolor">
+    <form
+      class="flex flex-col"
+      action="/profile/updateSocials/<%= user._id %>?_method=PUT"
+      method="POST"
+    >
+      <label class="text-white" for="twitter">TWITTER: </label>
+      <input type="text" name="twitter" id="twitter" />
+      <label class="text-white" for="twitch">TWITCH: </label>
+      <input type="text" name="twitch" id="twitch" />
+      <label class="text-white" for="discord">DISCORD: </label>
+      <input type="text" name="discord" id="discord" />
+      <label class="text-white" for="instagram">INSTAGRAM: </label>
+      <input type="text" name="instagram" id="instagram" />
+      <button class="text-white" type="submit">UPDATE</button>
+    </form>
+  </div>
+  <a class="text-white" href="/profile">CANCEL</a>
+
+  <span class="text-white">TWITTER: <%= socials.twitter %></span>
+  <span class="text-white">TWITCH: <%= socials.twitch %></span>
+  <span class="text-white">DISCORD: <%= socials.discord %></span>
+  <span class="text-white">INSTAGRAM: <%= socials.instagram %></span>
+
+  <h3 class="text-white"><a href="/create">Create Socials</a></h3>
+</div>
 
 <%- include('partials/footer') -%>
-
-
