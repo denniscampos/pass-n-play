@@ -15,8 +15,6 @@
         ><%= moment(posts[i].createdAt).format('hh:mm a MMM DD YYYY')%></span
       >
 
-      <% if(String(posts[i].userId) == String(user._id)) { %>
-
       <div class="flex content-center my-2">
         <form
           class=""
@@ -28,7 +26,7 @@
           </button>
         </form>
         <h3 class="text-white text-lg"><%= posts[i].likes %></h3>
-
+        <% if(String(posts[i].userId) == String(user._id)) { %>
         <form
           action="homepage/deletePost/<%= posts[i]._id %>?_method=DELETE"
           method="POST"
@@ -38,8 +36,8 @@
             <i class="fas fa-trash text-red-600 m-2"></i>
           </button>
         </form>
+        <% }%>
       </div>
-      <% }%>
     </div>
     <% } %>
   </div>
