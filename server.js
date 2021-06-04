@@ -8,9 +8,13 @@ const methodOverride = require("method-override");
 const flash = require("express-flash");
 const connectDB = require("./config/database");
 const bodyParser = require("body-parser");
+const moment = require("moment");
 const mainRoutes = require("./routes/main");
 const homepageRoutes = require("./routes/posts");
 const profileRoutes = require("./routes/profile");
+
+// Moment JS
+moment().format();
 
 //env configuration
 require("dotenv").config();

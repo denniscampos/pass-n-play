@@ -20,7 +20,7 @@
       <form action="homepage/createPost" method="POST">
         <label for="newPost">
           <textarea
-            class="mt-6 rounded-md opacity-80 pl-3 pt-3 w-full md:w-32"
+            class="mt-6 rounded-md opacity-80 pl-3 pt-3 w-full"
             name="newPost"
             id="newPost"
             cols="100"
@@ -42,11 +42,13 @@
         p-10
         grid grid-cols-1
         sm:grid-cols-1
-        md:grid-cols-4
-        lg:grid-cols-4
-        xl:grid-cols-4
+        md:grid-cols-1
+        lg:grid-cols-2
+        xl:grid-cols-3
+        2xl:grid-cols-4
         gap-5
         content-center
+        overflow-hidden
       "
     >
       <% for(let i = 0; i < games.length; i++) { %>

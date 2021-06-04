@@ -1,6 +1,7 @@
 const axios = require("axios").default;
 const Post = require("../models/Post");
 const Profile = require("../models/Profile");
+const moment = require("moment");
 
 module.exports = {
   getIndex: (req, res) => {
@@ -24,6 +25,7 @@ module.exports = {
         user: req.user,
         posts: allPosts,
         socials: socials,
+        moment: moment,
       });
 
       console.log(socials);

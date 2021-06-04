@@ -1,5 +1,6 @@
 const Profile = require("../models/Profile");
 const Post = require("../models/Post");
+const moment = require("moment");
 
 module.exports = {
   getProfile: async (req, res) => {
@@ -13,6 +14,7 @@ module.exports = {
         email: req.user.email,
         posts: allPosts,
         socials: socials,
+        moment: moment,
       });
       // console.log(socials);
     } catch (err) {

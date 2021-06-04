@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const date = new Date();
 
 const PostSchema = new mongoose.Schema({
   // title: {

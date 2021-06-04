@@ -11,7 +11,9 @@
         <%= String(posts[i].userName.toUpperCase()) %>
       </h2>
       <h4 class="text-white text-xl my-2"><%= posts[i].postMessage %></h4>
-      <span class="text-white my-2"><%= posts[i].createdAt %></span>
+      <span class="text-white my-2"
+        ><%= moment(posts[i].createdAt).format('hh:mm a MMM DD YYYY')%></span
+      >
 
       <% if(String(posts[i].userId) == String(user._id)) { %>
 
