@@ -56,7 +56,7 @@ module.exports = {
                   .join(", "),
         };
       });
-
+      const socials = await Profile.find({ user: req.user.id });
       const allPosts = await Post.find({ user: req.user.id });
       res.render("search", {
         games: games,
@@ -64,12 +64,38 @@ module.exports = {
         email: req.user.email,
         posts: allPosts,
         user: req.user,
+        socials: socials,
       });
 
       // old version
       // res.render("search", { games: gameAPI.data });
     } catch (error) {
       console.log(error);
+    }
+  },
+
+  testSearch: async (req, res) => {
+    let searchId = req.params.id;
+    console.log(searchId);
+    try {
+      const gameAPI = await axios.get(
+        `https://api.rawg.io/api/games/${searchId}?key=${process.env.API_GAME_KEY}`
+      );
+
+      const socials = await Profile.find({ user: req.user.id });
+      const allPosts = await Post.find({ user: req.user.id });
+      const games = gameAPI.data;
+
+      res.render("searchTest", {
+        games: games,
+        userName: req.user.userName,
+        email: req.user.email,
+        posts: allPosts,
+        user: req.user,
+        socials: socials,
+      });
+    } catch (err) {
+      console.log(err);
     }
   },
 };
