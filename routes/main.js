@@ -17,7 +17,7 @@ router.post("/register", authController.postRegister);
 // Search
 router.post("/search", homeController.getSearch);
 router.post("/search/:id", homeController.getSearch);
-router.get("/search/:id", homeController.testSearch);
+router.get("/search/:id", homeController.getResults);
 
 // Profile
 router.get("/profile", profileController.getProfile);

@@ -69,12 +69,12 @@ module.exports = {
 
       // old version
       // res.render("search", { games: gameAPI.data });
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
     }
   },
 
-  testSearch: async (req, res) => {
+  getResults: async (req, res) => {
     let searchId = req.params.id;
     console.log(searchId);
     try {
@@ -86,7 +86,7 @@ module.exports = {
       const allPosts = await Post.find({ user: req.user.id });
       const games = gameAPI.data;
 
-      res.render("searchTest", {
+      res.render("results", {
         games: games,
         userName: req.user.userName,
         email: req.user.email,
