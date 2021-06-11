@@ -7,6 +7,7 @@
 - Create your own profile to like, favorite a game.
 - Share your information to others!
 - Follow other users.
+- Share your twitch profile.
 
 ## Tech Used
 
