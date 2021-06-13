@@ -33,7 +33,7 @@
           hover:scale-105
         "
       >
-        <a href="/search/<%- games[i].id %>">
+        <a href="/<%- games[i].id %>">
           <h2 class="text-fontcs text-4xl py-2 minHeight-50">
             <%- games[i].name %>
           </h2>
@@ -42,12 +42,6 @@
             src="<%- games[i].background_image %>"
             alt="Picture of Game"
           />
-          <p class="text-white py-2">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem
-            animi praesentium aut atque laudantium fuga iste sunt neque. Amet
-            eveniet recusandae vero excepturi tempora hic officia quaerat ex
-            incidunt accusantium. <%= games[i].id[i] %>
-          </p>
         </a>
       </div>
 

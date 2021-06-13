@@ -1,7 +1,15 @@
+<%- include('partials/header') -%> 
+<%- include('partials/dashboard-header.ejs')%>
+<%- include('partials/sidebar.ejs')%>
 
-<h2><%= games.name %></h2>
-<p><%= games.description %></p>"
-<h2><%= games.metacritic %></h2>
-<h2><%= games.released %></h2>
-<img src="<%= games.background_image %>" alt="video game image"></img>
+<div class="h-full ml-16 mt-14 mb-10 md:ml-64">
+    <h1 class="text-fontcs text-5xl"><%= games.name %></h1>
+        <img class="object-contain h-96 w-full" src="<%= games.background_image %>" alt="video game image"></img>
+    <h3 class="text-white text-3xl">ABOUT</h3>
+        <p class="text-white"><%= games.description %></p>
+            <h2><%= games.metacritic %></h2>
+            <h2><%= games.released %></h2>
 
+</div>
+
+<%- include('partials/footer') -%>

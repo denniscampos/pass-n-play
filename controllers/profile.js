@@ -8,7 +8,7 @@ module.exports = {
       const socials = await Profile.find({ user: req.user.id });
       const allPosts = await Post.find({ userId: req.user.id });
 
-      res.render("profile.ejs", {
+      res.render("profile", {
         user: req.user,
         userName: req.user.userName,
         email: req.user.email,

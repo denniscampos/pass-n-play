@@ -14,13 +14,14 @@ router.get("/logout", authController.logout);
 router.get("/register", authController.getRegister);
 router.post("/register", authController.postRegister);
 
-// Search
-router.post("/search", homeController.getSearch);
-router.post("/search/:id", homeController.getSearch);
-router.get("/search/:id", homeController.getResults);
-
 // Profile
 router.get("/profile", profileController.getProfile);
 router.get("/create", profileController.test);
+
+// Search
+// router.get("/results/", homeController.getResults);
+router.get("/:id/", homeController.getResults);
+router.post("/search", homeController.getSearch);
+// router.post("/search/:id", homeController.getSearch); // maybe delete?
 
 module.exports = router;
