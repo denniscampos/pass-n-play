@@ -27,7 +27,6 @@ module.exports = {
         socials: socials,
         moment: moment,
       });
-
       console.log(socials);
       // console.log(gameAPI.data.results[0].name);
     } catch (error) {

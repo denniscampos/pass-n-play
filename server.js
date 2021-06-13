@@ -58,6 +58,7 @@ app.use(flash());
 app.use("/", mainRoutes);
 app.use("/homepage", homepageRoutes);
 app.use("/profile", profileRoutes);
+app.use("/results", homepageRoutes);
 
 app.listen(process.env.PORT, () => {
   console.log(`Server running on Port ${process.env.PORT}`);
