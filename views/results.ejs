@@ -2,13 +2,14 @@
 <%- include('partials/dashboard-header.ejs')%>
 <%- include('partials/sidebar.ejs')%>
 
-<div class="h-full ml-16 mt-14 mb-10 md:ml-64">
+<div class="h-full ml-28 mt-16 mb-10 md:ml-64">
     <h1 class="text-fontcs text-5xl"><%= games.name %></h1>
         <img class="object-contain h-96 w-full" src="<%= games.background_image %>" alt="video game image"></img>
+        <h2 class="text-white">Metacritic: <%= games.metacritic %></h2>
+        <h2 class="text-white">Released Date: <%= games.released %></h2>
     <h3 class="text-white text-3xl">ABOUT</h3>
         <p class="text-white"><%= games.description %></p>
-            <h2><%= games.metacritic %></h2>
-            <h2><%= games.released %></h2>
+
 
 </div>
 
