@@ -46,6 +46,10 @@ module.exports = {
       const allPosts = await Post.find({ user: req.user.id });
       const games = gameAPI.data;
 
+      for (let test in games) {
+        console.log(`${games[test]}`);
+      }
+
       res.render("results", {
         games: games,
         userName: req.user.userName,
