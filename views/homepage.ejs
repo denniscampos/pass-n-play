@@ -39,9 +39,13 @@
           </h2>
           <img
             class="object-cover h-48 w-full"
-            src="<%- games[i].background_image %>"
+            src="<%- games[i].img %>"
             alt="Picture of Game"
           />
+          <span class="text-white">RELEASED: <%- games[i].released %></span>
+          <span class="text-white block"
+            >PLATFORMS: <%- games[i].platforms %></span
+          >
         </a>
       </div>
 

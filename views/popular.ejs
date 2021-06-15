@@ -1,5 +1,49 @@
-<%- include("partials/header.ejs") %> <% for(let i = 0; i < games.length; i++) {
+<%- include("partials/header.ejs") %> <%-
+include("partials/dashboard-header.ejs") %> <%- include("partials/sidebar.ejs")
 %>
-<h2 class="text-white"><%- games[i].name %></h2>
-<img src="<%- games[i].img %>" alt="" />
-<% } %> <%- include("partials/footer.ejs") %>
+
+<div class="wrap pt-28 pl-72">
+  <div
+    class="
+      p-10
+      grid grid-cols-1
+      sm:grid-cols-1
+      md:grid-cols-4
+      lg:grid-cols-4
+      xl:grid-cols-4
+      gap-4
+      content-center
+    "
+  >
+    <% for(let i = 0; i < games.length; i++) { %>
+    <div
+      class="
+        bg-containcolor
+        overflow-hidden
+        shadow-lg
+        rounded-3xl
+        p-4
+        transform
+        transition
+        duration-500
+        hover:scale-105
+      "
+    >
+      <a href="/<%= games[i].id %>">
+        <h1 class="text-fontcs text-4xl"><%- games[i].name %></h1>
+        <span class="text-white">RELEASED: <%- games[i].released %></span>
+        <span class="text-white block">RATING: <%- games[i].rating %></span>
+        <img
+          class="object-cover h-48 w-full"
+          src="<%- games[i].img %>"
+          alt="<%- games[i].name %>"
+        />
+        <span class="text-white"><%- games[i].platforms %></span>
+      </a>
+    </div>
+
+    <% } %>
+  </div>
+</div>
+
+<%- include("partials/footer.ejs") %>

@@ -11,17 +11,34 @@ module.exports = {
   getHomepage: async (req, res) => {
     try {
       const gameAPI = await axios.get(
-        `https://api.rawg.io/api/games?key=${process.env.API_GAME_KEY}`
+        `https://api.rawg.io/api/games?key=${process.env.API_GAME_KEY}&metacritic=95,100&ordering=-rating`
       );
 
       // finds user and can be rendered on EJS.
       // const users = await Post.find({ user: req.user.id });
 
+      const games = gameAPI.data.results.map((game) => {
+        return {
+          id: game.id,
+          name: game.name,
+          img: game.background_image,
+          released: game.released,
+          platforms:
+            game.platforms === null
+              ? "Platform Not Found"
+              : game.platforms
+                  .map((platform) => platform.platform.name)
+                  .join(", "),
+        };
+      });
+
+      console.log(games);
+
       const socials = await Profile.find({ user: req.user.id });
       const allPosts = await Post.find();
 
       res.render("homepage", {
-        games: gameAPI.data.results,
+        games: games,
         user: req.user,
         posts: allPosts,
         socials: socials,
@@ -101,13 +118,22 @@ module.exports = {
   getPopular: async (req, res) => {
     try {
       const gameAPI = await axios.get(
-        `https://api.rawg.io/api/games?key=${process.env.API_GAME_KEY}&ordering=-rating&dates=2020-01-01,2021-06-04&metacritic=80,100`
+        `https://api.rawg.io/api/games?key=${process.env.API_GAME_KEY}&ordering=-rating&dates=2020-01-01,2020-12-31&metacritic=80,100`
       );
       const socials = await Profile.find({ user: req.user.id });
       const games = gameAPI.data.results.map((game) => {
         return {
+          id: game.id,
           name: game.name,
           img: game.background_image,
+          released: game.released,
+          rating: game.rating,
+          platforms:
+            game.platforms === null
+              ? "Platform Not Found"
+              : game.platforms
+                  .map((platform) => platform.platform.name)
+                  .join(", "),
         };
       });
 
