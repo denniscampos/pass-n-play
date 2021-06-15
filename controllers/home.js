@@ -121,7 +121,7 @@ module.exports = {
         `https://api.rawg.io/api/games?key=${process.env.API_GAME_KEY}&ordering=-rating&dates=2020-01-01,2020-12-31&metacritic=80,100`
       );
       const socials = await Profile.find({ user: req.user.id });
-      const games = gameAPI.data.results.map((game) => {
+      const games = await gameAPI.data.results.map((game) => {
         return {
           id: game.id,
           name: game.name,
@@ -137,8 +137,11 @@ module.exports = {
         };
       });
 
+      const checkPlatforms = ["PC", "XBOX"];
+
       res.render("popular", {
         games: games,
+        plats: checkPlatforms,
         userName: req.user.userName,
         email: req.user.email,
         user: req.user,
