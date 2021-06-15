@@ -46,10 +46,6 @@ module.exports = {
       const allPosts = await Post.find({ user: req.user.id });
       const games = gameAPI.data;
 
-      for (let test in games) {
-        console.log(`${games[test]}`);
-      }
-
       res.render("results", {
         games: games,
         userName: req.user.userName,
@@ -97,6 +93,31 @@ module.exports = {
 
       // old version
       // res.render("search", { games: gameAPI.data });
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+  getPopular: async (req, res) => {
+    try {
+      const gameAPI = await axios.get(
+        `https://api.rawg.io/api/games?key=${process.env.API_GAME_KEY}&ordering=-rating&dates=2020-01-01,2021-06-04&metacritic=80,100`
+      );
+      const socials = await Profile.find({ user: req.user.id });
+      const games = gameAPI.data.results.map((game) => {
+        return {
+          name: game.name,
+          img: game.background_image,
+        };
+      });
+
+      res.render("popular", {
+        games: games,
+        userName: req.user.userName,
+        email: req.user.email,
+        user: req.user,
+        socials: socials,
+      });
     } catch (err) {
       console.log(err);
     }

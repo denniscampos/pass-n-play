@@ -1,0 +1,5 @@
+<%- include("partials/header.ejs") %> <% for(let i = 0; i < games.length; i++) {
+%>
+<h2 class="text-white"><%- games[i].name %></h2>
+<img src="<%- games[i].img %>" alt="" />
+<% } %> <%- include("partials/footer.ejs") %>

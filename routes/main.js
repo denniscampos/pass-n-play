@@ -18,6 +18,9 @@ router.post("/register", authController.postRegister);
 router.get("/profile", profileController.getProfile);
 router.get("/create", profileController.test);
 
+// Popular
+router.get("/popular", homeController.getPopular);
+
 // Search
 // router.get("/results/", homeController.getResults);
 router.get("/:id/", homeController.getResults);
