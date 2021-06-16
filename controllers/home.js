@@ -8,7 +8,7 @@ module.exports = {
     res.render("index.ejs");
   },
 
-  getHomepage: async (req, res) => {
+  getHomepage: async (req, res, next) => {
     try {
       const gameAPI = await axios.get(
         `https://api.rawg.io/api/games?key=${process.env.API_GAME_KEY}&metacritic=95,100&ordering=-rating`
@@ -32,7 +32,7 @@ module.exports = {
         };
       });
 
-      console.log(games);
+      // console.log(games);
 
       const socials = await Profile.find({ user: req.user.id });
       const allPosts = await Post.find();
@@ -44,16 +44,16 @@ module.exports = {
         socials: socials,
         moment: moment,
       });
-      console.log(socials);
+      // console.log(socials);
       // console.log(gameAPI.data.results[0].name);
-    } catch (error) {
-      console.log(error);
+    } catch (next) {
+      console.log(next);
     }
   },
 
   getResults: async (req, res) => {
     let searchId = req.params.id;
-    console.log(searchId);
+    // console.log(searchId);
     try {
       const gameAPI = await axios.get(
         `https://api.rawg.io/api/games/${searchId}?key=${process.env.API_GAME_KEY}`
@@ -78,7 +78,7 @@ module.exports = {
 
   getSearch: async (req, res) => {
     let search = req.body.search;
-    console.log(search);
+    // console.log(search);
     try {
       const gameAPI = await axios.get(
         `https://api.rawg.io/api/games?key=${process.env.API_GAME_KEY}&search=${search}`
@@ -137,11 +137,16 @@ module.exports = {
         };
       });
 
-      const checkPlatforms = ["PC", "XBOX"];
+      const test = {
+        pc: "PC",
+        ns: "Nintendo Switch",
+      };
+
+      console.log(test); // this is doubling but even if i console log anything else it doubles.
 
       res.render("popular", {
         games: games,
-        plats: checkPlatforms,
+        test: test,
         userName: req.user.userName,
         email: req.user.email,
         user: req.user,

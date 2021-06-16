@@ -22,9 +22,7 @@ router.get("/create", profileController.test);
 router.get("/popular", homeController.getPopular);
 
 // Search
-// router.get("/results/", homeController.getResults);
 router.get("/:id/", homeController.getResults);
 router.post("/search", homeController.getSearch);
-// router.post("/search/:id", homeController.getSearch); // maybe delete?
 
 module.exports = router;
