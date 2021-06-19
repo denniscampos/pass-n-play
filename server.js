@@ -6,6 +6,7 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const methodOverride = require("method-override");
 const flash = require("express-flash");
+const logger = require("morgan");
 const connectDB = require("./config/database");
 const bodyParser = require("body-parser");
 const moment = require("moment");
@@ -33,6 +34,9 @@ app.use(express.json());
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
+
+//logging
+app.use(logger("dev"));
 
 //Use forms for put / delete
 app.use(methodOverride("_method"));

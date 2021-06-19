@@ -14,9 +14,6 @@ module.exports = {
         `https://api.rawg.io/api/games?key=${process.env.API_GAME_KEY}&metacritic=95,100&ordering=-rating`
       );
 
-      // finds user and can be rendered on EJS.
-      // const users = await Post.find({ user: req.user.id });
-
       const games = gameAPI.data.results.map((game) => {
         return {
           id: game.id,
@@ -32,8 +29,6 @@ module.exports = {
         };
       });
 
-      // console.log(games);
-
       const socials = await Profile.find({ user: req.user.id });
       const allPosts = await Post.find();
 
@@ -44,8 +39,6 @@ module.exports = {
         socials: socials,
         moment: moment,
       });
-      // console.log(socials);
-      // console.log(gameAPI.data.results[0].name);
     } catch (next) {
       console.log(next);
     }
@@ -78,7 +71,7 @@ module.exports = {
 
   getSearch: async (req, res) => {
     let search = req.body.search;
-    // console.log(search);
+
     try {
       const gameAPI = await axios.get(
         `https://api.rawg.io/api/games?key=${process.env.API_GAME_KEY}&search=${search}`
@@ -141,8 +134,6 @@ module.exports = {
         pc: "PC",
         ns: "Nintendo Switch",
       };
-
-      console.log(test); // this is doubling but even if i console log anything else it doubles.
 
       res.render("popular", {
         games: games,

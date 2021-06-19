@@ -38,7 +38,7 @@ include("partials/dashboard-header.ejs") %> <%- include("partials/sidebar.ejs")
           src="<%- games[i].img %>"
           alt="<%- games[i].name %>"
         />
-        <% console.log(test) %> <% if(games[i].platforms == "PC") { %>
+        <% if(games[i].platforms == "PC") { %>
         <i class="fas fa-desktop"></i>
         <% if(games[i].platforms == "Nintendo Switch") { %>
         <i class="fas fa-toggle-on"></i>
