@@ -130,14 +130,18 @@ module.exports = {
         };
       });
 
-      const test = {
-        pc: "PC",
-        ns: "Nintendo Switch",
+      const hashmap = {
+        PC: "fas fa-desktop",
+        XBOX: "fas fa-xbox",
       };
+
+      for (let test in hashmap) {
+        // console.log(test);
+      }
 
       res.render("popular", {
         games: games,
-        test: test,
+        hashmap: hashmap,
         userName: req.user.userName,
         email: req.user.email,
         user: req.user,
