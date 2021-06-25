@@ -18,7 +18,7 @@ Gamer's hub uses a number of dependencies to make this work properly.
 - MongoDB
 - TailwindCSS
 
-## Run Project
+## Install Dependencies
 npm install
 
 ## Things to add
@@ -26,3 +26,7 @@ npm install
     - PORT=3000
     - DB_NAME="db string here"
     - API_GAME_KEY="game api key"
+
+## Run Project
+nodemon server
+
