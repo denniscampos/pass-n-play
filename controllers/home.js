@@ -130,19 +130,8 @@ module.exports = {
         };
       });
 
-      const hashmap = [
-        "PC",
-        "PlayStation 4",
-        "PlayStation 5"
-      ]
-
-        hashmap.forEach((e) => {
-          return e
-        })
-        
       res.render("popular", {
         games: games,
-        hashmap: hashmap, 
         userName: req.user.userName,
         email: req.user.email,
         user: req.user,

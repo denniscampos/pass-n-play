@@ -39,17 +39,16 @@ include("partials/dashboard-header.ejs") %> <%- include("partials/sidebar.ejs")
           alt="<%- games[i].name %>"
         />
 
-        <% switch(hashmap) {           
-          case games[i].platforms: %>
-        <i class="fab fa-playstation"></i>
-        <% break; 
-        case "PC" : %>
-        <i class="fas fa-desktop"></i>
-        <% break; 
-        case "PlayStation 4" : %>
-        <i class="fas fa-playstation"></i>
-
-      <%}%>
+        <% console.log(games[i].platforms) %> <%
+        if(games[i].platforms.includes("PC")) { %>
+        <i class="fas fa-desktop text-white"></i>
+        <% if(games[i].platforms.includes("PlayStation")) { %>
+        <i class="fab fa-playstation text-white"></i>
+        <% if(games[i].platforms.includes("Xbox")) {%>
+        <i class="fab fa-xbox text-white"></i>
+        <%}%> <% if(games[i].platforms.includes("Nintendo")) {%>
+        <i class="fas fa-gamepad text-white"></i>
+        <%}%> <% } %> <% } %>
       </a>
     </div>
 

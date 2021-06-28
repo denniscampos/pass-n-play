@@ -1,12 +1,18 @@
-<%- include('partials/header') -%> <%- include("partials/dashboard-header.ejs")
--%>
-<!-- <div class="text-fontcs flex mt-8"> -->
-<div class="h-full ml-16 mt-14 mb-10 md:ml-64">
-  <%- include("partials/sidebar.ejs") %>
-
-  <!-- Swiper -->
-  <div class="swiper-container mySwiper">
-    <div class="swiper-wrapper h-1/2">
+  <div class="mx-8 w-full">
+    <div
+      class="
+        p-10
+        grid grid-cols-1
+        sm:grid-cols-1
+        md:grid-cols-1
+        lg:grid-cols-2
+        xl:grid-cols-3
+        2xl:grid-cols-4
+        gap-5
+        content-center
+        overflow-hidden
+      "
+    >
       <% for(let i = 0; i < games.length; i++) { %>
       <div
         class="
@@ -19,7 +25,6 @@
           transition
           duration-500
           hover:scale-105
-          swiper-slide
         "
       >
         <a href="/<%- games[i].id %>">
@@ -40,8 +45,6 @@
 
       <% } %>
     </div>
-    <div class="swiper-pagination "></div>
-  </div>
 
     <div
       class="
@@ -74,7 +77,6 @@
     </div>
 
     <div class="feed text-white flex"><%- include("partials/feed.ejs") %></div>
+
   </div>
 </div>
-
-<%- include('partials/footer') -%>
