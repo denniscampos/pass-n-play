@@ -14,7 +14,7 @@
   </div>
 </div>
 <div class="container form-container mt-10">
-  <div class="create-container flex justify-center w-1/2 bg-containcolor">
+  <div class="create-container flex justify-center w-1/2 bg-containcolor ml-20">
     <form class="flex flex-col" action="profile/createSocials" method="POST">
       <% if(socials) { %>
       <label class="text-white" for="twitter">TWITTER: </label>
@@ -52,7 +52,7 @@
     </form>
   </div>
 
-  <div class="edit-container flex justify-center w-1/2 bg-containcolor">
+  <div class="edit-container flex justify-center w-1/2 bg-containcolor ml-20">
     <form
       class="flex flex-col"
       action="/profile/updateSocials/<%= user._id %>?_method=PUT"
@@ -69,14 +69,26 @@
       <button class="text-white" type="submit">UPDATE</button>
     </form>
   </div>
-  <a class="text-white" href="/profile">CANCEL</a>
 
-  <span class="text-white">TWITTER: <%= socials.twitter %></span>
-  <span class="text-white">TWITCH: <%= socials.twitch %></span>
-  <span class="text-white">DISCORD: <%= socials.discord %></span>
-  <span class="text-white">INSTAGRAM: <%= socials.instagram %></span>
+  <div
+    class="
+      create-container
+      flex flex-col
+      justify-center
+      w-1/2
+      bg-containcolor
+      ml-20
+    "
+  >
+    <% for(let i = 0; i < socials.length; i++) { %> <%
+    console.log(socials[i].twitter) %>
 
-  <h3 class="text-white"><a href="/create">Create Socials</a></h3>
+    <span class="text-white">TWITTER: <%= socials[i].twitter %></span>
+    <span class="text-white">TWITCH: <%= socials[i].twitch %></span>
+    <span class="text-white">DISCORD: <%= socials[i].discord %></span>
+    <span class="text-white">INSTAGRAM: <%= socials[i].instagram %></span>
+    <% } %>
+  </div>
 </div>
 
 <%- include('partials/footer') -%>
