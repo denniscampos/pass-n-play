@@ -5,43 +5,30 @@
   <%- include("partials/sidebar.ejs") %>
 
   <!-- Swiper -->
-  <div class="swiper-container mySwiper">
-    <div class="swiper-wrapper h-1/2">
+  <div class="swiper-container mySwiper pb-20">
+    <h1 class="text-center text-2xl font-bold p-4  text-fontcs mt-6">Discover</h1>
+    <div class="swiper-wrapper h-1/2 pl-5">
+      
       <% for(let i = 0; i < games.length; i++) { %>
-      <div
-        class="
-          bg-containcolor
-          overflow-hidden
-          shadow-lg
-          rounded-3xl
-          p-4
-          transform
-          transition
-          duration-500
-          hover:scale-105
-          swiper-slide
-        "
-      >
-        <a href="/<%- games[i].id %>">
-          <h2 class="text-fontcs text-4xl py-2 minHeight-50">
-            <%- games[i].name %>
-          </h2>
-          <img
-            class="object-cover h-48 w-full"
-            src="<%- games[i].img %>"
-            alt="Picture of Game"
-          />
-          <span class="text-white">RELEASED: <%- games[i].released %></span>
-          <span class="text-white block"
-            >PLATFORMS: <%- games[i].platforms %></span
-          >
-        </a>
-      </div>
+        
+        <div class="shadow-md rounded-lg bg-containcolor swiper-slide flex flex-col">
+          <!-- Card Image -->
+          <a class="" href="<%- games[i].id %>">
+          <img src="<%- games[i].img %>" alt="" class="overflow-cover h-48 w-full">
+          <!-- Card Content -->
+          <div class="">
+            <h3 class="font-medium text-fontcs text-lg my-2 uppercase"><%- games[i].name %></h3>
+            <p class="text-justify"></p>
+          </a>
+          </div>
+        </div>
+      
 
       <% } %>
     </div>
     <div class="swiper-pagination "></div>
   </div>
+  <!--Swiper Ends-->
 
     <div
       class="
@@ -78,3 +65,55 @@
 </div>
 
 <%- include('partials/footer') -%>
+
+
+<!-- <div class="
+bg-containcolor
+overflow-hidden
+shadow-lg
+rounded-3xl
+p-4
+transform
+transition
+duration-500
+hover:scale-105"></div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

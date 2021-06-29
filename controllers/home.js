@@ -54,10 +54,18 @@ module.exports = {
 
       const socials = await Profile.find({ user: req.user.id });
       const allPosts = await Post.find({ user: req.user.id });
-      const games = gameAPI.data;
+      const games = await gameAPI.data;
+      const gamePlatforms = await gameAPI.data.platforms
+        .map((platform) => platform.platform.name)
+        .join(", ");
+      const gameGenre = await gameAPI.data.genres
+        .map((genre) => genre.name)
+        .join(", ");
 
       res.render("results", {
         games: games,
+        game_platforms: gamePlatforms,
+        game_genres: gameGenre,
         userName: req.user.userName,
         email: req.user.email,
         posts: allPosts,
