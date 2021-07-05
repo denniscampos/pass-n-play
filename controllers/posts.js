@@ -1,5 +1,6 @@
 const axios = require("axios").default;
 const Post = require("../models/Post");
+const Likes = require("../models/Likes");
 const Profile = require("../models/Profile");
 
 module.exports = {
@@ -42,6 +43,7 @@ module.exports = {
           $inc: { likes: 1 },
         }
       );
+
       console.log("Likes +1");
       res.redirect("/");
     } catch (err) {

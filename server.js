@@ -1,3 +1,6 @@
+//env configuration
+require("dotenv").config();
+
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose"); // check
@@ -16,9 +19,6 @@ const profileRoutes = require("./routes/profile");
 
 // Moment JS
 moment().format();
-
-//env configuration
-require("dotenv").config();
 
 // connect to DB
 connectDB();
