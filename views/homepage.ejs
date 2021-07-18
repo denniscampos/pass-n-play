@@ -1,119 +1,82 @@
 <%- include('partials/header') -%> <%- include("partials/dashboard-header.ejs")
 -%>
-<!-- <div class="text-fontcs flex mt-8"> -->
-<div class="h-full ml-16 mt-14 mb-10 md:ml-64">
-  <%- include("partials/sidebar.ejs") %>
 
-  <!-- Swiper -->
-  <div class="swiper-container mySwiper pb-20">
-    <h1 class="text-center text-2xl font-bold p-4  text-fontcs mt-6">Discover</h1>
-    <div class="swiper-wrapper h-1/2 pl-5">
-      
-      <% for(let i = 0; i < games.length; i++) { %>
-        
-        <div class="shadow-md rounded-lg bg-containcolor swiper-slide flex flex-col">
-          <!-- Card Image -->
-          <a class="" href="<%- games[i].id %>">
-          <img src="<%- games[i].img %>" alt="" class="overflow-cover h-48 w-full">
-          <!-- Card Content -->
-          <div class="">
-            <h3 class="font-medium text-fontcs text-lg my-2 uppercase"><%- games[i].name %></h3>
-            <p class="text-justify"></p>
-          </a>
-          </div>
-        </div>
-      
+<!-- search input  -->
+<div class="search w-4/6 m-auto my-10 text-center">
+  <h4 class="text-white mb-5">Welcome <%- user.userName.toUpperCase()%></h4>
+  <%- include("partials/searchbar.ejs") -%>
+</div>
+<!-- search input  -->
 
-      <% } %>
-    </div>
-    <div class="swiper-pagination "></div>
-  </div>
-  <!--Swiper Ends-->
+<div class="popular-games my-12 flex flex-col content-around">
+  <h3 class="text-white mx-7 mb-5 w-xs block font-bold">POPULAR GAMES</h3>
+  <div class="wrapper flex flex-wrap justify-center items-center">
+    <% games.forEach(game => { %>
+    <a href="/<%= game.id %>">
+      <div
+        class="
+          max-w-xs
+          object-contain
+          mb-7
+          mx-5
+          game-container
+          rounded-xl
+          transform
+          transition
+          duration-500
+          hover:scale-105
+          flex flex-col
+          content-center
+        "
+      >
+        <img
+          class="relative h-60 w-44 mb-10 object-cover filter brightness-75"
+          src="<%- game.img %>"
+          alt=""
+        />
 
-    <div
-      class="
-        container
-        flex
-        justify-center
-        feed
-        bg-containcolor
-        rounded-lg
-        w-4/5
-        mt-20
-      "
-    >
-      <form action="homepage/createPost" method="POST">
-        <label for="newPost">
-          <textarea
-            class="mt-6 rounded-md bg-white pl-3 pt-3 w-full"
-            name="newPost"
-            id="newPost"
-            cols="100"
-            rows="3"
-            spellcheck="false"
-          ></textarea>
-
-          <div>
-            <button class="btn btn-blue">Post</button>
-          </div>
-        </label>
-      </form>
-    </div>
-
-    <div class="feed text-white flex"><%- include("partials/feed.ejs") %></div>
+        <h4 class="absolute top-0 left-0 ml-3 text-white font-bold w-40 mt-4">
+          <%- game.name %>
+        </h4>
+      </div>
+    </a>
+    <% }) %>
   </div>
 </div>
 
-<%- include('partials/footer') -%>
+<div class="popular-games my-12 flex flex-col content-around">
+  <h3 class="text-white mx-7 mb-5 w-xs block font-bold">TRENDING</h3>
+  <div class="wrapper flex flex-wrap justify-center items-center">
+    <% trends.forEach(trend => { %>
+    <a href="/<%= trend.id %>">
+      <div
+        class="
+          max-w-xs
+          object-contain
+          mb-7
+          mx-5
+          game-container
+          rounded-xl
+          transform
+          transition
+          duration-500
+          hover:scale-105
+          flex flex-col
+          content-center
+        "
+      >
+        <img
+          class="relative h-60 w-44 mb-10 object-cover filter brightness-75"
+          src="<%- trend.img %>"
+          alt=""
+        />
+        <h4 class="absolute top-0 left-0 ml-3 text-white font-bold w-40 mt-4">
+          <%- trend.name %>
+        </h4>
+      </div>
+    </a>
+    <% }) %>
+  </div>
+</div>
 
-
-<!-- <div class="
-bg-containcolor
-overflow-hidden
-shadow-lg
-rounded-3xl
-p-4
-transform
-transition
-duration-500
-hover:scale-105"></div> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<%- include("partials/footer.ejs") -%>

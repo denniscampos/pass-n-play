@@ -11,8 +11,27 @@ module.exports = {
   getHomepage: async (req, res, next) => {
     try {
       const gameAPI = await axios.get(
-        `https://api.rawg.io/api/games?key=${process.env.API_GAME_KEY}&metacritic=95,100&ordering=-rating`
+        `https://api.rawg.io/api/games?key=${process.env.API_GAME_KEY}&metacritic=95,100&ordering=-rating&page_size=8`
       );
+
+      const gameTrending = await axios.get(
+        `https://api.rawg.io/api/games?key=${process.env.API_GAME_KEY}&metacritic=80,100&ordering=-rating&page_size=8&dates=2020-01-01,2021-12-31`
+      );
+
+      const trends = gameTrending.data.results.map((trending) => {
+        return {
+          id: trending.id,
+          name: trending.name,
+          img: trending.background_image,
+          released: trending.released,
+          platforms:
+            trending.platforms === null
+              ? "Platform Not Found"
+              : trending.platforms
+                  .map((platform) => platform.platform.name)
+                  .join(", "),
+        };
+      });
 
       const games = gameAPI.data.results.map((game) => {
         return {
@@ -34,6 +53,7 @@ module.exports = {
 
       res.render("homepage", {
         games: games,
+        trends: trends,
         user: req.user,
         posts: allPosts,
         socials: socials,
