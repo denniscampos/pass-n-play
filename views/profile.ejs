@@ -1,17 +1,35 @@
 <%- include('partials/header') -%> <%- include("partials/dashboard-header.ejs")
 -%>
-<div class="flex h-full ml-8 mt-14 mb-10 md:ml-64">
-  <%- include("partials/sidebar.ejs") -%> <%- include('partials/feed.ejs') %>
-  <div class="mt-10" id="twitch-embed">
-    <script src="https://embed.twitch.tv/embed/v1.js"></script>
-    <script type="text/javascript">
-      new Twitch.Embed("twitch-embed", {
-        width: 650,
-        height: 680,
-        channel: "<%- user.userName %>",
-      });
-    </script>
+
+<div class="container mt-8 text-white flex justify-evenly">
+  <div class="left-container flex bg-gunmetal rounded-lg p-8">
+    <img
+      class="w-14 h-14"
+      src="http://getdrawings.com/free-icon/cool-avatar-icons-58.png"
+      alt=""
+    />
+    <div class="ml-4 user-information max-w-xs">
+      <span class="font-bold block mb-3">@DEMO</span>
+      <span class="block mb-3">hi, my name id DEMO</span>
+      <p class="block leading-7">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iusto itaque
+        dolore quisquam, accusamus nihil dignissimos sed laudantium vero a
+        pariatur.
+      </p>
+    </div>
   </div>
+  <div class="right-container">
+    <div class="follow-container bg-gunmetal rounded-lg pl-4 py-8">
+      <span>Following: </span>
+      <span class="block">#40</span>
+    </div>
+    <button class="btn btn-blue mt-8">Follow</button>
+    <button class="btn btn-blue mt-8">unfollow</button>
+  </div>
+</div>
+
+<div class="flex h-full ml-8 mt-14 mb-10 md:ml-64">
+  <%- include('partials/feed.ejs') %>
 </div>
 <div class="container form-container mt-10">
   <div class="create-container flex justify-center w-1/2 bg-containcolor ml-20">

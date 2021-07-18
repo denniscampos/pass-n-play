@@ -35,6 +35,16 @@ module.exports = {
         "10/12": "83.333333%",
         "11/12": "91.666667%",
       },
+      height: {
+        100: "576px",
+        102: "600px",
+      },
+      width: {
+        100: "704px",
+      },
+      screens: {
+        iphones: "375px",
+      },
       colors: {
         transparent: "transparent",
         current: "currentColor",

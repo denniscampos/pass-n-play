@@ -1,37 +1,90 @@
-<%- include('partials/header') -%> 
-<%- include('partials/dashboard-header.ejs')%>
-<%- include('partials/sidebar.ejs')%>
+<%- include('partials/header') -%> <%-
+include('partials/dashboard-header.ejs')%>
 
-<div class="h-full ml-32 mt-16 mb-10 md:ml-64 p-3">
-    <div class="bg-containcolor w-3/6 p-3">
-        <span class="text-fontcs bg-white rounded-md px-2"><%= games.released %></span>
-        <% if(game_platforms.includes("PlayStation ")) { %>
-            <i class="fab fa-playstation text-white"></i>
-            <% if(game_platforms.includes("PC")) { %>
-                <i class="fas fa-desktop text-white"></i>
-            <% } %>
-        <% } %>
-        
-            <h1 class="text-fontcs text-7xl"><%= games.name %></h1>
-                <img class="object-contain h-96 w-full" src="<%= games.background_image %>" alt="video game image"></img>
-            <h3 class="text-fontcs text-3xl">ABOUT</h3>
-                <p class="text-white"><%= games.description_raw %></p>
+<div class="container p-12 lg:flex flex-row gap-6 justify-center">
+  <div class="relative left-container flex flex-col max-w-full">
+    <img
+      class="relative w-100 h-100 object-cover"
+      src="<%- games.background_image %>"
+      alt="Image of game"
+    />
+    <a href="">
+      <i
+        class="
+          fas
+          fa-ellipsis-v
+          text-white
+          absolute
+          top-3
+          right-2
+          bg-gunmetal
+          rounded-full
+          h-12
+          w-12
+          flex
+          items-center
+          justify-center
+          z-10
+          hover:bg-richblack_light
+        "
+      ></i>
+      <div
+        class="
+          absolute
+          popout-container
+          bg-white
+          text-white
+          h-52
+          w-52
+          rounded-md
+          hidden
+          items-end
+          pr-4
+          pt-4
+        "
+      >
+        <div class="flex items-center">
+          <i class="far fa-heart text-black mr-2"></i>
+          <span class="text-black">Add to Favorites</span>
+        </div>
+        <div>
+          <i class="far fa-star text-black mr-2"></i>
+          <span class="text-black">Recommend</span>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="right-container max-w-2xl">
+    <h1 class="text-fontcs text-4xl pb-7"><%= games.name %></h1>
+    <h3 class="text-fontcs text-3xl pb-7">ABOUT</h3>
+    <p class="text-white"><%= games.description_raw %></p>
 
-                <div class="about-section my-4">
-                    <span class="text-fontcs block">Platforms: <span class="text-white"><%= game_platforms %></span> </span>
-                    <span class="text-fontcs">Genres: <span class="text-white"><%= game_genres %></span> </span>
-                    <span class="text-fontcs block">Metacritic: <span class="text-white"><%= games.metacritic %></span></span>
-                    <span class="text-fontcs block">Released Date: <span class="text-white"><%= games.released %></span></span>
-                    <span class="text-fontcs block">Rating: <span class="text-white"><%= games.rating %></span></span>
+    <div class="about-section my-4">
+      <span class="text-fontcs block"
+        >Platforms: <span class="text-white"><%= game_platforms %></span>
+      </span>
+      <span class="text-fontcs"
+        >Genres: <span class="text-white"><%= game_genres %></span>
+      </span>
+      <span class="text-fontcs block"
+        >Metacritic:
+        <span class="text-white"><%= games.metacritic %></span></span
+      >
+      <span class="text-fontcs block"
+        >Released Date:
+        <span class="text-white"><%= games.released %></span></span
+      >
+      <span class="text-fontcs block"
+        >Rating: <span class="text-white"><%= games.rating %></span></span
+      >
 
-            <% games.developers.forEach((developer) => { %>
-                <span class="text-fontcs block">Developers: <span class="text-white"><%= developer.name %></span></span>
-            <% }) %>
-
-
-                </div>
-            
+      <% games.developers.forEach((developer) => { %>
+      <span class="text-fontcs block"
+        >Developers: <span class="text-white"><%= developer.name %></span></span
+      >
+      <% }) %>
     </div>
+  </div>
 </div>
 
 <%- include('partials/footer') -%>
