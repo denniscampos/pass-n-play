@@ -9,11 +9,11 @@
 }
 
 .btn-blue {
-  @apply bg-containcolor text-white;
+  @apply bg-gunmetal text-white;
 }
 
 .btn-blue:hover {
-  @apply bg-blue-400;
+  @apply bg-blue_yonger;
 }
 
 /* delete if it doesnt work */

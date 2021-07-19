@@ -16,6 +16,7 @@ const moment = require("moment");
 const mainRoutes = require("./routes/main");
 const homepageRoutes = require("./routes/posts");
 const profileRoutes = require("./routes/profile");
+const userRoutes = require("./routes/users");
 
 // Moment JS
 moment().format();
@@ -64,6 +65,7 @@ app.use("/homepage", homepageRoutes);
 app.use("/profile", profileRoutes);
 app.use("/results", homepageRoutes);
 app.use("/search", homepageRoutes);
+app.use("/users", userRoutes);
 
 app.listen(process.env.PORT, () => {
   console.log(`Server running on Port ${process.env.PORT}`);

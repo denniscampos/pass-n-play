@@ -3,6 +3,7 @@ const router = express.Router();
 const authController = require("../controllers/auth");
 const homeController = require("../controllers/home");
 const profileController = require("../controllers/profile");
+const usersController = require("../controllers/user");
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 //main routes
@@ -16,7 +17,13 @@ router.post("/register", authController.postRegister);
 
 // Profile
 router.get("/profile", profileController.getProfile);
-router.get("/create", profileController.test);
+// router.get("/create", profileController.test); //check why I did this.
+
+// Users
+router.get("/users", ensureAuth, usersController.getUsers);
+
+// follow, unfollow for profile
+router.put("/followers/:id", ensureAuth, profileController.getFollowers);
 
 // Popular
 router.get("/popular", homeController.getPopular);

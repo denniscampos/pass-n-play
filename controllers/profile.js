@@ -1,5 +1,6 @@
 const Profile = require("../models/Profile");
 const Post = require("../models/Post");
+const User = require("../models/User");
 const moment = require("moment");
 
 module.exports = {
@@ -7,8 +8,12 @@ module.exports = {
     try {
       const socials = await Profile.find({ user: req.user.id });
       const allPosts = await Post.find({ userId: req.user.id });
+      const users = await User.find(req.userName);
+
+      // console.log(users);
 
       res.render("profile", {
+        users: users,
         user: req.user,
         userName: req.user.userName,
         email: req.user.email,
@@ -40,7 +45,7 @@ module.exports = {
 
   updateSocials: async (req, res) => {
     try {
-      console.log(`##REQUEST BODY##: ${JSON.stringify(req.body)}`);
+      // console.log(`##REQUEST BODY##: ${JSON.stringify(req.body)}`);
       // const socials = await Profile.find({_id: id})
       // socials.twitter = 'newTwitterID'
       // await socials.save()
@@ -75,7 +80,7 @@ module.exports = {
       );
       //lean converts to object
       const profile = await Profile.find({ user: req.params.id });
-      console.log(JSON.stringify(profile));
+
       res.redirect("/profile");
       console.log("update successful");
     } catch (err) {
@@ -83,17 +88,27 @@ module.exports = {
     }
   },
 
-  // delete things below if things break.
-  test: async (req, res) => {
+  getFollowers: async (req, res) => {
     try {
-      const profile = await Profile.findOne();
-      res.render("create", {
-        user: req.user,
-        profile: profile,
-        // twitter: "",
-      });
+      const users = await User.find(req.userName);
+      console.log("followed user");
+      // console.log(users);
     } catch (err) {
       console.log(err);
     }
   },
+
+  // delete things below if things break.
+  // test: async (req, res) => {
+  //   try {
+  //     const profile = await Profile.findOne();
+  //     res.render("create", {
+  //       user: req.user,
+  //       profile: profile,
+  //       // twitter: "",
+  //     });
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // },
 };

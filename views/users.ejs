@@ -1,0 +1,17 @@
+<%- include('partials/header') -%> <%-
+include('partials/dashboard-header.ejs')%>
+
+<div class="container p-12 lg:flex flex-col justify-center">
+  <% for( let i = 0; i < users.length; i++ ) { %>
+  <h3 class="text-white block"><%- users[i].userName %></h3>
+  <form
+    class="flex flex-col"
+    action="/followers/<%= users[i].id %>?_method=PUT"
+    method="POST"
+  >
+    <button class="text-white" type="submit">follow</button>
+  </form>
+  <% } %>
+</div>
+
+<%- include('partials/footer') -%>
