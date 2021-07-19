@@ -1,51 +1,75 @@
 <%- include('partials/header') -%> <%- include("partials/dashboard-header.ejs")
 -%>
-<div class="h-full ml-8 mt-14 mb-10 md:ml-64">
-  <div class="mx-8 w-full">
-    <%- include("partials/searchbar.ejs") -%>
 
-    <div
-      class="
-        p-10
-        grid grid-cols-1
-        sm:grid-cols-1
-        md:grid-cols-4
-        lg:grid-cols-4
-        xl:grid-cols-4
-        gap-4
-        content-center
-      "
-    >
-      <% for(let i = 0; i < games.length; i++) { %>
-      <div
-        class="
-          bg-containcolor
-          overflow-hidden
-          shadow-lg
-          rounded-3xl
-          p-4
-          transform
-          transition
-          duration-500
-          hover:scale-105
-        "
-      >
-        <a href="/<%= games[i].id %>">
-          <h3 class="text-white text-3xl mb-2"><%- games[i].name %></h3>
+<div class="container">
+  <!-- search input  -->
+  <div class="search w-4/6 m-auto my-10 text-center">
+    <%- include("partials/searchbar.ejs") -%>
+  </div>
+  <!-- search input  -->
+
+  <div class="popular-games my-12 flex flex-col content-around">
+    <h3 class="text-white mx-7 mb-5 w-xs block font-bold">RESULTS</h3>
+    <div class="wrapper flex flex-wrap justify-center items-center">
+      <% games.forEach(game => { %>
+      <a href="/<%= game.id %>">
+        <div
+          class="
+            max-w-xs
+            object-contain
+            mb-7
+            mx-5
+            game-container
+            rounded-xl
+            transform
+            transition
+            duration-500
+            hover:scale-105
+            flex flex-col
+            content-center
+          "
+        >
           <img
-            class="object-cover h-48 w-full"
-            src="<%- games[i].background_image %> "
-            alt=""
+            class="
+              relative
+              h-60
+              lg:w-44
+              sm:w-80
+              mb-10
+              object-cover
+              filter
+              brightness-75
+            "
+            src="<%- game.background_image %>"
+            alt="Photo of game"
           />
-          <span class="text-white"><%- games[i].platforms %></span>
-          <% if (games[i].platforms === "PC") { %>
-          <i class="fas fa-desktop text-white"></i>
-          <% } else if(games[i].platforms.includes("PlayStation")) { %>
-          <i class="fab fa-playstation text-white"></i>
-          <% } %>
-        </a>
-      </div>
-      <% } %>
+          <a href="">
+            <i
+              class="
+                fas
+                fa-ellipsis-v
+                text-white
+                absolute
+                top-48
+                right-2
+                bg-gunmetal
+                rounded-full
+                h-8
+                w-8
+                flex
+                items-center
+                justify-center
+                z-10
+                hover:bg-richblack_light
+              "
+            ></i>
+          </a>
+          <h4 class="absolute top-0 left-0 ml-3 text-white font-bold w-40 mt-4">
+            <%- game.name %>
+          </h4>
+        </div>
+      </a>
+      <% }) %>
     </div>
   </div>
 </div>
