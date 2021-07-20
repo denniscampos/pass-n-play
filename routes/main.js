@@ -31,6 +31,10 @@ router.get("/popular", homeController.getPopular);
 
 // Search
 router.get("/:id/", homeController.getResults);
+// router.post("/:id/", homeController.getResults); //comments
 router.post("/search", homeController.getSearch);
+
+// new comment
+router.post("/:id", ensureAuth, homeController.getReviews);
 
 module.exports = router;

@@ -1,6 +1,7 @@
 const Profile = require("../models/Profile");
 const Post = require("../models/Post");
 const User = require("../models/User");
+const Game = require("../models/Game");
 const moment = require("moment");
 
 module.exports = {
@@ -41,6 +42,28 @@ module.exports = {
     } catch (err) {
       console.log(err);
     }
+  },
+
+  createGame: async (req, res) => {
+    const gameAPI = axios(
+      `https://api.rawg.io/api/games?key=${process.env.API_GAME_KEY}&metacritic=95,100&ordering=-rating&page_size=8`
+    );
+
+    const games = gameAPI.data.results.map((game) => {
+      return {
+        id: game.id,
+        name: game.name,
+      };
+    });
+
+    await Game.create({
+      games: games,
+    });
+
+    console.log(games);
+
+    res.redirect("/profile");
+    console.log("addded game name to database.");
   },
 
   updateSocials: async (req, res) => {

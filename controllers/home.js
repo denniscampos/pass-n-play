@@ -1,6 +1,7 @@
 const axios = require("axios").default;
 const Post = require("../models/Post");
 const Profile = require("../models/Profile");
+const Comment = require("../models/Comment");
 const moment = require("moment");
 
 module.exports = {
@@ -82,7 +83,21 @@ module.exports = {
         .map((genre) => genre.name)
         .join(", ");
 
+      //comments
+      const gameIds = await gameAPI.data.id;
+      const comments = await Comment.find({ game: { $in: gameIds } });
+      const gameComments = JSON.stringify(gameAPI.data.id);
+      const obj = gameComments.split(" ").map((game) => {
+        return {
+          id: game,
+          comments: comments.filter((comment) => comment.game === game),
+        };
+      });
+      console.log(obj);
+      console.log(gameIds);
+
       res.render("results", {
+        comments: comments,
         games: games,
         game_platforms: gamePlatforms,
         game_genres: gameGenre,
@@ -92,6 +107,27 @@ module.exports = {
         user: req.user,
         socials: socials,
       });
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+  getReviews: async (req, res) => {
+    let searchId = req.params.id;
+    try {
+      const gameAPI = await axios.get(
+        `https://api.rawg.io/api/games/${searchId}?key=${process.env.API_GAME_KEY}`
+      );
+
+      const game = gameAPI.data.id;
+
+      await Comment.create({
+        game: game,
+        comment: req.body.newComment,
+        user: req.user,
+      });
+      console.log("comment created");
+      res.redirect(`${searchId}`);
     } catch (err) {
       console.log(err);
     }

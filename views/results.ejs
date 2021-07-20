@@ -86,5 +86,34 @@ include('partials/dashboard-header.ejs')%>
     </div>
   </div>
 </div>
+<div class="container flex flex-col">
+  <div class="comment-container max-w-md">
+    <h1 class="text-white">Reviews</h1>
+    <form class="" action="<%= comments %>?_method=POST" method="POST">
+      <!-- <textarea
+        name="newComment"
+        id="newComment"
+        cols="30"
+        rows="10"
+      ></textarea> -->
+      <textarea
+        name="newComment"
+        id="newComment"
+        class="
+          w-96
+          px-3
+          py-2
+          text-gray-700
+          border
+          rounded-lg
+          focus:outline-none
+        "
+        rows="5"
+      ></textarea>
+
+      <button class="btn btn-blue w-auto">Submit Review</button>
+    </form>
+  </div>
+</div>
 
 <%- include('partials/footer') -%>
