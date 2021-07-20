@@ -3,11 +3,7 @@
 
 <div class="container mt-8 text-white sm:flex flex-row justify-evenly">
   <div class="left-container flex bg-gunmetal rounded-lg p-8">
-    <img
-      class="w-14 h-14"
-      src="http://getdrawings.com/free-icon/cool-avatar-icons-58.png"
-      alt=""
-    />
+    <img class="w-14 h-14" src="img/avatar.png" alt="" />
     <div class="ml-4 user-information max-w-xs">
       <span class="font-bold block mb-3">@DEMO</span>
       <span class="block mb-3">hi, my name id DEMO</span>
@@ -27,13 +23,6 @@
     <button class="btn btn-blue mt-8">unfollow</button>
   </div>
 </div>
-
-<% for(let i = 0; i<users.length; i++) { %>
-  <h1 class="text-white"><%- users[i].id %></h1>
-  <% } %>
-  <!-- <form class="" action="/following/<%= user._id %>?_method=PUT" method="POST">
-  <button class="btn btn-blue mt-8 text-white" type="submit">follow</button>
-</form> -->
 
   <div class="flex h-full ml-8 mt-14 mb-10 md:ml-64">
     <%- include('partials/feed.ejs') %>
