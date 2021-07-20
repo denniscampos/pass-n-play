@@ -28,14 +28,6 @@
   </div>
 </div>
 
-<form
-  class="flex flex-col"
-  action="/followers/<%= user.id %>?_method=PUT"
-  method="POST"
->
-  <button class="text-white" type="submit">follow</button>
-</form>
-
 <% for(let i = 0; i<users.length; i++) { %>
   <h1 class="text-white"><%- users[i].id %></h1>
   <% } %>

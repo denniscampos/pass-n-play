@@ -88,15 +88,15 @@ module.exports = {
     }
   },
 
-  getFollowers: async (req, res) => {
-    try {
-      const users = await User.find(req.userName);
-      console.log("followed user");
-      // console.log(users);
-    } catch (err) {
-      console.log(err);
-    }
-  },
+  // getFollowers: async (req, res) => {
+  //   try {
+  //     const users = await User.find(req.userName);
+  //     console.log("followed user");
+  //     // console.log(users);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // },
 
   // delete things below if things break.
   // test: async (req, res) => {

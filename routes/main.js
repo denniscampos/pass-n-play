@@ -23,7 +23,8 @@ router.get("/profile", profileController.getProfile);
 router.get("/users", ensureAuth, usersController.getUsers);
 
 // follow, unfollow for profile
-router.put("/followers/:id", ensureAuth, profileController.getFollowers);
+router.put("/followers/:id", ensureAuth, usersController.getFollowers);
+router.put("/unfollows/:id", ensureAuth, usersController.getUnfollows);
 
 // Popular
 router.get("/popular", homeController.getPopular);
