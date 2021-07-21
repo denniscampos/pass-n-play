@@ -16,8 +16,8 @@
   </div>
   <div class="right-container">
     <div class="follow-container bg-gunmetal rounded-lg pl-4 py-8">
-      <span>Following: </span>
-      <span class="block">#40</span>
+        <span>Following: <%= user.following.length %> </span>
+      <span class="block">Followers: <%= user.followers.length %></span>
     </div>
     <button class="btn btn-blue mt-8">Follow</button>
     <button class="btn btn-blue mt-8">unfollow</button>

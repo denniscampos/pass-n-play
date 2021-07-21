@@ -1,10 +1,12 @@
 <%- include('partials/header') -%> <%-
 include('partials/dashboard-header.ejs')%>
 
-<div class="container p-12 lg:flex flex-row gap-6 justify-center">
+<div
+  class="container lg:p-12 md:p-4 mt-3 lg:flex flex-row gap-6 justify-center"
+>
   <div class="relative left-container flex flex-col max-w-full">
     <img
-      class="relative w-100 h-100 object-cover"
+      class="relative md:w-100 lg:w-96 h-100 object-cover"
       src="<%- games.background_image %>"
       alt="Image of game"
     />
@@ -16,6 +18,8 @@ include('partials/dashboard-header.ejs')%>
           text-white
           absolute
           top-3
+          lg:right-2
+          md:right-10
           right-2
           bg-gunmetal
           rounded-full
@@ -87,16 +91,18 @@ include('partials/dashboard-header.ejs')%>
   </div>
 </div>
 <!-- REVIEWS  -->
-<div class="container flex flex-col">
-  <div class="comment-container max-w-md">
-    <h1 class="text-white">Reviews</h1>
+<div class="container flex flex-col p-6">
+  <div class="comment-container lg:max-w-md md:max-w-xs sm:max-w-xs">
+    <h1 class="text-white font-bold mb-2">Write a Review</h1>
 
     <form class="" action="?_method=POST" method="POST">
       <textarea
         name="newComment"
         id="newComment"
         class="
-          w-96
+          lg:w-96
+          md:
+          w-64
           px-3
           py-2
           text-gray-700
@@ -107,16 +113,24 @@ include('partials/dashboard-header.ejs')%>
         rows="5"
       ></textarea>
 
-      <button class="btn btn-blue w-auto">Submit Review</button>
+      <button class="btn btn-blue w-auto mt-2">Submit Review</button>
     </form>
   </div>
   <!-- END REVIEWS  -->
 
   <!-- FEED  -->
   <div class="feed-container">
+    <h4 class="text-white font-bold mt-4">User Reviews</h4>
     <% for(let i = 0; i < comments.length; i++) {%>
-    <span class="text-white"><%= comments[i].userName %></span>
-    <p class="text-white"><%= comments[i].comment%></p>
+    <div class="review-container p-6 my-7 bg-gunmetal rounded-md">
+      <span class="text-tart_orange font-bold"
+        ><%= comments[i].userName.toUpperCase() %></span
+      >
+      <span class="text-white my-2 text-sm"
+        ><%= moment(comments[i].createdAt).format('hh:mm a MMM DD YYYY')%></span
+      >
+      <p class="text-white my-3"><%= comments[i].comment%></p>
+    </div>
     <% } %>
   </div>
   <!-- END FEED -->

@@ -101,6 +101,7 @@ module.exports = {
         posts: allPosts,
         user: req.user,
         socials: socials,
+        moment: moment,
       });
     } catch (err) {
       console.log(err);
