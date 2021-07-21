@@ -86,16 +86,12 @@ include('partials/dashboard-header.ejs')%>
     </div>
   </div>
 </div>
+<!-- REVIEWS  -->
 <div class="container flex flex-col">
   <div class="comment-container max-w-md">
     <h1 class="text-white">Reviews</h1>
-    <form class="" action="<%= comments %>?_method=POST" method="POST">
-      <!-- <textarea
-        name="newComment"
-        id="newComment"
-        cols="30"
-        rows="10"
-      ></textarea> -->
+
+    <form class="" action="?_method=POST" method="POST">
       <textarea
         name="newComment"
         id="newComment"
@@ -114,6 +110,16 @@ include('partials/dashboard-header.ejs')%>
       <button class="btn btn-blue w-auto">Submit Review</button>
     </form>
   </div>
+  <!-- END REVIEWS  -->
+
+  <!-- FEED  -->
+  <div class="feed-container">
+    <% for(let i = 0; i < comments.length; i++) {%>
+    <span class="text-white"><%= comments[i].userName %></span>
+    <p class="text-white"><%= comments[i].comment%></p>
+    <% } %>
+  </div>
+  <!-- END FEED -->
 </div>
 
 <%- include('partials/footer') -%>

@@ -3,6 +3,7 @@ const Post = require("../models/Post");
 const Profile = require("../models/Profile");
 const Comment = require("../models/Comment");
 const moment = require("moment");
+const flash = require("express-flash");
 
 module.exports = {
   getIndex: (req, res) => {
@@ -67,7 +68,6 @@ module.exports = {
 
   getResults: async (req, res) => {
     let searchId = req.params.id;
-    // console.log(searchId);
     try {
       const gameAPI = await axios.get(
         `https://api.rawg.io/api/games/${searchId}?key=${process.env.API_GAME_KEY}`
@@ -83,18 +83,13 @@ module.exports = {
         .map((genre) => genre.name)
         .join(", ");
 
-      //comments
-      const gameIds = await gameAPI.data.id;
-      const comments = await Comment.find({ game: { $in: gameIds } });
-      const gameComments = JSON.stringify(gameAPI.data.id);
-      const obj = gameComments.split(" ").map((game) => {
-        return {
-          id: game,
-          comments: comments.filter((comment) => comment.game === game),
-        };
-      });
-      console.log(obj);
+      // const gameIds = await JSON.stringify(gameAPI.data.id).split(" ");
+      const gameIds = gameAPI.data.id;
       console.log(gameIds);
+
+      const comments = await Comment.find({ game: { $in: gameIds } });
+
+      // console.log(comments);
 
       res.render("results", {
         comments: comments,
@@ -112,21 +107,26 @@ module.exports = {
     }
   },
 
-  getReviews: async (req, res) => {
+  createReviews: async (req, res) => {
     let searchId = req.params.id;
+    console.log(req.params);
     try {
       const gameAPI = await axios.get(
         `https://api.rawg.io/api/games/${searchId}?key=${process.env.API_GAME_KEY}`
       );
 
       const game = gameAPI.data.id;
+      const game_title = gameAPI.data.name;
 
       await Comment.create({
+        //grabs game id
         game: game,
+        game_title: game_title,
+        userName: req.user.userName,
         comment: req.body.newComment,
-        user: req.user,
+        user: req.user.id,
       });
-      console.log("comment created");
+
       res.redirect(`${searchId}`);
     } catch (err) {
       console.log(err);
@@ -164,9 +164,6 @@ module.exports = {
         user: req.user,
         socials: socials,
       });
-
-      // old version
-      // res.render("search", { games: gameAPI.data });
     } catch (err) {
       console.log(err);
     }

@@ -68,30 +68,6 @@ module.exports = {
 
   updateSocials: async (req, res) => {
     try {
-      // console.log(`##REQUEST BODY##: ${JSON.stringify(req.body)}`);
-      // const socials = await Profile.find({_id: id})
-      // socials.twitter = 'newTwitterID'
-      // await socials.save()
-
-      // const query = { userName: 'dnbull' };
-      // Model.findOneAndUpdate({ name: 'borne' }, { name: 'jason bourne' })
-
-      //Profile
-      // {
-      //   _id: ObjectId,
-      //   userName: "dnbull"
-      //   "name": "first last",
-      //   "twitter": "blah",
-      //   "insta": "blah",
-      //   "steam": "blah"
-      // }
-      //Post
-      //mongoose -- make me a new socials object and save it to the DB
-      //Edit
-      //mongoose -- find me a document that matches my needs and change some props
-
-      // console.log(`~!~!~THIS IS MY REQUEST: ${req.params.id}`); // ~!~!~THIS IS MY REQUEST: 609d9db0cffbce09002eae4d
-      // console.log(`~!~!~THIS IS MY ID: ${req.user.id}`); // req.id = undefined and req.user.id = 609d9db0cffbce09002eae4d
       await Profile.findOneAndUpdate(
         { user: req.params.id },
         {
@@ -110,28 +86,4 @@ module.exports = {
       console.log(err);
     }
   },
-
-  // getFollowers: async (req, res) => {
-  //   try {
-  //     const users = await User.find(req.userName);
-  //     console.log("followed user");
-  //     // console.log(users);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // },
-
-  // delete things below if things break.
-  // test: async (req, res) => {
-  //   try {
-  //     const profile = await Profile.findOne();
-  //     res.render("create", {
-  //       user: req.user,
-  //       profile: profile,
-  //       // twitter: "",
-  //     });
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // },
 };

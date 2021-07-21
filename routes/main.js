@@ -35,6 +35,6 @@ router.get("/:id/", homeController.getResults);
 router.post("/search", homeController.getSearch);
 
 // new comment
-router.post("/:id", ensureAuth, homeController.getReviews);
+router.post("/:id", ensureAuth, homeController.createReviews);
 
 module.exports = router;
