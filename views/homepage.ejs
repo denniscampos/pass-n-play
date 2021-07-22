@@ -9,7 +9,9 @@
 <!-- search input  -->
 
 <div class="popular-games my-12 flex flex-col content-around">
-  <h3 class="text-white mx-7 mb-5 w-xs block font-bold">POPULAR GAMES</h3>
+  <h3 class="text-blue_crayola mx-8 mb-5 w-xs block font-bold text-center">
+    POPULAR GAMES
+  </h3>
   <div class="wrapper flex flex-wrap justify-center items-center">
     <% games.forEach(game => { %>
     <a href="/<%= game.id %>">
@@ -35,7 +37,6 @@
             h-60
             lg:w-44
             sm:w-80
-            mb-10
             object-cover
             filter
             brightness-75
@@ -76,7 +77,9 @@
 </div>
 
 <div class="popular-games my-12 flex flex-col content-around">
-  <h3 class="text-white mx-7 mb-5 w-xs block font-bold">TRENDING</h3>
+  <h3 class="text-blue_crayola mx-7 mb-5 w-xs block font-bold text-center">
+    TRENDING
+  </h3>
   <div class="wrapper flex flex-wrap justify-center items-center">
     <% trends.forEach(trend => { %>
     <a href="/<%= trend.id %>">

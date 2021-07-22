@@ -1,12 +1,12 @@
 <%- include('partials/header') -%> <%- include("partials/dashboard-header.ejs")
 -%>
 
-<div class="container mt-8 text-white sm:flex flex-row justify-evenly">
-  <div class="left-container flex bg-gunmetal rounded-lg p-8">
+<div class="container mt-8 text-white flex-col sm:flex md:flex-row justify-evenly">
+  <div class="left-container flex bg-gunmetal rounded-lg p-8  items-start lg:flex-row sm:items-center sm:flex-col">
     <img class="w-14 h-14" src="img/avatar.png" alt="" />
     <div class="ml-4 user-information max-w-xs">
-      <span class="font-bold block mb-3">@DEMO</span>
-      <span class="block mb-3">hi, my name id DEMO</span>
+      <span class="font-bold block my-3">@<%= user.userName %></span>
+      <span class="block mb-3">hi, my name is <%= user.userName %></span>
       <p class="block leading-7">
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iusto itaque
         dolore quisquam, accusamus nihil dignissimos sed laudantium vero a
@@ -14,7 +14,7 @@
       </p>
     </div>
   </div>
-  <div class="right-container">
+  <div class="right-container md:mt-0 mt-5">
     <div class="follow-container bg-gunmetal rounded-lg pl-4 py-8">
         <span>Following: <%= user.following.length %> </span>
       <span class="block">Followers: <%= user.followers.length %></span>
