@@ -2,6 +2,7 @@ const axios = require("axios").default;
 const Post = require("../models/Post");
 const Profile = require("../models/Profile");
 const Comment = require("../models/Comment");
+const Likes = require("../models/Likes");
 const moment = require("moment");
 const flash = require("express-flash");
 
@@ -85,7 +86,6 @@ module.exports = {
 
       // const gameIds = await JSON.stringify(gameAPI.data.id).split(" ");
       const gameIds = gameAPI.data.id;
-      console.log(gameIds);
 
       const comments = await Comment.find({ game: { $in: gameIds } });
 
@@ -110,7 +110,6 @@ module.exports = {
 
   createReviews: async (req, res) => {
     let searchId = req.params.id;
-    console.log(req.params);
     try {
       const gameAPI = await axios.get(
         `https://api.rawg.io/api/games/${searchId}?key=${process.env.API_GAME_KEY}`
@@ -126,9 +125,24 @@ module.exports = {
         userName: req.user.userName,
         comment: req.body.newComment,
         user: req.user.id,
+        likeCount: 0,
       });
 
       res.redirect(`${searchId}`);
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+  likeReviews: async (req, res) => {
+    try {
+      await Likes.findOneAndUpdate(
+        { id: req.params.id },
+        { $inc: { likeCount: 1 } }
+      );
+
+      console.log("Likes +1");
+      res.redirect("/");
     } catch (err) {
       console.log(err);
     }

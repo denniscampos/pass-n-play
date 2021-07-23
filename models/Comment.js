@@ -8,6 +8,8 @@ const CommentSchema = new mongoose.Schema(
     userName: { type: String, required: true },
     user: { ref: "User", type: mongoose.Types.ObjectId, required: true },
     comment: { type: String, required: true },
+    likeCount: { type: Number, required: true },
+    likes: { type: Array, default: [] },
   },
   { timestamps: true }
 );

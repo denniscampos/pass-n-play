@@ -1,20 +1,20 @@
 const mongoose = require("mongoose");
 
 const LikeSchema = new mongoose.Schema({
-  userId: {
+  user: {
     type: mongoose.Types.ObjectId,
     ref: "User",
   },
-  postId: {
+  reviewId: {
     type: mongoose.Types.ObjectId,
-    ref: "Post",
+    ref: "Comments",
   },
 });
 
 LikeSchema.index(
   {
-    userId: 1,
-    postId: 1,
+    user: 1,
+    reviewId: 1,
   },
   { unique: true }
 );

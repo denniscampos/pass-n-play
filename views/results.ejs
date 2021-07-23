@@ -131,6 +131,15 @@ include('partials/dashboard-header.ejs')%>
       >
       <p class="text-white my-3"><%= comments[i].comment%></p>
     </div>
+    <form
+      class=""
+      action="/likeReviews/<%= comments[i].id %>/?_method=PUT"
+      method="POST"
+    >
+      <button class="text-white" type="submit">
+        <i class="fas fa-thumbs-up text-fontcs m-2"></i>
+      </button>
+    </form>
     <% } %>
   </div>
   <!-- END FEED -->
