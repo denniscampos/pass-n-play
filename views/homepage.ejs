@@ -44,37 +44,52 @@
           src="<%- game.img %>"
           alt="Photo of game"
         />
-        <a href="">
-          <i
-            class="
-              fas
-              fa-ellipsis-v
-              text-white
-              absolute
-              top-48
-              right-2
-              bg-gunmetal
-              rounded-full
-              h-8
-              w-8
-              flex
-              items-center
-              justify-center
-              z-10
-              hover:bg-richblack_light
-            "
-          ></i>
-        </a>
+      </a>
+      <div class="gameMenu" x-data="{ menuOptions: false }">
+        <button @click="menuOptions = !menuOptions">
+            <i
+              class="
+                fas
+                fa-ellipsis-v
+                text-white
+                absolute
+                top-48
+                right-2
+                bg-gunmetal
+                rounded-full
+                h-8
+                w-8
+                flex
+                items-center
+                justify-center
+                
+                hover:bg-richblack_light
+              "
+            ></i>
+            
+        </button>
+        <div x-show="menuOptions" class="bg-gunmetal h-36 w-36 absolute z-10 top-12 right-8 rounded-lg">
+          <div
+            class="test absolute top-3 flex flex-col text-white ml-3"
+            :class="{ 'hidden' : !menuOptions }"
+            @click.away="mobileMenuOpen = false"
+          >
+            <span class="text-sm mb-4">Add to Favorites</span>
+            <span class="text-sm">Recommend</span>
+          </div>
+        </div>
+      </div>
         <h4
           class="absolute top-0 left-0 ml-3 text-white font-bold w-40 mt-4 z-10"
         >
           <%- game.name %>
         </h4>
       </div>
-    </a>
+    
     <% }) %>
   </div>
 </div>
+
 
 <div class="popular-games my-12 flex flex-col content-around">
   <h3 class="text-blue_crayola mx-7 mb-5 w-xs block font-bold text-center">
