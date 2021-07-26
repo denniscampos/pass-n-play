@@ -130,16 +130,33 @@ include('partials/dashboard-header.ejs')%>
         ><%= moment(comments[i].createdAt).format('hh:mm a MMM DD YYYY')%></span
       >
       <p class="text-white my-3"><%= comments[i].comment%></p>
+      <div class="like-delete flex items-center">
+        <!-- Like Put  -->
+        <form
+          class=""
+          action="/likeReviews/<%= comments[i].id %>/?_method=PUT"
+          method="POST"
+        >
+          <button class="text-white" type="submit">
+            <i class="fas fa-thumbs-up text-fontcs m-2"></i>
+          </button>
+        </form>
+        <!-- Like Put End -->
+        <!-- Delete Post  -->
+        <% if(comments[i].user == user.id) { %>
+        <form
+          class=""
+          action="/deleteReviews/<%= comments[i].id %>/?_method=DELETE"
+          method="POST"
+        >
+          <button class="text-white" type="submit">
+            <i class="fas fa-trash text-red-900"></i>
+          </button>
+        </form>
+        <% } %>
+        <!-- Delete Post End -->
+      </div>
     </div>
-    <form
-      class=""
-      action="/likeReviews/<%= comments[i].id %>/?_method=PUT"
-      method="POST"
-    >
-      <button class="text-white" type="submit">
-        <i class="fas fa-thumbs-up text-fontcs m-2"></i>
-      </button>
-    </form>
     <% } %>
   </div>
   <!-- END FEED -->

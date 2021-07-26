@@ -14,7 +14,6 @@ const connectDB = require("./config/database");
 const bodyParser = require("body-parser");
 const moment = require("moment");
 const mainRoutes = require("./routes/main");
-const homepageRoutes = require("./routes/posts");
 const profileRoutes = require("./routes/profile");
 const userRoutes = require("./routes/users");
 
@@ -61,11 +60,12 @@ app.use(flash());
 
 // set up routes for server
 app.use("/", mainRoutes);
-app.use("/homepage", homepageRoutes);
-app.use("/profile", profileRoutes);
-app.use("/results", homepageRoutes);
-app.use("/search", homepageRoutes);
-app.use("/users", userRoutes);
+// app.use("/homepage", homepageRoutes);
+// app.use("/profile", profileRoutes);
+// app.use("/results", homepageRoutes);
+// app.use("/comments", commentsRoutes);
+// app.use("/search", homepageRoutes);
+// app.use("/users", userRoutes);
 
 app.listen(process.env.PORT, () => {
   console.log(`Server running on Port ${process.env.PORT}`);

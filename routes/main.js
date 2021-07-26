@@ -17,7 +17,6 @@ router.post("/register", authController.postRegister);
 
 // Profile
 router.get("/profile", profileController.getProfile);
-// router.get("/create", profileController.test); //check why I did this.
 
 // Users
 router.get("/users", ensureAuth, usersController.getUsers);
@@ -36,5 +35,6 @@ router.post("/search", homeController.getSearch);
 // new comment
 router.post("/:id", ensureAuth, homeController.createReviews);
 router.put("/likeReviews/:id", ensureAuth, homeController.likeReviews);
+router.delete("/deleteReviews/:id", ensureAuth, homeController.deleteReviews);
 
 module.exports = router;

@@ -148,6 +148,16 @@ module.exports = {
     }
   },
 
+  deleteReviews: async (req, res) => {
+    try {
+      await Comment.deleteOne({ _id: req.params.id });
+      console.log("successfully deleted");
+      res.redirect("back");
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
   getSearch: async (req, res) => {
     let search = req.body.search;
 
