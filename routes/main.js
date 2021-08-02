@@ -4,6 +4,7 @@ const authController = require("../controllers/auth");
 const homeController = require("../controllers/home");
 const profileController = require("../controllers/profile");
 const usersController = require("../controllers/user");
+const gameController = require("../controllers/games");
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 //main routes
@@ -17,6 +18,9 @@ router.post("/register", authController.postRegister);
 
 // Profile
 router.get("/profile", profileController.getProfile);
+
+// MyLists
+router.get("/mylists", gameController.getGames);
 
 // Users
 router.get("/users", ensureAuth, usersController.getUsers);
