@@ -62,7 +62,6 @@
                 flex
                 items-center
                 justify-center
-                
                 hover:bg-richblack_light
               "
             ></i>
@@ -80,7 +79,7 @@
         </div>
       </div>
         <h4
-          class="absolute top-0 left-0 ml-3 text-white font-bold w-40 mt-4 z-10"
+          class="absolute top-0 left-0 ml-3 text-white font-bold w-40 mt-4"
         >
           <%- game.name %>
         </h4>
@@ -155,6 +154,7 @@
     </a>
     <% }) %>
   </div>
+  <h3 class="text-white"><%= helper.math(4,5) %></h3>
 </div>
 
 <%- include("partials/footer.ejs") -%>

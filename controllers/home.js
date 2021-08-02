@@ -53,6 +53,7 @@ module.exports = {
 
       const socials = await Profile.find({ user: req.user.id });
       const allPosts = await Post.find();
+      const helper = require("../views/partials/function");
 
       res.render("homepage", {
         games: games,
@@ -61,6 +62,7 @@ module.exports = {
         posts: allPosts,
         socials: socials,
         moment: moment,
+        helper: helper,
       });
     } catch (next) {
       console.log(next);
@@ -110,6 +112,7 @@ module.exports = {
 
   createReviews: async (req, res) => {
     let searchId = req.params.id;
+    const { id: reviewId } = req.params;
     try {
       const gameAPI = await axios.get(
         `https://api.rawg.io/api/games/${searchId}?key=${process.env.API_GAME_KEY}`
@@ -134,15 +137,28 @@ module.exports = {
     }
   },
 
+  // router.get('/post/:id', (req, res) => {
+  //   const { id: postId } = req.params;
+
+  //   const post = await Post.getById(postId);
+  //   const likes = await Likes.count({ postId: postId });
+
+  //   res.render('post', { post, likes });
+  // });
+
   likeReviews: async (req, res) => {
+    const { id: reviewId } = req.params;
+    const creates = await Comment.findById(reviewId);
+    console.log(creates);
+
     try {
-      await Likes.findOneAndUpdate(
-        { id: req.params.id },
-        { $inc: { likeCount: 1 } }
+      await Comment.findOneAndUpdate(
+        { _id: req.params.id },
+        { $inc: { likeCount: 0 } }
       );
 
       console.log("Likes +1");
-      res.redirect("/");
+      res.redirect(`/${creates.game}`);
     } catch (err) {
       console.log(err);
     }
