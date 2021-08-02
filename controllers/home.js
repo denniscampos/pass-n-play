@@ -128,7 +128,6 @@ module.exports = {
         userName: req.user.userName,
         comment: req.body.newComment,
         user: req.user.id,
-        likeCount: 0,
       });
 
       res.redirect(`${searchId}`);
@@ -148,17 +147,18 @@ module.exports = {
 
   likeReviews: async (req, res) => {
     const { id: reviewId } = req.params;
-    const creates = await Comment.findById(reviewId);
-    console.log(creates);
-
+    // to redirect back to game after liking
+    const likes = await Comment.findById(reviewId);
     try {
-      await Comment.findOneAndUpdate(
-        { _id: req.params.id },
-        { $inc: { likeCount: 0 } }
-      );
-
-      console.log("Likes +1");
-      res.redirect(`/${creates.game}`);
+      const reviews = await Comment.findById(reviewId);
+      if (!reviews.likes.includes(req.user.id)) {
+        await reviews.updateOne({ $push: { likes: req.user.id } });
+        console.log("user like status");
+      } else {
+        await reviews.updateOne({ $pull: { likes: req.user.id } });
+        console.log("user unlike status");
+      }
+      res.redirect(`/${likes.game}`);
     } catch (err) {
       console.log(err);
     }

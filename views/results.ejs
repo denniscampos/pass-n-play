@@ -132,13 +132,16 @@ include('partials/dashboard-header.ejs')%>
       <p class="text-white my-3"><%= comments[i].comment%></p>
       <div class="like-delete flex items-center">
         <!-- Like Put  -->
+
         <form
           class=""
           action="/likeReviews/<%= comments[i].id %>/?_method=PUT"
           method="POST"
         >
           <button class="text-white" type="submit">
-            <i class="fas fa-thumbs-up text-fontcs m-2"></i>
+            <i class="fas fa-thumbs-up text-fontcs m-2">
+              <span class="text-white"><%= comments[i].likes.length %></span>
+            </i>
           </button>
         </form>
         <!-- Like Put End -->
