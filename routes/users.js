@@ -7,8 +7,9 @@ router.get("/user", ensureAuth, userController.getUsers);
 
 // follow, unfollow for profile
 
-// the below is uncommented because im not sure if its being picked up here or in main.js
-router.put("/followers/:id", ensureAuth, userController.getFollowers);
-router.put("/unfollows/:id", ensureAuth, userController.getUnfollows);
+// the below is commented because I want to add the routes seperately.
+
+// router.put("/followers/:id", ensureAuth, userController.getFollowers);
+// router.put("/unfollows/:id", ensureAuth, userController.getUnfollows);
 
 module.exports = router;

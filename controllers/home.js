@@ -136,15 +136,6 @@ module.exports = {
     }
   },
 
-  // router.get('/post/:id', (req, res) => {
-  //   const { id: postId } = req.params;
-
-  //   const post = await Post.getById(postId);
-  //   const likes = await Likes.count({ postId: postId });
-
-  //   res.render('post', { post, likes });
-  // });
-
   likeReviews: async (req, res) => {
     const { id: reviewId } = req.params;
     // to redirect back to game after liking

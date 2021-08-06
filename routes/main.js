@@ -21,6 +21,7 @@ router.get("/profile", profileController.getProfile);
 
 // MyLists
 router.get("/mylists", gameController.getGames);
+router.put("/mylists/:id", ensureAuth, gameController.getGames);
 
 // Users
 router.get("/users", ensureAuth, usersController.getUsers);

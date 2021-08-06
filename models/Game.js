@@ -8,8 +8,9 @@ const GameSchema = new mongoose.Schema(
       required: true,
       ref: "User",
     },
-    gameTitle: {
-      type: String,
+    gameList: {
+      type: Array,
+      default: [],
       required: true,
     },
   },

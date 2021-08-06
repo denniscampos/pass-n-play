@@ -73,7 +73,9 @@
             :class="{ 'hidden' : !menuOptions }"
             @click.away="mobileMenuOpen = false"
           >
-            <span class="text-sm mb-4">Add to Favorites</span>
+        <form action="/mylists/<%= game.id%>?_method=PUT" method="POST">
+          <button class="text-sm" type="submit">Add to Favorites</button>
+        </form>
             <span class="text-sm">Recommend</span>
           </div>
         </div>
