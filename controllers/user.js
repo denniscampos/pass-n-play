@@ -5,7 +5,7 @@ const moment = require("moment");
 module.exports = {
   getUsers: async (req, res) => {
     try {
-      const users = await User.find(req.userName);
+      const users = await User.find();
 
       res.render("users", {
         users: users,

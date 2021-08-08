@@ -13,6 +13,7 @@ const logger = require("morgan");
 const connectDB = require("./config/database");
 const bodyParser = require("body-parser");
 const moment = require("moment");
+const rateLimit = require("express-rate-limit");
 const mainRoutes = require("./routes/main");
 const profileRoutes = require("./routes/profile");
 const userRoutes = require("./routes/users");
@@ -31,6 +32,15 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.set("trust proxy", 1); // for heroku
+
+//api limiter
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 mins
+  max: 300,
+});
+console.log(limiter);
+app.use(limiter);
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
