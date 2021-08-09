@@ -32,15 +32,14 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.set("trust proxy", 1); // for heroku
 
 //api limiter
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 mins
   max: 300,
 });
-console.log(limiter);
 app.use(limiter);
+app.set("trust proxy", 1); // for heroku
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));

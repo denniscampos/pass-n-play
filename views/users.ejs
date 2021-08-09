@@ -113,29 +113,6 @@ include('partials/dashboard-header.ejs')%>
   <% } %>
   <!-- follow and unfollow messages  -->
 
-  <div class="search">
-    <form action="" method="POST">
-      <input
-        id="userInput"
-        class="
-          search
-          w-full
-          rounded-md
-          px-3
-          py-2
-          mb-4
-          opacity-80
-          bg-gunmetal
-          text-white
-        "
-        type="text"
-        name="search"
-        placeholder="Search User"
-      />
-      <button id="searchBtn" class="hidden"></button>
-    </form>
-  </div>
-
   <% for( let i = 0; i < users.length; i++ ) { %>
   <div
     class="

@@ -4,6 +4,9 @@ const moment = require("moment");
 
 module.exports = {
   getUsers: async (req, res) => {
+    let search = req.body.search;
+
+    console.log(search);
     try {
       const users = await User.find();
 
