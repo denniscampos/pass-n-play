@@ -2,6 +2,7 @@ const Profile = require("../models/Profile");
 const Post = require("../models/Post");
 const User = require("../models/User");
 const Game = require("../models/Game");
+const Comment = require("../models/Comment");
 const moment = require("moment");
 
 module.exports = {
@@ -9,9 +10,8 @@ module.exports = {
     try {
       const socials = await Profile.find({ user: req.user.id });
       const allPosts = await Post.find({ userId: req.user.id });
+      const reviews = await Comment.find();
       const users = await User.find(req.userName);
-
-      // console.log(users);
 
       res.render("profile", {
         users: users,
@@ -21,6 +21,7 @@ module.exports = {
         posts: allPosts,
         socials: socials,
         moment: moment,
+        reviews: reviews,
       });
       // console.log(socials);
     } catch (err) {
@@ -68,15 +69,28 @@ module.exports = {
 
   updateSocials: async (req, res) => {
     try {
-      await Profile.findOneAndUpdate(
-        { user: req.params.id },
-        {
-          twitter: req.body.twitter,
-          twitch: req.body.twitch,
-          discord: req.body.discord,
-          instagram: req.body.instagram,
-        }
-      );
+      let platforms = await Profile.findOne({ user: req.user });
+      if (!platforms) {
+        platforms = new Profile({ user: req.user });
+      }
+
+      platforms.twitter = req.body.twitter;
+      platforms.twitch = req.body.twitch;
+      platforms.discord = req.body.discord;
+      platforms.instagram = req.body.instagram;
+      platforms.instagram = req.body.youtube;
+      platforms.url = req.body.url;
+      await platforms.save();
+
+      // await Profile.findOneAndUpdate(
+      //   { user: req.params.id },
+      //   {
+      //     twitter: req.body.twitter,
+      //     twitch: req.body.twitch,
+      //     discord: req.body.discord,
+      //     instagram: req.body.instagram,
+      //   }
+      // );
       //lean converts to object
       const profile = await Profile.find({ user: req.params.id });
 

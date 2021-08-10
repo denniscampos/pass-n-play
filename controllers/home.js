@@ -11,7 +11,7 @@ module.exports = {
     res.render("index.ejs");
   },
 
-  getHomepage: async (req, res, next) => {
+  getHomepage: async (req, res) => {
     try {
       const gameAPI = await axios.get(
         `https://api.rawg.io/api/games?key=${process.env.API_GAME_KEY}&metacritic=95,100&ordering=-rating&page_size=8`
@@ -64,8 +64,8 @@ module.exports = {
         moment: moment,
         helper: helper,
       });
-    } catch (next) {
-      console.log(next);
+    } catch (err) {
+      console.log(err);
     }
   },
 

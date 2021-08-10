@@ -23,65 +23,29 @@
     <button class="btn btn-blue mt-8">unfollow</button>
   </div>
 </div>
+  
+<!-- socials  -->
+  <div class="container form-container mt-8">
 
-  <div class="flex h-full ml-8 mt-14 mb-10 md:ml-64">
-    <%- include('partials/feed.ejs') %>
-  </div>
-  <div class="container form-container mt-10">
-    <div
-      class="create-container flex justify-center w-1/2 bg-containcolor ml-20"
-    >
-      <form class="flex flex-col" action="profile/createSocials" method="POST">
-        <% if(socials) { %>
-        <label class="text-white" for="twitter">TWITTER: </label>
-        <input
-          type="text"
-          name="twitter"
-          id="twitter"
-          value="<%= socials.twitter %>"
-        />
-        <label class="text-white" for="twitch">TWITCH: </label>
-        <input
-          type="text"
-          name="twitch"
-          id="twitch"
-          value="<%= socials.twitch %>"
-        />
-        <label class="text-white" for="discord">DISCORD: </label>
-        <input
-          type="text"
-          name="discord"
-          id="discord"
-          value="<%= socials.discord %>"
-        />
-        <label class="text-white" for="instagram">INSTAGRAM: </label>
-        <input
-          type="text"
-          name="instagram"
-          id="instagram"
-          value="<%= socials.instagram %>"
-        />
 
-        <button class="text-white" type="submit">CREATE</button>
-
-        <% } else { %> <% console.log("socials exists") %> <% } %>
-      </form>
-    </div>
-
-    <div class="edit-container flex justify-center w-1/2 bg-containcolor ml-20">
+    <div class="edit-container flex justify-center w-1/2 bg-gunmetal ml-20 rounded-lg p-8">
       <form
         class="flex flex-col"
         action="/profile/updateSocials/<%= user._id %>?_method=PUT"
         method="POST"
       >
+      <label class="text-white" for="url">WEBSITE URL: </label>
+      <input class="w-full rounded-md px-3 py-2 mb-4 opacity-80 bg-containcolor text-white" type="text" name="url" id="url" value="username"/>
+      <label class="text-white" for="youtube">Youtube: </label>
+      <input class="w-full rounded-md px-3 py-2 mb-4 opacity-80 bg-containcolor text-white" type="text" name="youtube" id="youtube" value="username"/>
         <label class="text-white" for="twitter">TWITTER: </label>
-        <input type="text" name="twitter" id="twitter" />
+        <input class="w-full rounded-md px-3 py-2 mb-4 opacity-80 bg-containcolor text-white" type="text" name="twitter" id="twitter" value="username"/>
         <label class="text-white" for="twitch">TWITCH: </label>
-        <input type="text" name="twitch" id="twitch" />
+        <input class="w-full rounded-md px-3 py-2 mb-4 opacity-80 bg-containcolor text-white"type="text" name="twitch" id="twitch" value="username"/>
         <label class="text-white" for="discord">DISCORD: </label>
-        <input type="text" name="discord" id="discord" />
+        <input class="w-full rounded-md px-3 py-2 mb-4 opacity-80 bg-containcolor text-white" type="text" name="discord" id="discord" value="username"/>
         <label class="text-white" for="instagram">INSTAGRAM: </label>
-        <input type="text" name="instagram" id="instagram" />
+        <input class="w-full rounded-md px-3 py-2 mb-4 opacity-80 bg-containcolor text-white"type="text" name="instagram" id="instagram" value="username"/>
         <button class="text-white" type="submit">UPDATE</button>
       </form>
     </div>
@@ -106,6 +70,12 @@
     </div>
     
   </div>
+  <!-- end socials  -->
+
+  <div class="flex h-full ml-8 mt-14 mb-10 md:ml-64">
+    <%- include('partials/feed.ejs') %>
+  </div>
+
 
   <%- include('partials/footer') -%>
 </users.length;>

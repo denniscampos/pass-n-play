@@ -1,34 +1,36 @@
 <div class="container">
-  <h2 class="text-xl text-center text-fontcs font-bold">FEED</h2>
+  <h2 class="text-xl text-center text-fontcs font-bold">My Reviews</h2>
   <div class="flex flex-col-reverse">
-    <% for(let i = 0; i < posts.length; i++) { %>
-
+    <% for(let i = 0; i < reviews.length; i++) { %>
     <div
       class="p-3 m-3 bg-containcolor rounded-lg"
-      data-id="<%= posts[i]._id %>"
+      data-id="<%= reviews[i]._id %>"
     >
       <h2 class="text-fontcs font-bold my-3">
-        <%= String(posts[i].userName.toUpperCase()) %>
+        <%= String(reviews[i].userName.toUpperCase()) %>
       </h2>
-      <h4 class="text-white text-xl my-2"><%= posts[i].postMessage %></h4>
+      <h2 class="text-fontcs font-bold my-3">
+        Game: <%= String(reviews[i].game_title.toUpperCase()) %>
+      </h2>
+      <h4 class="text-white text-xl my-2"><%= reviews[i].comment %></h4>
       <span class="text-white my-2"
-        ><%= moment(posts[i].createdAt).format('hh:mm a MMM DD YYYY')%></span
+        ><%= moment(reviews[i].createdAt).format('hh:mm a MMM DD YYYY')%></span
       >
 
       <div class="flex content-center my-2">
         <form
           class=""
-          action="homepage/likePost/<%= posts[i]._id %>?_method=PUT"
+          action="homepage/likePost/<%= reviews[i]._id %>?_method=PUT"
           method="POST"
         >
           <button class="text-white" type="submit">
             <i class="fas fa-thumbs-up text-fontcs m-2"></i>
           </button>
         </form>
-        <h3 class="text-white text-lg"><%= posts[i].likes %></h3>
-        <% if(String(posts[i].userId) == String(user._id)) { %>
+        <h3 class="text-white text-lg"><%= reviews[i].likes.length %></h3>
+        <% if(String(reviews[i].user) == String(user._id)) { %>
         <form
-          action="homepage/deletePost/<%= posts[i]._id %>?_method=DELETE"
+          action="homepage/deletePost/<%= reviews[i]._id %>?_method=DELETE"
           method="POST"
           class=""
         >

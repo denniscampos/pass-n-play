@@ -69,8 +69,8 @@ app.use(flash());
 
 // set up routes for server
 app.use("/", mainRoutes);
+app.use("/profile", profileRoutes);
 // app.use("/homepage", homepageRoutes);
-// app.use("/profile", profileRoutes);
 // app.use("/results", homepageRoutes);
 // app.use("/comments", commentsRoutes);
 // app.use("/search", homepageRoutes);

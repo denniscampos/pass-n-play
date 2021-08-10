@@ -23,21 +23,14 @@ const ProfileSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
-    // platform_name: {
-    //   type: String,
-    //   required: false,
-    //   default: "",
-    // },
-    // url: {
-    //   type: String,
-    //   required: false,
-    //   default: "",
-    // },
-    // username: {
-    //   type: String,
-    //   required: false,
-    //   default: "",
-    // },
+    youtube: {
+      type: String,
+      default: "",
+    },
+    url: {
+      type: String,
+      default: "",
+    },
   },
   { timestamps: true }
 );
