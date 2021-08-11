@@ -9,9 +9,9 @@ const GameSchema = new mongoose.Schema(
       ref: "User",
     },
     gameList: {
-      type: Array,
-      default: [],
+      type: String,
       required: true,
+      default: "",
     },
   },
   { timestamps: true }

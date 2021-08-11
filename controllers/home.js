@@ -2,7 +2,7 @@ const axios = require("axios").default;
 const Post = require("../models/Post");
 const Profile = require("../models/Profile");
 const Comment = require("../models/Comment");
-const Likes = require("../models/Likes");
+const Game = require("../models/Game");
 const moment = require("moment");
 const flash = require("express-flash");
 
@@ -231,6 +231,19 @@ module.exports = {
         socials: socials,
       });
     } catch (err) {
+      console.log(err);
+    }
+  },
+
+  addWishList: async (req, res) => {
+    let gameId = req.params.id;
+    try {
+      const wish = new Game({ user: req.user, gameList: gameId });
+      await wish.save().then(() => {
+        res.status(200).redirect("/homepage");
+      });
+    } catch (err) {
+      res.status(400).send(err);
       console.log(err);
     }
   },

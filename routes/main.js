@@ -20,7 +20,8 @@ router.post("/register", authController.postRegister);
 router.get("/profile", profileController.getProfile);
 
 // MyLists
-router.get("/mylists", gameController.getGames);
+router.post("/:id", ensureAuth, homeController.addWishList);
+router.get("/mylists/", gameController.getGames);
 router.put("/mylists/:id", ensureAuth, gameController.getGames);
 
 // Users
