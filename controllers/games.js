@@ -1,5 +1,5 @@
 const axios = require("axios").default;
-// const Game = require("../models/Game");
+const Game = require("../models/Game");
 const Profile = require("../models/Profile");
 const User = require("../models/User");
 const moment = require("moment");
@@ -8,6 +8,11 @@ module.exports = {
   getGames: async (req, res) => {
     // const { id: searchId } = req.params;
     try {
+      let gameList = await Game.find({ id: req.id });
+      console.log(gameList);
+      // const loop = gameList.map((game) => game.gameList);
+      // console.log(loop);
+
       // // API
       // const gameAPI = await axios.get(
       //   `https://api.rawg.io/api/games/${searchId}?key=${process.env.API_GAME_KEY}`

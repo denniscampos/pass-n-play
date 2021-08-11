@@ -16,7 +16,8 @@ const moment = require("moment");
 const rateLimit = require("express-rate-limit");
 const mainRoutes = require("./routes/main");
 const profileRoutes = require("./routes/profile");
-const userRoutes = require("./routes/users");
+// const commentsRoutes = require("./routes/main");
+// const userRoutes = require("./routes/users");
 
 // Moment JS
 moment().format();

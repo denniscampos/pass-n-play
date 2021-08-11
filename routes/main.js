@@ -16,13 +16,18 @@ router.get("/logout", authController.logout);
 router.get("/register", authController.getRegister);
 router.post("/register", authController.postRegister);
 
-// Profile
-router.get("/profile", profileController.getProfile);
+// new comment
+router.post("/:id", ensureAuth, homeController.createReviews);
+router.put("/likeReviews/:id", ensureAuth, homeController.likeReviews);
+router.delete("/deleteReviews/:id", ensureAuth, homeController.deleteReviews);
 
 // MyLists
 router.post("/:id", ensureAuth, homeController.addWishList);
 router.get("/mylists/", gameController.getGames);
-router.put("/mylists/:id", ensureAuth, gameController.getGames);
+// router.put("/mylists/:id", ensureAuth, gameController.getGames);
+
+// Profile
+router.get("/profile", profileController.getProfile);
 
 // Users
 router.get("/users", ensureAuth, usersController.getUsers);
@@ -37,10 +42,5 @@ router.get("/popular", homeController.getPopular);
 // Search
 router.get("/:id/", homeController.getResults);
 router.post("/search", homeController.getSearch);
-
-// new comment
-router.post("/:id", ensureAuth, homeController.createReviews);
-router.put("/likeReviews/:id", ensureAuth, homeController.likeReviews);
-router.delete("/deleteReviews/:id", ensureAuth, homeController.deleteReviews);
 
 module.exports = router;
