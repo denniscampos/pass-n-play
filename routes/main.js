@@ -16,15 +16,14 @@ router.get("/logout", authController.logout);
 router.get("/register", authController.getRegister);
 router.post("/register", authController.postRegister);
 
+// // MyLists
+router.get("/mylists/", ensureAuth, gameController.getGames);
+router.post("/mylists/:id", ensureAuth, gameController.addWishList);
+
 // new comment
 router.post("/:id", ensureAuth, homeController.createReviews);
 router.put("/likeReviews/:id", ensureAuth, homeController.likeReviews);
 router.delete("/deleteReviews/:id", ensureAuth, homeController.deleteReviews);
-
-// MyLists
-router.post("/:id", ensureAuth, homeController.addWishList);
-router.get("/mylists/", gameController.getGames);
-// router.put("/mylists/:id", ensureAuth, gameController.getGames);
 
 // Profile
 router.get("/profile", profileController.getProfile);

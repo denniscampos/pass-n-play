@@ -8,11 +8,22 @@ const GameSchema = new mongoose.Schema(
       required: true,
       ref: "User",
     },
-    gameList: {
-      type: String,
-      required: true,
-      default: "",
-    },
+    gameList: [
+      {
+        game: {
+          type: String,
+          unique: true,
+        },
+        title: {
+          type: String,
+          unique: true,
+        },
+        image: {
+          type: String,
+          unique: true,
+        },
+      },
+    ],
   },
   { timestamps: true }
 );

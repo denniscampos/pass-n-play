@@ -16,6 +16,7 @@ const moment = require("moment");
 const rateLimit = require("express-rate-limit");
 const mainRoutes = require("./routes/main");
 const profileRoutes = require("./routes/profile");
+const gameRoutes = require("./routes/games");
 // const commentsRoutes = require("./routes/main");
 // const userRoutes = require("./routes/users");
 
@@ -71,6 +72,7 @@ app.use(flash());
 // set up routes for server
 app.use("/", mainRoutes);
 app.use("/profile", profileRoutes);
+app.use("/games", gameRoutes);
 // app.use("/homepage", homepageRoutes);
 // app.use("/results", homepageRoutes);
 // app.use("/comments", commentsRoutes);

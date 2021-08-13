@@ -6,23 +6,18 @@ const moment = require("moment");
 
 module.exports = {
   getGames: async (req, res) => {
-    // const { id: searchId } = req.params;
     try {
       let gameList = await Game.find({ id: req.id });
       console.log(gameList);
-      // const loop = gameList.map((game) => game.gameList);
-      // console.log(loop);
+      const loop = gameList.map((game) => game.gameList);
+      console.log(loop);
 
-      // // API
-      // const gameAPI = await axios.get(
-      //   `https://api.rawg.io/api/games/${searchId}?key=${process.env.API_GAME_KEY}`
-      // );
-
-      // const game = gameAPI.data.id;
-      // const game_title = gameAPI.data.name;
-
-      // const users = await User.find(req.userName);
-      // const games = await Game.find({ user: req.user.id });
+      // router.put("/:id/update", (req, res) => {
+      //   let updates = req.body //we set a variable equal to the entire req.body
+      //   Puppy.findOneAndUpdate({ _id: req.params.id }, updates, { new: true })
+      //     .then(updatedPuppy => res.json(updatedPuppy))
+      //     .catch(err => res.status(400).json("Error: " + err))
+      // })
 
       res.render("mylists", {
         // game: game, // game id
@@ -31,6 +26,27 @@ module.exports = {
         // users: users,
       });
     } catch (err) {
+      console.log(err);
+    }
+  },
+
+  addWishList: async (req, res) => {
+    let gameId = req.params.id;
+    const { title, imgUrl } = req.query;
+    try {
+      let games = await Game.findOne({ user: req.user });
+      if (!games) {
+        games = new Game({
+          user: req.user,
+          gameList: [],
+        });
+      }
+      games.gameList.push({ game: gameId, title: title, image: imgUrl });
+      await games.save().then(() => {
+        res.status(200).redirect("/homepage");
+      });
+    } catch (err) {
+      res.status(400).send(err);
       console.log(err);
     }
   },
