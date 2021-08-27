@@ -1,2 +1,12 @@
 <%- include("partials/header") %> <%- include("partials/dashboard-header") %>
+
+<div class="container">
+  <%for(let i = 0; i < gameInfo[0].length; i++) {%> <%
+  console.log(gameInfo[0][i].gameId) %>
+  <h3 class="text-white"><%= gameInfo[0][i].gameId %></h3>
+  <h3 class="text-white"><%= gameInfo[0][i].gameTitle %></h3>
+  <img src="<%= gameInfo[0][i].gameImage %> " alt="" />
+  <% } %>
+</div>
+
 <%- include("partials/footer") %>

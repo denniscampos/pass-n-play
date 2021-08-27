@@ -8,21 +8,24 @@ module.exports = {
   getGames: async (req, res) => {
     try {
       let gameList = await Game.find({ id: req.id });
-      console.log(gameList);
-      const loop = gameList.map((game) => game.gameList);
-      console.log(loop);
 
-      // router.put("/:id/update", (req, res) => {
-      //   let updates = req.body //we set a variable equal to the entire req.body
-      //   Puppy.findOneAndUpdate({ _id: req.params.id }, updates, { new: true })
-      //     .then(updatedPuppy => res.json(updatedPuppy))
-      //     .catch(err => res.status(400).json("Error: " + err))
-      // })
+      // const gameInfo = gameList.map((item) =>
+      //   item.gameList.map((game) => game.title)
+      // );
+      // console.log(gameInfo);
+
+      const gameInfo = gameList.map((item) =>
+        item.gameList.map((game) => {
+          return {
+            gameId: game.game,
+            gameTitle: game.title,
+            gameImage: game.image,
+          };
+        })
+      );
 
       res.render("mylists", {
-        // game: game, // game id
-        // game_title: game_title,
-        // games: games,
+        gameInfo: gameInfo,
         // users: users,
       });
     } catch (err) {
