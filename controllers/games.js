@@ -41,10 +41,19 @@ module.exports = {
           gameList: [],
         });
       }
-      games.gameList.push({ game: gameId, title: title, image: imgUrl });
-      await games.save().then(() => {
+
+      //game title
+      const gameTitle = games.gameList.map((game) => game.game);
+
+      if (!gameTitle.includes(gameId)) {
+        games.gameList.push({ game: gameId, title: title, image: imgUrl });
         res.status(200).redirect("/homepage");
-      });
+        await games.save().then(() => {});
+        //display message that game was successfully added to your wishlist
+      } else {
+        // display message that game was exist in your library
+        res.redirect("/homepage");
+      }
     } catch (err) {
       res.status(400).send(err);
       console.log(err);
