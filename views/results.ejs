@@ -95,7 +95,7 @@ include('partials/dashboard-header.ejs')%>
   <div class="comment-container lg:max-w-md md:max-w-xs sm:max-w-xs">
     <h1 class="text-white font-bold mb-2">Write a Review</h1>
 
-    <form class="" action="?_method=POST" method="POST">
+    <form class="" action="/createReviews/<%= games.id %>/" method="POST">
       <textarea
         name="newComment"
         id="newComment"
@@ -113,7 +113,9 @@ include('partials/dashboard-header.ejs')%>
         rows="5"
       ></textarea>
 
-      <button class="btn btn-blue w-auto mt-2">Submit Review</button>
+      <button type="submit" class="btn btn-blue w-auto mt-2">
+        Submit Review
+      </button>
     </form>
   </div>
   <!-- END REVIEWS  -->

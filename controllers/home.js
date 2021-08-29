@@ -128,7 +128,7 @@ module.exports = {
         user: req.user.id,
       });
 
-      res.redirect(`${searchId}`);
+      res.redirect(`/${searchId}`);
     } catch (err) {
       console.log(err);
     }

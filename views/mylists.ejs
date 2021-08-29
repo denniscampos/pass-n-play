@@ -1,12 +1,17 @@
 <%- include("partials/header") %> <%- include("partials/dashboard-header") %>
 
 <div class="container">
-  <%for(let i = 0; i < gameInfo[0].length; i++) {%> <%
-  console.log(gameInfo[0][i].gameId) %>
-  <h3 class="text-white"><%= gameInfo[0][i].gameId %></h3>
-  <h3 class="text-white"><%= gameInfo[0][i].gameTitle %></h3>
-  <img src="<%= gameInfo[0][i].gameImage %> " alt="" />
-  <% } %>
+  <% for(let i = 0; i < gameList.length; i++) { %> <%
+  if(String(gameInfo[i].user) === user.id) { %> <%
+  Object.keys(gameInfo[i].gameList).forEach((key) => { %>
+  <div class="game-container flex flex-col">
+    <h2 class="text-white"><%= gameInfo[i].gameList[key].title %></h2>
+    <img
+      src="<%= gameInfo[i].gameList[key].image %>"
+      alt="<%= gameInfo[i].gameList[key].title %>"
+    />
+  </div>
+  <% }) %> <% } %> <% } %>
 </div>
 
 <%- include("partials/footer") %>

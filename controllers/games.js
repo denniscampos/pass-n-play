@@ -7,26 +7,21 @@ const moment = require("moment");
 module.exports = {
   getGames: async (req, res) => {
     try {
-      let gameList = await Game.find({ id: req.id });
+      let gameList = await Game.find();
 
-      // const gameInfo = gameList.map((item) =>
-      //   item.gameList.map((game) => game.title)
-      // );
-      // console.log(gameInfo);
+      const gameInfo = gameList.map((e) => {
+        return {
+          user: e.user,
+          gameList: e.gameList,
+        };
+      });
 
-      const gameInfo = gameList.map((item) =>
-        item.gameList.map((game) => {
-          return {
-            gameId: game.game,
-            gameTitle: game.title,
-            gameImage: game.image,
-          };
-        })
-      );
+      // console.log(test);
 
       res.render("mylists", {
+        gameList: gameList,
+        user: req.user,
         gameInfo: gameInfo,
-        // users: users,
       });
     } catch (err) {
       console.log(err);
@@ -49,7 +44,12 @@ module.exports = {
       const gameTitle = games.gameList.map((game) => game.game);
 
       if (!gameTitle.includes(gameId)) {
-        games.gameList.push({ game: gameId, title: title, image: imgUrl });
+        games.gameList.push({
+          user: req.user,
+          game: gameId,
+          title: title,
+          image: imgUrl,
+        });
         res.status(200).redirect("/homepage");
         await games.save().then(() => {});
         //display message that game was successfully added to your wishlist
