@@ -21,9 +21,9 @@ router.get("/mylists/", ensureAuth, gameController.getGames);
 router.post("/mylists/:id", ensureAuth, gameController.addWishList);
 
 // new comment
-router.post("/createReviews/:id", ensureAuth, homeController.createReviews);
-router.put("/likeReviews/:id", ensureAuth, homeController.likeReviews);
-router.delete("/deleteReviews/:id", ensureAuth, homeController.deleteReviews);
+router.post("/createReview/:id", ensureAuth, homeController.createReviews);
+router.put("/likeReview/:id", ensureAuth, homeController.likeReviews);
+router.delete("/deleteReview/:id", ensureAuth, homeController.deleteReviews);
 
 // Profile
 router.get("/profile", profileController.getProfile);

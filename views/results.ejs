@@ -95,7 +95,7 @@ include('partials/dashboard-header.ejs')%>
   <div class="comment-container lg:max-w-md md:max-w-xs sm:max-w-xs">
     <h1 class="text-white font-bold mb-2">Write a Review</h1>
 
-    <form class="" action="/createReviews/<%= games.id %>/" method="POST">
+    <form class="" action="/createReview/<%= games.id %>/" method="POST">
       <textarea
         name="newComment"
         id="newComment"
@@ -137,7 +137,7 @@ include('partials/dashboard-header.ejs')%>
 
         <form
           class=""
-          action="/likeReviews/<%= comments[i].id %>/?_method=PUT"
+          action="/likeReview/<%= comments[i].id %>/?_method=PUT"
           method="POST"
         >
           <button class="text-white" type="submit">
@@ -151,7 +151,7 @@ include('partials/dashboard-header.ejs')%>
         <% if(comments[i].user == user.id) { %>
         <form
           class=""
-          action="/deleteReviews/<%= comments[i].id %>/?_method=DELETE"
+          action="/deleteReview/<%= comments[i].id %>/?_method=DELETE"
           method="POST"
         >
           <button class="text-white" type="submit">

@@ -147,7 +147,8 @@ module.exports = {
         await reviews.updateOne({ $pull: { likes: req.user.id } });
         console.log("user unlike status");
       }
-      res.redirect(`/${likes.game}`);
+      res.redirect("back");
+      // res.redirect(`/${likes.game}`);
     } catch (err) {
       console.log(err);
     }

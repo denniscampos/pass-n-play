@@ -1,7 +1,9 @@
 <div class="container">
   <h2 class="text-xl text-center text-fontcs font-bold">My Reviews</h2>
   <div class="flex flex-col-reverse">
-    <% for(let i = 0; i < reviews.length; i++) { %>
+    <% for(let i = 0; i < reviews.length; i++) { %> <%
+    if(String(reviews[i].user) === user.id) {%>
+
     <div
       class="p-3 m-3 bg-containcolor rounded-lg"
       data-id="<%= reviews[i]._id %>"
@@ -20,7 +22,7 @@
       <div class="flex content-center my-2">
         <form
           class=""
-          action="/likePost/<%= reviews[i]._id %>?_method=PUT"
+          action="/likeReview/<%= reviews[i]._id %>?_method=PUT"
           method="POST"
         >
           <button class="text-white" type="submit">
@@ -28,11 +30,9 @@
           </button>
         </form>
         <h3 class="text-white text-lg"><%= reviews[i].likes.length %></h3>
-        <% if(String(reviews[i].user) === String(user._id)) { %> <%
-        console.log(`this is user ${reviews[i].user}` ) %> <% console.log( `this
-        is id ${user._id}` ) %>
+        <% if(String(reviews[i].user) === String(user._id)) { %>
         <form
-          action="/<%= reviews[i]._id %>?_method=DELETE"
+          action="/deleteReview/<%= reviews[i]._id %>?_method=DELETE"
           method="POST"
           class=""
         >
@@ -43,6 +43,6 @@
         <% }%>
       </div>
     </div>
-    <% } %>
+    <% } %> <% } %>
   </div>
 </div>

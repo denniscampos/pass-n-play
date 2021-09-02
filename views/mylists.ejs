@@ -1,16 +1,17 @@
 <%- include("partials/header") %> <%- include("partials/dashboard-header") %>
 
-<div class="container">
+<div class="container flex">
   <% for(let i = 0; i < gameList.length; i++) { %> <%
   if(String(gameInfo[i].user) === user.id) { %> <%
   Object.keys(gameInfo[i].gameList).forEach((key) => { %>
-  <div class="game-container flex flex-col">
-    <h2 class="text-white"><%= gameInfo[i].gameList[key].title %></h2>
-    <img
-      src="<%= gameInfo[i].gameList[key].image %>"
-      alt="<%= gameInfo[i].gameList[key].title %>"
-    />
-  </div>
+
+  <h2 class="text-white"><%= gameInfo[i].gameList[key].title %></h2>
+  <img
+    class="relative h-60 lg:w-44 sm:w-80 object-cover filter brightness-75"
+    src="<%= gameInfo[i].gameList[key].image %>"
+    alt="<%= gameInfo[i].gameList[key].title %>"
+  />
+
   <% }) %> <% } %> <% } %>
 </div>
 
