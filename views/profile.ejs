@@ -1,7 +1,7 @@
 <%- include('partials/header') -%> <%- include("partials/dashboard-header.ejs")
 -%>
 
-<div class="container mt-8 text-white flex-col sm:flex md:flex-row justify-evenly">
+<div class="container my-8 text-white flex-col sm:flex md:flex-row justify-evenly">
   <div class="left-container flex bg-gunmetal rounded-lg p-8  items-start lg:flex-row sm:items-center sm:flex-col">
     <img class="w-14 h-14" src="img/avatar.png" alt="" />
     <div class="ml-4 user-information max-w-xs">
@@ -25,57 +25,13 @@
 </div>
   
 <!-- socials  -->
-  <div class="container form-container mt-8">
 
-
-    <div class="edit-container flex justify-center w-1/2 bg-gunmetal ml-20 rounded-lg p-8">
-      <form
-        class="flex flex-col"
-        action="/profile/updateSocials/<%= user._id %>?_method=PUT"
-        method="POST"
-      >
-      <label class="text-white" for="url">WEBSITE URL: </label>
-      <input class="w-full rounded-md px-3 py-2 mb-4 opacity-80 bg-containcolor text-white" type="text" name="url" id="url" value="username"/>
-      <label class="text-white" for="youtube">Youtube: </label>
-      <input class="w-full rounded-md px-3 py-2 mb-4 opacity-80 bg-containcolor text-white" type="text" name="youtube" id="youtube" value="username"/>
-        <label class="text-white" for="twitter">TWITTER: </label>
-        <input class="w-full rounded-md px-3 py-2 mb-4 opacity-80 bg-containcolor text-white" type="text" name="twitter" id="twitter" value="username"/>
-        <label class="text-white" for="twitch">TWITCH: </label>
-        <input class="w-full rounded-md px-3 py-2 mb-4 opacity-80 bg-containcolor text-white"type="text" name="twitch" id="twitch" value="username"/>
-        <label class="text-white" for="discord">DISCORD: </label>
-        <input class="w-full rounded-md px-3 py-2 mb-4 opacity-80 bg-containcolor text-white" type="text" name="discord" id="discord" value="username"/>
-        <label class="text-white" for="instagram">INSTAGRAM: </label>
-        <input class="w-full rounded-md px-3 py-2 mb-4 opacity-80 bg-containcolor text-white"type="text" name="instagram" id="instagram" value="username"/>
-        <button class="text-white" type="submit">UPDATE</button>
-      </form>
-    </div>
-
-    <div
-      class="
-        create-container
-        flex flex-col
-        justify-center
-        w-1/2
-        bg-containcolor
-        ml-20
-      "
-    >
-      <% for(let i = 0; i < socials.length; i++) { %>
-
-      <span class="text-white">TWITTER: <%= socials[i].twitter %></span>
-      <span class="text-white">TWITCH: <%= socials[i].twitch %></span>
-      <span class="text-white">DISCORD: <%= socials[i].discord %></span>
-      <span class="text-white">INSTAGRAM: <%= socials[i].instagram %></span>
-      <% } %>
-    </div>
-    
   </div>
   <!-- end socials  -->
 
-  <div class="flex h-full ml-8 mt-14 mb-10 md:ml-64">
+  <div class="flex h-full">
     <%- include('partials/feed.ejs') %>
   </div>
-
 
   <%- include('partials/footer') -%>
 </users.length;>
