@@ -121,10 +121,10 @@ include('partials/dashboard-header.ejs')%>
   <!-- END REVIEWS  -->
 
   <!-- FEED  -->
-  <div class="feed-container">
-    <h4 class="text-white font-bold mt-4">User Reviews</h4>
+  <h4 class="text-white font-bold mt-10">User Reviews</h4>
+  <div class="feed-container flex flex-col-reverse">
     <% for(let i = 0; i < comments.length; i++) {%>
-    <div class="review-container p-6 my-7 bg-gunmetal rounded-md">
+    <div class="review-container p-6 my-6 bg-gunmetal rounded-md">
       <span class="text-tart_orange font-bold"
         ><%= comments[i].userName.toUpperCase() %></span
       >

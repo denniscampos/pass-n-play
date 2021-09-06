@@ -9,14 +9,12 @@ module.exports = {
     try {
       let gameList = await Game.find();
 
-      const gameInfo = gameList.map((e) => {
+      const gameInfo = gameList.map((game) => {
         return {
-          user: e.user,
-          gameList: e.gameList,
+          user: game.user,
+          gameList: game.gameList,
         };
       });
-
-      // console.log(test);
 
       res.render("mylists", {
         gameList: gameList,

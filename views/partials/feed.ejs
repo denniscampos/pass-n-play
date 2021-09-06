@@ -1,13 +1,10 @@
 <div class="container">
-  <h2 class="text-xl text-center text-fontcs font-bold">My Reviews</h2>
+  <h2 class="text-xl text-center text-white font-bold">My Reviews</h2>
   <div class="flex flex-col-reverse">
     <% for(let i = 0; i < reviews.length; i++) { %> <%
     if(String(reviews[i].user) === user.id) {%>
 
-    <div
-      class="p-3 m-3 bg-containcolor rounded-lg"
-      data-id="<%= reviews[i]._id %>"
-    >
+    <div class="p-3 m-3 bg-gunmetal rounded-lg" data-id="<%= reviews[i]._id %>">
       <h2 class="text-fontcs font-bold my-3">
         <%= String(reviews[i].userName.toUpperCase()) %>
       </h2>

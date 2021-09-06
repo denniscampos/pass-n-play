@@ -5,6 +5,7 @@ const homeController = require("../controllers/home");
 const profileController = require("../controllers/profile");
 const usersController = require("../controllers/user");
 const gameController = require("../controllers/games");
+const editController = require("../controllers/edit");
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 //main routes
@@ -16,7 +17,10 @@ router.get("/logout", authController.logout);
 router.get("/register", authController.getRegister);
 router.post("/register", authController.postRegister);
 
-// // MyLists
+// Edit Page
+router.get("/edit", editController.editProfile);
+
+//  MyLists
 router.get("/mylists/", ensureAuth, gameController.getGames);
 router.post("/mylists/:id", ensureAuth, gameController.addWishList);
 
