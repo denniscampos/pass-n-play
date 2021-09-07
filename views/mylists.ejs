@@ -1,18 +1,49 @@
 <%- include("partials/header") %> <%- include("partials/dashboard-header") %>
 
-<div class="container flex flex-col">
-  <% for(let i = 0; i < gameList.length; i++) { %> <%
-  if(String(gameInfo[i].user) === user.id) { %> <%
-  Object.keys(gameInfo[i].gameList).forEach((key) => { %>
+<div class="container my-24">
+  <h2 class="text-blue_crayola mx-8 mb-5 w-xs block font-bold text-center">
+    MY FAVORITE GAMES
+  </h2>
+  <div class="wrapper flex flex-wrap justify-center items-center">
+    <% for(let i = 0; i < gameList.length; i++) { %> <%
+    if(String(gameInfo[i].user) === user.id) { %> <%
+    Object.keys(gameInfo[i].gameList).forEach((key) => { %>
+    <div class="relative mx-5 my-4">
+      <img
+        class="relative h-60 lg:w-44 sm:w-80 object-cover filter brightness-75"
+        src="<%= gameInfo[i].gameList[key].image %>"
+        alt="<%= gameInfo[i].gameList[key].title %>"
+      />
 
-  <h2 class="text-white"><%= gameInfo[i].gameList[key].title %></h2>
-  <img
-    class="relative h-60 lg:w-44 sm:w-80 object-cover filter brightness-75"
-    src="<%= gameInfo[i].gameList[key].image %>"
-    alt="<%= gameInfo[i].gameList[key].title %>"
-  />
-
-  <% }) %> <% } %> <% } %>
+      <form action="" method="POST">
+        <button class="text-white">
+          <i
+            class="
+              fas
+              fa-times
+              text-white
+              absolute
+              top-48
+              right-2
+              bg-gunmetal
+              rounded-full
+              h-8
+              w-8
+              flex
+              items-center
+              justify-center
+              hover:bg-richblack_light
+            "
+          >
+          </i>
+        </button>
+      </form>
+      <h2 class="absolute text-white top-0 left-0 ml-3 font-bold w-40 mt-4">
+        <%= gameInfo[i].gameList[key].title %>
+      </h2>
+    </div>
+    <% }) %> <% } %> <% } %>
+  </div>
 </div>
 
 <%- include("partials/footer") %>

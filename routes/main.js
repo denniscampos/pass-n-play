@@ -23,6 +23,7 @@ router.post("/register", authController.postRegister);
 //  MyLists
 router.get("/mylists/", ensureAuth, gameController.getGames);
 router.post("/mylists/:id", ensureAuth, gameController.addWishList);
+router.delete("/deleteGame/:id", ensureAuth, gameController.deleteGame);
 
 // new comment
 router.post("/createReview/:id", ensureAuth, homeController.createReviews);

@@ -10,53 +10,51 @@ include('partials/dashboard-header.ejs')%>
       src="<%- games.background_image %>"
       alt="Image of game"
     />
-    <a href="">
-      <i
-        class="
-          fas
-          fa-ellipsis-v
-          text-white
-          absolute
-          top-3
-          lg:right-2
-          md:right-10
-          right-2
-          bg-gunmetal
-          rounded-full
-          h-12
-          w-12
-          flex
-          items-center
-          justify-center
-          z-10
-          hover:bg-richblack_light
-        "
-      ></i>
+    <div class="gameMenu" x-data="{ menuOptions: false }">
+      <button @click="menuOptions = !menuOptions">
+        <i
+          class="
+            fas
+            fa-ellipsis-v
+            text-white
+            absolute
+            top-4
+            right-2
+            bg-gunmetal
+            rounded-full
+            h-8
+            w-8
+            flex
+            items-center
+            justify-center
+            hover:bg-richblack_light
+          "
+        ></i>
+      </button>
       <div
-        class="
-          absolute
-          popout-container
-          bg-white
-          text-white
-          h-52
-          w-52
-          rounded-md
-          hidden
-          items-end
-          pr-4
-          pt-4
-        "
+        x-show="menuOptions"
+        class="bg-gunmetal h-36 w-36 absolute z-10 top-12 right-8 rounded-lg"
       >
-        <div class="flex items-center">
-          <i class="far fa-heart text-black mr-2"></i>
-          <span class="text-black">Add to Favorites</span>
-        </div>
-        <div>
-          <i class="far fa-star text-black mr-2"></i>
-          <span class="text-black">Recommend</span>
+        <div
+          class="test absolute top-3 flex flex-col text-white ml-3"
+          :class="{ 'hidden' : !menuOptions }"
+          @click.away="mobileMenuOpen = false"
+        >
+          <form
+            action="/mylists/<%= games.id %>?title=<%= games.name %>&imgUrl=<%= games.background_image %>"
+            method="POST"
+          >
+            <input
+              class="bg-gunmetal text-sm cursor-pointer"
+              type="submit"
+              name="test"
+              value="Add to Favorites"
+            />
+          </form>
+          <span class="text-sm">Recommend</span>
         </div>
       </div>
-    </a>
+    </div>
   </div>
   <div class="right-container max-w-2xl">
     <h1 class="text-fontcs text-4xl pb-7"><%= games.name %></h1>

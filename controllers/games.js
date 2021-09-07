@@ -16,6 +16,10 @@ module.exports = {
         };
       });
 
+      // This allows me to capture gameList ID -- figure out how to delete that specific game Id.
+      let result = await Game.findOneAndUpdate({ gameList: req.params });
+      console.log("this is from the results ", result);
+
       res.render("mylists", {
         gameList: gameList,
         user: req.user,
@@ -32,7 +36,6 @@ module.exports = {
     const { title, imgUrl } = req.query;
     try {
       let games = await Game.findOne({ user: req.user });
-      console.log("$!#!@#!@# FIND ONE: ", games);
 
       if (!games) {
         games = new Game({
@@ -40,7 +43,6 @@ module.exports = {
           gameList: [],
         });
       }
-      console.log("~!@!~@ GAME LIST AFTER FIND: ", games);
       //game title
       if (!games.gameList.find((game) => game.game === gameId)) {
         games.gameList.push({
@@ -49,18 +51,6 @@ module.exports = {
           image: imgUrl,
         });
 
-        console.log("!@#!@# Games List After Push: ", games);
-
-        // const gameTitle = games.gameList.map((game) => game.game);
-
-        // if (!gameTitle.includes(gameId)) {
-        //   games.gameList.push({
-        //     game: gameId,
-        //     title: title,
-        //     image: imgUrl,
-        //   });
-
-        // console.log(`~~~~~GEORGE BUSH DID 9/11  ${games.save()}`);
         await games.save();
         res.status(200).redirect("/homepage");
 
@@ -72,6 +62,14 @@ module.exports = {
     } catch (err) {
       console.log(err);
       res.status(400).send(err);
+    }
+  },
+
+  deleteGame: async (req, res) => {
+    try {
+      res.redirect("back");
+    } catch (err) {
+      console.log(err);
     }
   },
 };

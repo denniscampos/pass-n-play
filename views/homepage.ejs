@@ -8,6 +8,7 @@
 </div>
 <!-- search input  -->
 
+<!-- POPULAR GAMES  -->
 <div class="popular-games my-12 flex flex-col content-around">
   <h3 class="text-blue_crayola mx-8 mb-5 w-xs block font-bold text-center">
     POPULAR GAMES
@@ -90,7 +91,7 @@
   </div>
 </div>
 
-
+<!-- TRENDING GAMES  -->
 <div class="popular-games my-12 flex flex-col content-around">
   <h3 class="text-blue_crayola mx-7 mb-5 w-xs block font-bold text-center">
     TRENDING
@@ -127,31 +128,47 @@
           src="<%- trend.img %>"
           alt=""
         />
-        <a href="">
-          <i
-            class="
-              fas
-              fa-ellipsis-v
-              text-white
-              absolute
-              top-48
-              right-2
-              bg-gunmetal
-              rounded-full
-              h-8
-              w-8
-              flex
-              items-center
-              justify-center
-              z-10
-            "
-          ></i>
-        </a>
+      </a>
+        <div class="gameMenu" x-data="{ menuOptions: false }">
+          <button @click="menuOptions = !menuOptions">
+              <i
+                class="
+                  fas
+                  fa-ellipsis-v
+                  text-white
+                  absolute
+                  top-48
+                  right-2
+                  bg-gunmetal
+                  rounded-full
+                  h-8
+                  w-8
+                  flex
+                  items-center
+                  justify-center
+                  hover:bg-richblack_light
+                "
+              ></i>
+              
+          </button>
+          <div x-show="menuOptions" class="bg-gunmetal h-36 w-36 absolute z-10 top-12 right-8 rounded-lg">
+            <div
+              class="test absolute top-3 flex flex-col text-white ml-3"
+              :class="{ 'hidden' : !menuOptions }"
+              @click.away="mobileMenuOpen = false"
+            >
+          <form action="/mylists/<%= trend.id %>?title=<%= trend.name %>&imgUrl=<%= trend.img %>" method="POST">
+            <input class="bg-gunmetal text-sm cursor-pointer" type="submit" name="test" value="Add to Favorites" />
+        </form>
+              <span class="text-sm">Recommend</span>
+            </div>
+          </div>
+        </div>
         <h4 class="absolute top-0 left-0 ml-3 text-white font-bold w-40 mt-4">
           <%- trend.name %>
         </h4>
       </div>
-    </a>
+    
     <% }) %>
   </div>
   <h3 class="text-white"><%= helper.math(4,5) %></h3>

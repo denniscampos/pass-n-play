@@ -84,12 +84,9 @@ module.exports = {
         .map((genre) => genre.name)
         .join(", ");
 
-      // const gameIds = await JSON.stringify(gameAPI.data.id).split(" ");
       const gameIds = gameAPI.data.id;
 
       const comments = await Comment.find({ game: { $in: gameIds } });
-
-      // console.log(comments);
 
       res.render("results", {
         comments: comments,
