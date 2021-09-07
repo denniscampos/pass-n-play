@@ -4,7 +4,7 @@ const gameController = require("../controllers/games");
 const { ensureAuth } = require("../middleware/auth");
 
 // MyLists
-router.post("/:id", gameController.addWishList);
+router.post("/mylists/:id", gameController.addWishList);
 // router.get("/mylists/", gameController.getGames);
 // router.put("/mylists/:id", ensureAuth, gameController.getGames);
 

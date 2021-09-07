@@ -23,6 +23,7 @@ module.exports = {
       });
     } catch (err) {
       console.log(err);
+      res.status(500).json();
     }
   },
 
@@ -31,37 +32,46 @@ module.exports = {
     const { title, imgUrl } = req.query;
     try {
       let games = await Game.findOne({ user: req.user });
+      console.log("$!#!@#!@# FIND ONE: ", games);
+
       if (!games) {
         games = new Game({
           user: req.user,
           gameList: [],
         });
       }
-
+      console.log("~!@!~@ GAME LIST AFTER FIND: ", games);
       //game title
-      const gameTitle = games.gameList.map((game) => game.game);
-
-      if (!gameTitle.includes(gameId)) {
+      if (!games.gameList.find((game) => game.game === gameId)) {
         games.gameList.push({
-          user: req.user,
           game: gameId,
           title: title,
           image: imgUrl,
         });
+
+        console.log("!@#!@# Games List After Push: ", games);
+
+        // const gameTitle = games.gameList.map((game) => game.game);
+
+        // if (!gameTitle.includes(gameId)) {
+        //   games.gameList.push({
+        //     game: gameId,
+        //     title: title,
+        //     image: imgUrl,
+        //   });
+
+        // console.log(`~~~~~GEORGE BUSH DID 9/11  ${games.save()}`);
+        await games.save();
         res.status(200).redirect("/homepage");
-        await games.save().then(() => {});
+
         //display message that game was successfully added to your wishlist
       } else {
         // display message that game was exist in your library
         res.redirect("/homepage");
       }
     } catch (err) {
-      res.status(400).send(err);
       console.log(err);
+      res.status(400).send(err);
     }
   },
 };
-
-//save the id to our database
-
-// in our wishlist page, we can populate the data.

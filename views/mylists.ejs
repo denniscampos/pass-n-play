@@ -1,6 +1,6 @@
 <%- include("partials/header") %> <%- include("partials/dashboard-header") %>
 
-<div class="container flex">
+<div class="container flex flex-col">
   <% for(let i = 0; i < gameList.length; i++) { %> <%
   if(String(gameInfo[i].user) === user.id) { %> <%
   Object.keys(gameInfo[i].gameList).forEach((key) => { %>

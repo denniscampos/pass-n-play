@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const date = new Date();
+const _ = require("lodash");
 
 const GameSchema = new mongoose.Schema(
   {
@@ -12,20 +13,37 @@ const GameSchema = new mongoose.Schema(
       {
         game: {
           type: String,
-          unique: true,
         },
         title: {
           type: String,
-          unique: true,
         },
         image: {
           type: String,
-          unique: true,
         },
       },
     ],
   },
   { timestamps: true }
 );
+
+// GameSchema.index(
+//   { user: 1, "gameList.game": 1 },
+//   { unique: true, sparse: true }
+// );
+
+// GameSchema.index(
+//   {
+//     "gameList.game": 1,
+//   },
+//   {
+//     sparse: true,
+//   }
+// );
+
+// GameSchema.pre("save", (next) => {
+//   console.log(`@#@#@#@#@#@#`, this);
+//   this.gameList = _.uniq(this.gameList);
+//   next();
+// });
 
 module.exports = mongoose.model("Game", GameSchema);

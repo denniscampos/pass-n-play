@@ -5,7 +5,7 @@ const Comment = require("../models/Comment");
 const moment = require("moment");
 
 module.exports = {
-  editProfile: (req, res) => {
+  editProfile: async (req, res) => {
     try {
       res.render("edit");
     } catch (err) {

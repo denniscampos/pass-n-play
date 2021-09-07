@@ -18,7 +18,7 @@ router.get("/register", authController.getRegister);
 router.post("/register", authController.postRegister);
 
 // Edit Page
-router.get("/edit", editController.editProfile);
+// router.get("/edit", editController.editProfile);
 
 //  MyLists
 router.get("/mylists/", ensureAuth, gameController.getGames);
