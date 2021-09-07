@@ -15,7 +15,10 @@
         alt="<%= gameInfo[i].gameList[key].title %>"
       />
 
-      <form action="" method="POST">
+      <form
+        action="/deleteGame/<%= gameInfo[i].gameList[key].game %>?_method=DELETE"
+        method="POST"
+      >
         <button class="text-white">
           <i
             class="
