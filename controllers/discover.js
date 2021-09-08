@@ -26,6 +26,7 @@ module.exports = {
         next: next,
       });
     } catch (err) {
+      res.status(500).send(err);
       console.log(err);
     }
   },

@@ -2,22 +2,139 @@
 -%>
 
 <div class="container my-10">
-  <h1 class="text-white mb-4 font-bold">Add or Edit your profile!</h1>
-  <form action="/profile/updateSocials/<%= user._id %>?_method=PUT" method="POST" class="flex flex-col w-full" action="">
-    <i class="fas fa-globe text-white">
-    <input class="mb-4 ml-2 w-1/4 rounded-md px-3 py-2 opacity-80 bg-gunmetal text-white" name="url" type="text" value="WEBSITE URL" /></i>
-    <i class="fab fa-twitter text-white">
-    <input class="mb-4 ml-2 w-1/4 rounded-md px-3 py-2 opacity-80 bg-gunmetal text-white" name="twitter" type="text" value="TWITTER"/></i>
-    <i class="fab fa-instagram text-white">
-    <input class="mb-4 ml-2 w-1/4 rounded-md px-3 py-2 opacity-80 bg-gunmetal text-white" name="instagram" type="text" value="INSTAGRAM"/></i>
-    <i class="fab fa-youtube text-white">
-    <input class="mb-4 ml-2 w-1/4 rounded-md px-3 py-2 opacity-80 bg-gunmetal text-white" name="youtube" type="text" value="YOUTUBE"/></i>
-    <i class="fab fa-discord text-white">
-    <input class="mb-4 ml-2 w-1/4 rounded-md px-3 py-2 opacity-80 bg-gunmetal text-white" name="discord" type="text" value="DISCORD"/></i>
-    <i class="fab fa-twitch text-white">
-    <input class="mb-4 ml-2 w-1/4 rounded-md px-3 py-2 opacity-80 bg-gunmetal text-white" name="twitch" type="text" value="TWITCH"/></i>
-    <input class="btn btn-blue w-1/4 ml-6 cursor-pointer" type="submit" value="Save">
+  <h1 class="text-white mb-4 font-bold text-center">
+    Add or Edit your profile!
+  </h1>
+  <form
+    class="
+      flex flex-col
+      bg-gunmetal
+      items-center
+      justify-center
+      m-auto
+      py-8
+      rounded-md
+      lg:w-4/12
+      md:w-3/4
+      sm:w-1/2
+    "
+    action="/profile/updateSocials/<%= user._id %>?_method=PUT"
+    method="POST"
+  >
+    <i class="fas fa-globe text-white ml-4 sm:ml-0">
+      <input
+        class="
+          mb-4
+          ml-2
+          w-4/5
+          sm:w-auto
+          rounded-md
+          px-3
+          py-2
+          opacity-80
+          bg-blue_yonger
+          text-white
+        "
+        name="url"
+        type="text"
+        value="WEBSITE URL"
+    /></i>
+    <i class="fab fa-twitter text-white ml-4 sm:ml-0">
+      <input
+        class="
+          mb-4
+          ml-2
+          w-4/5
+          sm:w-auto
+          rounded-md
+          px-3
+          py-2
+          opacity-80
+          bg-blue_yonger
+          text-white
+        "
+        name="twitter"
+        type="text"
+        value="TWITTER"
+    /></i>
+    <i class="fab fa-instagram text-white ml-4 sm:ml-0">
+      <input
+        class="
+          mb-4
+          ml-2
+          w-4/5
+          sm:w-auto
+          rounded-md
+          px-3
+          py-2
+          opacity-80
+          bg-blue_yonger
+          text-white
+        "
+        name="instagram"
+        type="text"
+        value="INSTAGRAM"
+    /></i>
+    <i class="fab fa-youtube text-white ml-4 sm:ml-0">
+      <input
+        class="
+          mb-4
+          ml-2
+          w-4/5
+          sm:w-auto
+          rounded-md
+          px-3
+          py-2
+          opacity-80
+          bg-blue_yonger
+          text-white
+        "
+        name="youtube"
+        type="text"
+        value="YOUTUBE"
+    /></i>
+    <i class="fab fa-discord text-white ml-4 sm:ml-0">
+      <input
+        class="
+          mb-4
+          ml-2
+          w-4/5
+          sm:w-auto
+          rounded-md
+          px-3
+          py-2
+          opacity-80
+          bg-blue_yonger
+          text-white
+        "
+        name="discord"
+        type="text"
+        value="DISCORD"
+    /></i>
+    <i class="fab fa-twitch text-white ml-4 sm:ml-0">
+      <input
+        class="
+          mb-4
+          ml-2
+          w-4/5
+          sm:w-auto
+          rounded-md
+          px-3
+          py-2
+          opacity-80
+          bg-blue_yonger
+          text-white
+        "
+        name="twitch"
+        type="text"
+        value="TWITCH"
+    /></i>
+    <input
+      class="btn btn-blue bg-blue_yonger ml-6 cursor-pointer"
+      type="submit"
+      value="Save"
+    />
   </form>
 </div>
 
-<!-- <%- include('partials/footer') -%> 
+<%- include('partials/footer') -%>

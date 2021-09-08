@@ -12,11 +12,11 @@ module.exports = {
   getHomepage: async (req, res) => {
     try {
       const gameAPI = await axios.get(
-        `https://api.rawg.io/api/games?key=${process.env.API_GAME_KEY}&metacritic=95,100&ordering=-rating&page_size=8`
+        `https://api.rawg.io/api/games?key=${process.env.API_GAME_KEY}&metacritic=95,100&ordering=-rating&page_size=10`
       );
 
       const gameTrending = await axios.get(
-        `https://api.rawg.io/api/games?key=${process.env.API_GAME_KEY}&metacritic=80,100&ordering=-rating&page_size=8&dates=2020-01-01,2021-12-31`
+        `https://api.rawg.io/api/games?key=${process.env.API_GAME_KEY}&metacritic=80,100&ordering=-rating&page_size=10&dates=2020-01-01,2021-12-31`
       );
 
       const trends = gameTrending.data.results.map((trending) => {
