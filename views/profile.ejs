@@ -1,36 +1,113 @@
 <%- include('partials/header') -%> <%- include("partials/dashboard-header.ejs")
 -%>
 
-<div class="container my-8 text-white flex-col sm:flex md:flex-row justify-evenly">
-  <div class="left-container flex bg-gunmetal rounded-lg p-8  items-start lg:flex-row sm:items-center sm:flex-col">
+<div
+  class="container my-8 text-white flex-col sm:flex md:flex-row justify-evenly"
+>
+  <div
+    class="
+      left-container
+      flex
+      bg-gunmetal
+      rounded-lg
+      p-8
+      items-start
+      lg:flex-row
+      sm:items-center sm:flex-col
+    "
+  >
     <img class="w-14 h-14" src="img/avatar.png" alt="" />
     <div class="ml-4 user-information max-w-xs">
       <span class="font-bold block my-3">@<%= user.userName %></span>
       <span class="block mb-3">hi, my name is <%= user.userName %></span>
-      <p class="block leading-7" contenteditable="true">
+      <p class="block leading-7">
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iusto itaque
         dolore quisquam, accusamus nihil dignissimos sed laudantium vero a
         pariatur.
       </p>
+      <% socials.forEach(social => { %>
+      <div class="social-container flex flex-col mt-5">
+        <% if(social.twitter === "TWITTER") { %>
+        <span class="hidden"></span>
+        <% } else { %>
+        <span class="font-bold">Twitter: <%= social.twitter %> </span>
+        <% } %> <% if(social.url === "WEBSITE URL") { %>
+        <span class="hidden"></span>
+        <% } else { %>
+        <span class="font-bold">Website: <%= social.url %> </span>
+        <% } %> <% if(social.instagram === "INSTAGRAM") { %>
+        <span class="hidden"></span>
+        <% } else { %>
+        <span class="font-bold">Instagram: <%= social.instagram %> </span>
+        <% } %> <% if(social.youtube === "YOUTUBE") { %>
+        <span class="hidden"></span>
+        <% } else { %>
+        <span class="font-bold">Youtube: <%= social.youtube %> </span>
+        <% } %> <% if(social.discord === "DISCORD") { %>
+        <span class="hidden"></span>
+        <% } else { %>
+        <span class="font-bold">Discord: <%= social.discord %> </span>
+        <% } %> <% if(social.twitch === "TWITCH") { %>
+        <span class="hidden"></span>
+        <% } else { %>
+        <span class="font-bold">Twitch: <%= social.twitch %> </span>
+        <% } %>
+      </div>
+      <% }) %>
+      <a
+        class="
+          block
+          mt-4
+          rounded-md
+          bg-blue_yonger
+          text-white
+          py-3
+          px-3
+          w-2/4
+          hover:bg-blue_crayola hover:text-tart_orange
+        "
+        href="/edit"
+        >Add or Edit Profile</a
+      >
     </div>
   </div>
   <div class="right-container md:mt-0 mt-5">
     <div class="follow-container bg-gunmetal rounded-lg pl-4 py-8">
-        <span>Following: <%= user.following.length %> </span>
+      <span>Following: <%= user.following.length %> </span>
       <span class="block">Followers: <%= user.followers.length %></span>
     </div>
     <button class="btn btn-blue mt-8">Follow</button>
     <button class="btn btn-blue mt-8">Unfollow</button>
   </div>
 </div>
-  
-<!-- socials  -->
 
-  </div>
-  <!-- end socials  -->
+<!-- TWITCH START  -->
+<!-- Add a placeholder for the Twitch embed -->
+<div class="container flex justify-center items-center my-16">
+  <div id="twitch-embed"></div>
 
-  <div class="flex h-full">
-    <%- include('partials/feed.ejs') %>
-  </div>
+  <!-- Load the Twitch embed JavaScript file -->
+  <script src="https://embed.twitch.tv/embed/v1.js"></script>
 
-  <%- include('partials/footer') -%>
+  <!-- Create a Twitch.Embed object that will render within the "twitch-embed" element -->
+
+  <% for(let i = 0; i < socials.length; i++){ %> <% if(socials[i].twitch ===
+  "TWITCH") { %>
+  <span class="hidden"></span>
+  <% } else { %>
+  <script type="text/javascript">
+    new Twitch.Embed("twitch-embed", {
+      width: 940,
+      height: 480,
+      channel: "<%= socials[i].twitch %>",
+      // Only needed if this page is going to be embedded on other websites
+      parent: ["embed.example.com", "othersite.example.com"],
+    });
+  </script>
+  <% } %> <% } %>
+</div>
+<!-- TWITCH END  -->
+
+<div class="flex h-full"><%- include('partials/feed.ejs') %></div>
+
+<%- include('partials/footer') -%>

@@ -16,18 +16,6 @@ module.exports = {
         };
       });
 
-      // let testing = await Game.findOneAndUpdate(
-      //   { user: req.user },
-      //   { $pull: { gameList: { game: req.id } } }
-      // );
-      // console.log(testing);
-
-      // let result = await Game.findOneAndUpdate(
-      //   { user: req.user },
-      //   { $pull: { gameList: { game: req.id } } }
-      // );
-      // console.log(result);
-
       res.render("mylists", {
         gameList: gameList,
         user: req.user,
@@ -75,12 +63,10 @@ module.exports = {
 
   deleteGame: async (req, res) => {
     try {
-      // await Game.deleteOne({ _id: req.params.id });
       await Game.findOneAndUpdate(
         { user: req.user },
         { $pull: { gameList: { game: req.params.id } } }
       );
-      // console.log(result);
       res.redirect("back");
     } catch (err) {
       console.log(err);
