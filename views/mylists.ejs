@@ -9,12 +9,21 @@
     if(String(gameInfo[i].user) === user.id) { %> <%
     Object.keys(gameInfo[i].gameList).forEach((key) => { %>
     <div class="relative mx-5 my-4">
-      <img
-        class="relative h-60 lg:w-44 sm:w-80 object-cover filter brightness-75"
-        src="<%= gameInfo[i].gameList[key].image %>"
-        alt="<%= gameInfo[i].gameList[key].title %>"
-      />
-
+      <a href="/<%= gameInfo[i].gameList[key].game %>">
+        <img
+          class="
+            relative
+            h-60
+            lg:w-44
+            sm:w-80
+            object-cover
+            filter
+            brightness-75
+          "
+          src="<%= gameInfo[i].gameList[key].image %>"
+          alt="<%= gameInfo[i].gameList[key].title %>"
+        />
+      </a>
       <form
         action="/deleteGame/<%= gameInfo[i].gameList[key].game %>?_method=DELETE"
         method="POST"

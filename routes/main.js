@@ -6,6 +6,7 @@ const profileController = require("../controllers/profile");
 const usersController = require("../controllers/user");
 const gameController = require("../controllers/games");
 const editController = require("../controllers/edit");
+const discoverController = require("../controllers/discover");
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 //main routes
@@ -19,6 +20,9 @@ router.post("/register", authController.postRegister);
 
 // Edit Page
 router.get("/edit", editController.editProfile);
+
+// Discover Page
+router.get("/discover", discoverController.discover);
 
 //  MyLists
 router.get("/mylists/", ensureAuth, gameController.getGames);

@@ -3,7 +3,6 @@
 
 <div class="container my-10">
   <h1 class="text-white mb-4 font-bold">Add or Edit your profile!</h1>
-  <% console.log(user.id) %>
   <form action="/profile/updateSocials/<%= user._id %>?_method=PUT" method="POST" class="flex flex-col w-full" action="">
     <i class="fas fa-globe text-white">
     <input class="mb-4 ml-2 w-1/4 rounded-md px-3 py-2 opacity-80 bg-gunmetal text-white" name="url" type="text" value="WEBSITE URL" /></i>
@@ -22,5 +21,3 @@
 </div>
 
 <!-- <%- include('partials/footer') -%> 
-
-w-full rounded-md px-3 py-2 mb-4 opacity-80 bg-gunmetal text-white

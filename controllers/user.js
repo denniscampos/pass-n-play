@@ -6,7 +6,6 @@ module.exports = {
   getUsers: async (req, res) => {
     let search = req.body.search;
 
-    console.log(search);
     try {
       const users = await User.find();
 
@@ -27,7 +26,6 @@ module.exports = {
         const users = await User.findById(req.params.id); //req.userName works
         const currentUser = await User.findById(req.user.id);
 
-        // console.log(currentUser);
         if (!users.followers.includes(req.user.id)) {
           await users.updateOne({ $push: { followers: req.user.id } });
           await currentUser.updateOne({ $push: { following: req.params.id } });
