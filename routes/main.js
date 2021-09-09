@@ -22,7 +22,7 @@ router.post("/register", authController.postRegister);
 router.get("/edit", editController.editProfile);
 
 // Discover Page
-router.get("/discover", discoverController.discover);
+router.get("/discover/", discoverController.discover);
 
 //  MyLists
 router.get("/mylists/", ensureAuth, gameController.getGames);
