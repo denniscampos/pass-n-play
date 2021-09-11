@@ -18,7 +18,7 @@
       md:w-3/4
       sm:w-1/2
     "
-    action="/profile/updateSocials/<%= user._id %>?_method=PUT"
+    action="/edit/updateSocials/<%= user._id %>?_method=PUT"
     method="POST"
   >
     <i class="fas fa-globe text-white ml-4 sm:ml-0">
@@ -36,6 +36,7 @@
           text-white
         "
         name="url"
+        id="url"
         type="text"
         value="WEBSITE URL"
     /></i>

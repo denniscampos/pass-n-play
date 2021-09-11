@@ -7,8 +7,11 @@ const moment = require("moment");
 module.exports = {
   editProfile: async (req, res) => {
     try {
+      const socials = await Profile.find({ user: req.user.id });
+
       res.render("edit", {
         user: req.user,
+        socials: socials,
       });
     } catch (err) {
       console.log(err);

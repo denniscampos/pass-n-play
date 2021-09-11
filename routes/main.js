@@ -20,6 +20,7 @@ router.post("/register", authController.postRegister);
 
 // Edit Page
 router.get("/edit", editController.editProfile);
+router.put("/edit/updateSocials/:id", editController.updateSocials);
 
 // Discover Page
 router.get("/discover/", discoverController.discover);
