@@ -24,6 +24,7 @@ router.put("/edit/updateSocials/:id", editController.updateSocials);
 
 // Discover Page
 router.get("/discover/", discoverController.discover);
+router.get("/discover/next", discoverController.discover);
 
 //  MyLists
 router.get("/mylists/", ensureAuth, gameController.getGames);

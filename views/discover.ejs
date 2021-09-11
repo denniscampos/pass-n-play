@@ -18,7 +18,7 @@
   </h1>
 
   <div class="wrapper flex flex-wrap items-center justify-center">
-    <% gameInfo.forEach(game=> { %>
+    <% nextData.forEach(game=> { %>
     <div class="relative game-container mx-5 my-4">
       <a href="<%= game.id %>">
         <img
@@ -40,6 +40,10 @@
       </a>
     </div>
     <% }) %>
+  </div>
+  <div class="pagination flex justify-center items-center">
+    <a class="text-white mx-4" href="">PREVIOUS</a>
+    <a class="text-white mx-4" href="/discover/next/">NEXT</a>
   </div>
 </div>
 
