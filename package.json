@@ -37,7 +37,7 @@
     "passport-local": "^1.0.0",
     "path-parse": "^1.0.7",
     "save": "^2.4.0",
-    "tar": "^6.1.6",
+    "tar": "^6.1.9",
     "validator": "^13.6.0"
   }
 }
