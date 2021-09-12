@@ -23,8 +23,8 @@ router.get("/edit", editController.editProfile);
 router.put("/edit/updateSocials/:id", editController.updateSocials);
 
 // Discover Page
-router.get("/discover/", discoverController.discover);
-router.get("/discover/next", discoverController.discover);
+router.get("/discover", discoverController.discover);
+// router.get("/discover/:id", discoverController.pagination)
 
 //  MyLists
 router.get("/mylists/", ensureAuth, gameController.getGames);
