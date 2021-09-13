@@ -18,7 +18,7 @@
   </h1>
 
   <div class="wrapper flex flex-wrap items-center justify-center">
-    <% if(!query.page) { %> <% gameInfo.games.forEach(game=> { %>
+    <% gameInfo.games.forEach(game=> { %>
     <div class="relative game-container mx-5 my-4">
       <a href="<%= game.id %>">
         <img
@@ -31,7 +31,7 @@
             filter
             brightness-75
           "
-          src="<%= game.image %> "
+          src="<%= game.image %>"
           alt=""
         />
         <h4 class="absolute text-white top-0 left-0 ml-3 font-bold w-40 mt-4">
@@ -39,34 +39,21 @@
         </h4>
       </a>
     </div>
-    <% }) %> <% } else if(query.page > 1) { %> <% testMe.forEach(game=> { %>
-
-    <div class="relative game-container mx-5 my-4">
-      <a href="<%= game.id %>">
-        <img
-          class="
-            relative
-            h-60
-            lg:w-44
-            sm:w-80
-            object-cover
-            filter
-            brightness-75
-          "
-          src="<%= game.image %> "
-          alt=""
-        />
-        <h4 class="absolute text-white top-0 left-0 ml-3 font-bold w-40 mt-4">
-          <%= game.name %>
-        </h4>
-      </a>
-    </div>
-    <% }) %> <% } %>
-    <div class="pagination flex justify-center items-center">
-      <a class="text-white mx-4" href="">PREVIOUS</a>
-      <% console.log(query.page > 1) %>
-      <a class="text-white mx-4" href="/discover?page=2">NEXT</a>
-    </div>
+    <% }) %>
+  </div>
+  <div class="pagination flex justify-center items-center">
+    <% if (Number(gameInfo.page) > 1) { %>
+    <a
+      class="text-white mx-4"
+      href="/discover?page=<%= (Number(gameInfo.page) - 1).toString() %>"
+      >PREVIOUS</a
+    >
+    <% } %>
+    <a
+      class="text-white mx-4"
+      href="/discover?page=<%= (Number(gameInfo.page) + 1).toString() %>"
+      >NEXT</a
+    >
   </div>
 </div>
 
