@@ -9,7 +9,10 @@
         <%= String(reviews[i].userName.toUpperCase()) %>
       </h2>
       <h2 class="text-fontcs font-bold my-3">
-        Game: <%= String(reviews[i].game_title.toUpperCase()) %>
+        Game:
+        <span class="text-tart_orange"
+          ><%= String(reviews[i].game_title.toUpperCase()) %></span
+        >
       </h2>
       <h4 class="text-white text-xl my-2"><%= reviews[i].comment %></h4>
       <span class="text-white my-2"

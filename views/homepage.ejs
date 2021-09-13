@@ -15,7 +15,7 @@
   </h3>
   <div class="wrapper flex flex-wrap justify-center items-center">
     <% games.forEach(game => { %>
-    <a href="/<%= game.id %>">
+    <a href="<%= game.id %>">
       <div
         class="
           max-w-xs
@@ -40,6 +40,7 @@
             object-cover
             filter
             brightness-75
+            rounded-xl
           "
           src="<%- game.img %>"
           alt="Photo of game"
@@ -105,7 +106,6 @@
           object-contain
           mx-5
           game-container
-          rounded-xl
           transform
           transition
           duration-500
@@ -124,6 +124,7 @@
             object-cover
             filter
             brightness-75
+            rounded-xl
           "
           src="<%- trend.img %>"
           alt=""

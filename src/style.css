@@ -4,6 +4,12 @@
 
 /* CSS Directives. Allows you create to add as many options as youd like. This is important because you may have an element that requires a lot. */
 
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap");
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
 .btn {
   @apply font-bold py-2 px-4 rounded;
 }
@@ -134,40 +140,6 @@
   .header-right {
     width: calc(100% - 16rem);
   }
-}
-
-/* SWIPER */
-.swiper-container {
-  width: 100%;
-  height: 100%;
-  padding-bottom: 100px !important;
-}
-
-.swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #151a21;
-
-  /* Center slide text vertically */
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-}
-
-.swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 /* toggle button  */

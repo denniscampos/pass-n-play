@@ -5,7 +5,7 @@ const _ = require("lodash");
 module.exports = {
   discover: async (req, res) => {
     try {
-      const page = _.get(req, "query.page", 1);
+      let page = _.get(req, "query.page", 1);
       let gameUrl = `https://api.rawg.io/api/games?key=${process.env.API_GAME_KEY}&page=${page}&page_size=15`;
       let games = await axios.get(gameUrl);
 

@@ -24,7 +24,6 @@ router.put("/edit/updateSocials/:id", editController.updateSocials);
 
 // Discover Page
 router.get("/discover", discoverController.discover);
-// router.get("/discover/:id", discoverController.pagination)
 
 //  MyLists
 router.get("/mylists/", ensureAuth, gameController.getGames);
@@ -50,7 +49,7 @@ router.put("/unfollows/:id", ensureAuth, usersController.getUnfollows);
 router.get("/popular", homeController.getPopular);
 
 // Search
-router.get("/:id/", homeController.getResults);
+router.get("/:id", homeController.getResults);
 router.post("/search", homeController.getSearch);
 
 module.exports = router;

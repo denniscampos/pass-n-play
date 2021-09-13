@@ -1,6 +1,6 @@
 # Gamer's Hub
 
-## _Your one stop spot to find your favorite games, guides, and streamers!_
+## _Your one stop spot to find your favorite games, friends, and streamers!_
 
 ## Features
 
@@ -19,14 +19,16 @@ Gamer's hub uses a number of dependencies to make this work properly.
 - TailwindCSS
 
 ## Install Dependencies
+
 npm install
 
 ## Things to add
+
 - Create a .env file and add the following:
-    - PORT=3000
-    - DB_NAME="db string here"
-    - API_GAME_KEY="game api key"
+  - PORT=3000
+  - DB_NAME="db string here"
+  - API_GAME_KEY="game api key"
 
 ## Run Project
-nodemon server
 
+nodemon server
