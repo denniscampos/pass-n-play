@@ -45,6 +45,12 @@
           src="<%- game.img %>"
           alt="Photo of game"
         />
+        <div class="div game-information hidden">
+          <% console.log(game.genres.map(genre => Object.values(genre)[1])) %>
+          <span class="text-white"><%= game.name %></span>
+          <span class="text-white"><%= game.released %></span>
+          <span class="text-white"><%= game.genres.map(genre=>Object.values(genre)[1]) %></span>
+        </div>
       </a>
       <div class="gameMenu" x-data="{ menuOptions: false }">
         <button @click="menuOptions = !menuOptions">

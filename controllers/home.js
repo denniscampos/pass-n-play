@@ -40,6 +40,7 @@ module.exports = {
           name: game.name,
           img: game.background_image,
           released: game.released,
+          genres: game.genres,
           platforms:
             game.platforms === null
               ? "Platform Not Found"
