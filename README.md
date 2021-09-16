@@ -1,4 +1,4 @@
-# Gamer's Hub
+# Pass N' Play
 
 ## _Your one stop spot to find your favorite games, friends, and streamers!_
 
@@ -11,7 +11,7 @@
 
 ## Tech Used
 
-Gamer's hub uses a number of dependencies to make this work properly.
+Pass N' Play uses a number of dependencies to make this work properly.
 
 - NodeJs
 - Express
