@@ -1,4 +1,4 @@
-# Pass N' Play
+# Pass N' Play.
 
 ## _Your one stop spot to find your favorite games, friends, and streamers!_
 
