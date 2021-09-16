@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Pass N' Play.
+=======
+# Pass N' Play
+>>>>>>> fb6a220fc4d7b216ee99bae9ace1cdc1ce40699c
 
 ## _Your one stop spot to find your favorite games, friends, and streamers!_
 
