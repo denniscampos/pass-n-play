@@ -1,0 +1,183 @@
+<%- include('partials/header') -%> <%- include("partials/dashboard-header.ejs")
+-%>
+
+<!-- search input  -->
+<div class="search w-4/6 m-auto my-10 text-center">
+  <h4 class="text-white mb-5">Welcome <%- user.userName.toUpperCase()%></h4>
+  <%- include("partials/searchbar.ejs") -%>
+</div>
+<!-- search input  -->
+
+<!-- POPULAR GAMES  -->
+<div class="popular-games my-12 flex flex-col content-around">
+  <h3 class="text-blue_crayola mx-8 mb-5 w-xs block font-bold text-center">
+    POPULAR GAMES
+  </h3>
+  <div class="wrapper flex flex-wrap justify-center items-center">
+    <% games.forEach(game => { %>
+    <a href="<%= game.id %>">
+      <div
+        class="
+          max-w-xs
+          object-contain
+          mx-5
+          game-container
+          rounded-xl
+          transform
+          transition
+          duration-500
+          hover:scale-105
+          flex flex-col
+          content-center
+        "
+      >
+        <img
+          class="
+            relative
+            h-60
+            lg:w-44
+            sm:w-80
+            object-cover
+            filter
+            brightness-75
+            rounded-xl
+          "
+          src="<%- game.img %>"
+          alt="Photo of game"
+        />
+        <div class="div game-information hidden">
+          <% console.log(game.genres.map(genre => Object.values(genre)[1])) %>
+          <span class="text-white"><%= game.name %></span>
+          <span class="text-white"><%= game.released %></span>
+          <span class="text-white"><%= game.genres.map(genre=>Object.values(genre)[1]) %></span>
+        </div>
+      </a>
+      <div class="gameMenu" x-data="{ menuOptions: false }">
+        <button @click="menuOptions = !menuOptions">
+            <i
+              class="
+                fas
+                fa-ellipsis-v
+                text-white
+                absolute
+                top-48
+                right-2
+                bg-gunmetal
+                rounded-full
+                h-8
+                w-8
+                flex
+                items-center
+                justify-center
+                hover:bg-richblack_light
+              "
+            ></i>
+            
+        </button>
+        <div x-show="menuOptions" class="bg-gunmetal h-36 w-36 absolute z-10 top-12 right-8 rounded-lg">
+          <div
+            class="test absolute top-3 flex flex-col text-white ml-3"
+            :class="{ 'hidden' : !menuOptions }"
+            @click.away="mobileMenuOpen = false"
+          >
+        <form action="/mylists/<%= game.id %>?title=<%= game.name %>&imgUrl=<%= game.img %>" method="POST">
+          <input class="bg-gunmetal text-sm cursor-pointer" type="submit" name="test" value="Add to Favorites" />
+      </form>
+            <span class="text-sm">Recommend</span>
+          </div>
+        </div>
+      </div>
+        <h4
+          class="absolute top-0 left-0 ml-3 text-white font-bold w-40 mt-4"
+        >
+          <%- game.name %>
+        </h4>
+      </div>
+    
+    <% }) %>
+  </div>
+</div>
+
+<!-- TRENDING GAMES  -->
+<div class="popular-games my-12 flex flex-col content-around">
+  <h3 class="text-blue_crayola mx-7 mb-5 w-xs block font-bold text-center">
+    TRENDING
+  </h3>
+  <div class="wrapper flex flex-wrap justify-center items-center">
+    <% trends.forEach(trend => { %>
+    <a href="/<%= trend.id %>">
+      <div
+        class="
+          max-w-xs
+          object-contain
+          mx-5
+          game-container
+          transform
+          transition
+          duration-500
+          hover:scale-105
+          flex flex-col
+          content-center
+        "
+      >
+        <img
+          class="
+            relative
+            h-60
+            lg:w-44
+            sm:w-80
+            mb-10
+            object-cover
+            filter
+            brightness-75
+            rounded-xl
+          "
+          src="<%- trend.img %>"
+          alt=""
+        />
+      </a>
+        <div class="gameMenu" x-data="{ menuOptions: false }">
+          <button @click="menuOptions = !menuOptions">
+              <i
+                class="
+                  fas
+                  fa-ellipsis-v
+                  text-white
+                  absolute
+                  top-48
+                  right-2
+                  bg-gunmetal
+                  rounded-full
+                  h-8
+                  w-8
+                  flex
+                  items-center
+                  justify-center
+                  hover:bg-richblack_light
+                "
+              ></i>
+              
+          </button>
+          <div x-show="menuOptions" class="bg-gunmetal h-36 w-36 absolute z-10 top-12 right-8 rounded-lg">
+            <div
+              class="test absolute top-3 flex flex-col text-white ml-3"
+              :class="{ 'hidden' : !menuOptions }"
+              @click.away="mobileMenuOpen = false"
+            >
+          <form action="/mylists/<%= trend.id %>?title=<%= trend.name %>&imgUrl=<%= trend.img %>" method="POST">
+            <input class="bg-gunmetal text-sm cursor-pointer" type="submit" name="test" value="Add to Favorites" />
+        </form>
+              <span class="text-sm">Recommend</span>
+            </div>
+          </div>
+        </div>
+        <h4 class="absolute top-0 left-0 ml-3 text-white font-bold w-40 mt-4">
+          <%- trend.name %>
+        </h4>
+      </div>
+    
+    <% }) %>
+  </div>
+</div>
+
+<%- include("partials/footer.ejs") -%>

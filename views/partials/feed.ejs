@@ -1,0 +1,48 @@
+<div class="container">
+  <h2 class="text-xl text-center text-white font-bold">My Reviews</h2>
+  <div class="flex flex-col-reverse">
+    <% for(let i = 0; i < reviews.length; i++) { %> <%
+    if(String(reviews[i].user) === user.id) {%>
+
+    <div class="p-3 m-3 bg-gunmetal rounded-lg" data-id="<%= reviews[i]._id %>">
+      <h2 class="text-fontcs font-bold my-3">
+        <%= String(reviews[i].userName.toUpperCase()) %>
+      </h2>
+      <h2 class="text-fontcs font-bold my-3">
+        Game:
+        <span class="text-tart_orange"
+          ><%= String(reviews[i].game_title.toUpperCase()) %></span
+        >
+      </h2>
+      <h4 class="text-white text-xl my-2"><%= reviews[i].comment %></h4>
+      <span class="text-white my-2"
+        ><%= moment(reviews[i].createdAt).format('hh:mm a MMM DD YYYY')%></span
+      >
+
+      <div class="flex content-center my-2">
+        <form
+          class=""
+          action="/likeReview/<%= reviews[i]._id %>?_method=PUT"
+          method="POST"
+        >
+          <button class="text-white" type="submit">
+            <i class="fas fa-thumbs-up text-fontcs m-2"></i>
+          </button>
+        </form>
+        <h3 class="text-white text-lg"><%= reviews[i].likes.length %></h3>
+        <% if(String(reviews[i].user) === String(user._id)) { %>
+        <form
+          action="/deleteReview/<%= reviews[i]._id %>?_method=DELETE"
+          method="POST"
+          class=""
+        >
+          <button class="text-white" type="submit">
+            <i class="fas fa-trash text-red-600 m-2"></i>
+          </button>
+        </form>
+        <% }%>
+      </div>
+    </div>
+    <% } %> <% } %>
+  </div>
+</div>

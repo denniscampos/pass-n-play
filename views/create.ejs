@@ -1,0 +1,26 @@
+<%- include('partials/header') -%> <%- include("partials/dashboard-header.ejs")
+-%>
+
+<div class="flex">
+<div class="text-fontcs flex mt-8"><%- include("partials/sidebar.ejs") -%></div>
+
+<% if(profile === null) { %>
+    <form action="profile/createSocials" method="POST">
+        <label for="twitter">twitter: </label>
+        <input type="text" name="twitter" id="twitter" value="<%= user.userName %>" />
+        <label for="twitch">twitch: </label>
+        <input type="text" name="twitch" id="twitch" value="<%= user.userName %>" />
+        <a href="/profile">Cancel</a>
+        <button type="submit">create</button>
+      </form>
+<% } else { %>
+    <% console.log("user name exists") %>
+<% } %>
+
+<% console.log(profile) %>
+
+  
+  </div>
+</div>
+
+<%- include('partials/footer') -%>

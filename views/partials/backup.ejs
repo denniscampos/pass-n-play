@@ -1,0 +1,39 @@
+<div class="container my-3 overflow-y-scroll">
+  <div class="feed-container bg-containcolor rounded-xl mt-3">
+    <% posts.forEach(post=> { %>
+    <div class="my-8 bg-black" data-id="<%= post._id %>">
+      <span class="text-lg text-fontcs"><%= user.userName %></span>
+      <div class="">
+        <h4 class="text-2xl"><%=post.postMessage%></h4>
+        <div class="like-delete flex justify-end my-3">
+          <a href=""><i class="fas fa-thumbs-up text-fontcs m-2"></i></a>
+          <a class="" href="/">
+            <i class="fas fa-minus-circle text-red-600 m-2"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+    <%}) %>
+  </div>
+</div>
+
+<%- include("partials/header") -%>
+
+<form action="createSocials" method="POST">
+  <h2 class="text-white">Socials:</h2>
+  <label class="text-white" for="twitter" value="">Twitter</label>
+  <input name="twitter" type="text" id="twitter" />
+
+  <button class="btn text-white" type="submit">create</button>
+</form>
+
+<% for(let i = 0; i < edits.length; i++) { %> <% if(String(edits[i].userId) ==
+String(user._id)) { %>
+<p class="text-white">Twitter: <%- edits[i].twitter %></p>
+<a
+  class="text-white"
+  method="POST"
+  href="/editProfile/edit/<%= edits[i].userId %>"
+  >Edit</a
+>
+<% } %> <% } %> <%- include("partials/footer") -%>

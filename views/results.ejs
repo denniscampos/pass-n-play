@@ -1,0 +1,168 @@
+<%- include('partials/header') -%> <%-
+include('partials/dashboard-header.ejs')%>
+
+<div
+  class="container lg:p-12 md:p-4 mt-3 lg:flex flex-row gap-6 justify-center"
+>
+  <div class="relative left-container flex flex-col max-w-full">
+    <img
+      class="relative md:w-100 lg:w-96 h-100 object-cover rounded-xl"
+      src="<%- games.background_image %>"
+      alt="Image of game"
+    />
+    <div class="gameMenu" x-data="{ menuOptions: false }">
+      <button @click="menuOptions = !menuOptions">
+        <i
+          class="
+            fas
+            fa-ellipsis-v
+            text-white
+            absolute
+            top-4
+            right-2
+            bg-gunmetal
+            rounded-full
+            h-8
+            w-8
+            flex
+            items-center
+            justify-center
+            hover:bg-richblack_light
+          "
+        ></i>
+      </button>
+      <div
+        x-show="menuOptions"
+        class="bg-gunmetal h-36 w-36 absolute z-10 top-12 right-8 rounded-lg"
+      >
+        <div
+          class="test absolute top-3 flex flex-col text-white ml-3"
+          :class="{ 'hidden' : !menuOptions }"
+          @click.away="mobileMenuOpen = false"
+        >
+          <form
+            action="/mylists/<%= games.id %>?title=<%= games.name %>&imgUrl=<%= games.background_image %>"
+            method="POST"
+          >
+            <input
+              class="bg-gunmetal text-sm cursor-pointer"
+              type="submit"
+              name="test"
+              value="Add to Favorites"
+            />
+          </form>
+          <span class="text-sm">Recommend</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="right-container max-w-2xl">
+    <h1 class="text-fontcs text-4xl pb-7"><%= games.name %></h1>
+    <h3 class="text-fontcs text-3xl pb-7">ABOUT</h3>
+    <p class="text-white"><%= games.description_raw %></p>
+
+    <div class="about-section my-4">
+      <span class="text-fontcs block"
+        >Platforms: <span class="text-white"><%= game_platforms %></span>
+      </span>
+      <span class="text-fontcs"
+        >Genres: <span class="text-white"><%= game_genres %></span>
+      </span>
+      <span class="text-fontcs block"
+        >Metacritic:
+        <span class="text-white"><%= games.metacritic %></span></span
+      >
+      <span class="text-fontcs block"
+        >Released Date:
+        <span class="text-white"><%= games.released %></span></span
+      >
+      <span class="text-fontcs block"
+        >Rating: <span class="text-white"><%= games.rating %></span></span
+      >
+
+      <% games.developers.forEach((developer) => { %>
+      <span class="text-fontcs block"
+        >Developers: <span class="text-white"><%= developer.name %></span></span
+      >
+      <% }) %>
+    </div>
+  </div>
+</div>
+<!-- REVIEWS  -->
+<div class="container flex flex-col p-6">
+  <div class="comment-container lg:max-w-md md:max-w-xs sm:max-w-xs">
+    <h1 class="text-white font-bold mb-2">Write a Review</h1>
+
+    <form class="" action="/createReview/<%= games.id %>/" method="POST">
+      <textarea
+        name="newComment"
+        id="newComment"
+        class="
+          lg:w-96
+          md:
+          w-64
+          px-3
+          py-2
+          text-gray-700
+          border
+          rounded-lg
+          focus:outline-none
+        "
+        rows="5"
+      ></textarea>
+
+      <button type="submit" class="btn btn-blue w-auto mt-2">
+        Submit Review
+      </button>
+    </form>
+  </div>
+  <!-- END REVIEWS  -->
+
+  <!-- FEED  -->
+  <h4 class="text-white font-bold mt-10">User Reviews</h4>
+  <div class="feed-container flex flex-col-reverse">
+    <% for(let i = 0; i < comments.length; i++) {%>
+    <div class="review-container p-6 my-6 bg-gunmetal rounded-md">
+      <span class="text-tart_orange font-bold"
+        ><%= comments[i].userName.toUpperCase() %></span
+      >
+      <span class="text-white my-2 text-sm"
+        ><%= moment(comments[i].createdAt).format('hh:mm a MMM DD YYYY')%></span
+      >
+      <p class="text-white my-3"><%= comments[i].comment%></p>
+      <div class="like-delete flex items-center">
+        <!-- Like Put  -->
+
+        <form
+          class=""
+          action="/likeReview/<%= comments[i].id %>/?_method=PUT"
+          method="POST"
+        >
+          <button class="text-white" type="submit">
+            <i class="fas fa-thumbs-up text-fontcs m-2">
+              <span class="text-white"><%= comments[i].likes.length %></span>
+            </i>
+          </button>
+        </form>
+        <!-- Like Put End -->
+        <!-- Delete Post  -->
+        <% if(comments[i].user == user.id) { %>
+        <form
+          class=""
+          action="/deleteReview/<%= comments[i].id %>/?_method=DELETE"
+          method="POST"
+        >
+          <button class="text-white" type="submit">
+            <i class="fas fa-trash text-red-900"></i>
+          </button>
+        </form>
+        <% } %>
+        <!-- Delete Post End -->
+      </div>
+    </div>
+    <% } %>
+  </div>
+  <!-- END FEED -->
+</div>
+
+<%- include('partials/footer') -%>
