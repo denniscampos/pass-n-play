@@ -31,4 +31,8 @@ npm install
 
 ## Run Project
 
+<<<<<<< HEAD
 nodemon server.
+=======
+nodemon server
+>>>>>>> fc975e221b83e7291a41d6a40cc41fb5fb28c62e
