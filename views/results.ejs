@@ -132,7 +132,6 @@ include('partials/dashboard-header.ejs')%>
       <p class="text-white my-3"><%= comments[i].comment%></p>
       <div class="like-delete flex items-center">
         <!-- Like Put  -->
-
         <form
           class=""
           action="/likeReview/<%= comments[i].id %>/?_method=PUT"
