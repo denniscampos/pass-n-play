@@ -6,7 +6,7 @@ module.exports = {
   discover: async (req, res) => {
     try {
       let page = _.get(req, "query.page", 1);
-      let gameUrl = `https://api.rawg.io/api/games?key=${process.env.API_GAME_KEY}&page=${page}&page_size=15&metacritic=50,60`;
+      let gameUrl = `https://api.rawg.io/api/games?key=${process.env.API_GAME_KEY}&page=${page}&page_size=15&metacritic=80,100&dates=2010-01-01,2021-12-31`;
       let games = await axios.get(gameUrl);
 
       const gameInfo = {

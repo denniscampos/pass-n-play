@@ -70,8 +70,14 @@ include('partials/dashboard-header.ejs')%>
       </span>
       <span class="text-fontcs block"
         >Metacritic:
-        <span class="text-white"><%= games.metacritic %></span></span
-      >
+        <% if(games.metacritic >= 80) { %>
+          <span class="text-green-600 font-extrabold"><%= games.metacritic %></span></span>
+        <% } else if(games.metacritic >= 60 && games.metacritic <= 79) { %>
+          <span class="text-yellow-400 font-extrabold"><%= games.metacritic %></span></span>
+        <% } else if(games.metacritic <= 59) {%>
+          <span class="text-red-600 font-extrabold"><%= games.metacritic %></span></span>
+        <% } %>
+        
       <span class="text-fontcs block"
         >Released Date:
         <span class="text-white"><%= games.released %></span></span
