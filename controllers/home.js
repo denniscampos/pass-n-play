@@ -63,8 +63,17 @@ module.exports = {
         moment: moment,
         helper: helper,
       });
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.status);
+        console.log(error.response.data);
+        console.log(error.response.headers);
+      } else if (error.request) {
+        console.log(error.request);
+      } else {
+        console.log("Something went wrong: ", error);
+      }
+      console.log(error.config);
     }
   },
 
@@ -101,8 +110,17 @@ module.exports = {
         socials: socials,
         moment: moment,
       });
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.status);
+        console.log(error.response.data);
+        console.log(error.response.headers);
+      } else if (error.request) {
+        console.log(error.request);
+      } else {
+        console.log("Something went wrong: ", error);
+      }
+      console.log(error.config);
     }
   },
 
@@ -127,8 +145,17 @@ module.exports = {
       });
 
       res.redirect(`/${searchId}`);
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.status);
+        console.log(error.response.data);
+        console.log(error.response.headers);
+      } else if (error.request) {
+        console.log(error.request);
+      } else {
+        console.log("Something went wrong: ", error);
+      }
+      console.log(error.config);
     }
   },
 
@@ -146,9 +173,8 @@ module.exports = {
         console.log("user unlike status");
       }
       res.redirect("back");
-      // res.redirect(`/${likes.game}`);
     } catch (err) {
-      console.log(err);
+      console.log("Something went wrong: ", err);
     }
   },
 
@@ -158,7 +184,7 @@ module.exports = {
       console.log("successfully deleted");
       res.redirect("back");
     } catch (err) {
-      console.log(err);
+      console.log("Something went wrong: ", err);
     }
   },
 
@@ -193,8 +219,17 @@ module.exports = {
         user: req.user,
         socials: socials,
       });
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.status);
+        console.log(error.response.data);
+        console.log(error.response.headers);
+      } else if (error.request) {
+        console.log(error.request);
+      } else {
+        console.log("Something went wrong: ", error);
+      }
+      console.log(error.config);
     }
   },
 
@@ -227,8 +262,17 @@ module.exports = {
         user: req.user,
         socials: socials,
       });
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.status);
+        console.log(error.response.data);
+        console.log(error.response.headers);
+      } else if (error.request) {
+        console.log(error.request);
+      } else {
+        console.log("Something went wrong: ", error);
+      }
+      console.log(error.config);
     }
   },
 };

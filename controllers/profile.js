@@ -23,7 +23,7 @@ module.exports = {
         reviews: reviews,
       });
     } catch (err) {
-      console.log(err);
+      console.log("Something went wrong: ", err);
     }
   },
 
@@ -46,7 +46,7 @@ module.exports = {
       res.redirect("/profile");
       console.log("update successful");
     } catch (err) {
-      console.log(err);
+      console.log("Something went wrong: ", err);
     }
   },
 };

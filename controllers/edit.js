@@ -14,7 +14,7 @@ module.exports = {
         socials: socials,
       });
     } catch (err) {
-      console.log(err);
+      console.log("Something went wrong: ", err);
     }
   },
 
@@ -37,7 +37,7 @@ module.exports = {
       res.redirect("/profile");
       console.log("update successful");
     } catch (err) {
-      console.log(err);
+      console.log("Something went wrong: ", err);
     }
   },
 };

@@ -15,7 +15,7 @@ module.exports = {
         moment: moment,
       });
     } catch (err) {
-      console.log(err);
+      console.log("Something went wrong: ", err);
     }
   },
 
@@ -43,7 +43,7 @@ module.exports = {
           res.redirect("/users");
         }
       } catch (err) {
-        console.log(err);
+        console.log("Something went wrong:", err);
       }
     } else {
       req.flash(
@@ -77,6 +77,7 @@ module.exports = {
           res.redirect("/users");
         }
       } catch (err) {
+        console.log("Something went wrong: ", err);
         res.status(500).json(err);
       }
     } else {

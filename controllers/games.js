@@ -22,7 +22,7 @@ module.exports = {
         gameInfo: gameInfo,
       });
     } catch (err) {
-      console.log(err);
+      console.log("Something went wrong: ", err);
       res.status(500).json();
     }
   },
@@ -56,7 +56,7 @@ module.exports = {
         res.redirect("/homepage");
       }
     } catch (err) {
-      console.log(err);
+      console.log("Something went wrong: ", err);
       res.status(400).send(err);
     }
   },
@@ -69,7 +69,7 @@ module.exports = {
       );
       res.redirect("back");
     } catch (err) {
-      console.log(err);
+      console.log("Something went wrong: ", err);
     }
   },
 };
