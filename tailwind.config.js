@@ -61,6 +61,10 @@ module.exports = {
         gainsboro: "#DEE3EA",
         tart_orange: "#FD4D4D",
       },
+      backgroundImage: {
+        "hero-pattern":
+          "url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.hdwallpapers.in%2Fdownload%2Ffree_fire_squad_4k_hd_games-2560x1440.jpg&f=1&nofb=1')",
+      },
     },
 
     // container is the name of the class in the index file
