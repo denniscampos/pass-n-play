@@ -1,5 +1,5 @@
 <%- include('partials/header') -%>
-<nav class="flex items-center justify-between px-8">
+<nav class="flex items-center justify-between px-8 bg-gradient-to-l from-richblack via-richblack_light to-gunmetal">
   <img class="object-contain h-24" src="img/pass-n-play-logo.png" alt="Logo">
   <ul class="flex">
     <li class="px-3 font-bold"><a class="text-fontcs hover:text-white" href="login">Login</a></li>
@@ -9,12 +9,29 @@
     <div class="flex flex-col justify-center h-screen bg-center bg-cover bg-no-repeat" style="background-image:linear-gradient(rgba(42, 42, 42, 0.486), rgba(29, 29, 29, 0.76)),url(img/hero-img.jpg)">
       <div class="hero__contents__left ml-7 sm:ml-10 opacity-100">
         <h2 class="text-5xl text-white mb-8 sm:text-7xl">Pass and Play</h2>
-        <p class="text-white max-w-md mb-8 font-semibold">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil ex neque veniam possimus itaque nam veritatis, soluta aperiam dolorem consequatur, sit maiores, natus accusamus debitis corporis deleniti modi reprehenderit dicta.</p>
+        <p class="text-white text-lg max-w-md mb-8 font-semibold">Find your favorite games. Create a wishlist and share with your fellow gamers. Discover new games to add to your collection, all in one spot. Sign up today!</p>
         <form action="/register">
-          <button class="rounded-md bg-charcoal w-36 py-2 px-4 text-white font-semibold tracking-wider">Get Started</button>
+          <button class="rounded-md bg-darknavy w-36 py-2 px-4 text-white font-semibold tracking-wider hover:bg-charcoal">Get Started</button>
         </form>
       </div>
     </div>
+    <section class="flex items-center justify-around flex-wrap h-full p-16 bg-gradient-to-r from-richblack via-richblack_light to-gunmetal my-auto mx-auto">
+      <article class="flex flex-col items-center w-72 p-4">
+        <i class="fas fa-info-circle text-white text-4xl mb-2"></i>
+        <h3 class="text-white text-xl">About Us</h3>
+        <p class="text-fontcs text-center my-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia, odio?</p>
+      </article>
+      <article class="flex flex-col items-center w-72 p-4">
+        <i class="fas fa-address-card text-white text-4xl mb-2"></i>
+        <h3 class="text-white text-xl">Create your own Profile</h3>
+        <p class="text-fontcs text-center my-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia, odio?</p>
+      </article>
+      <article class="flex flex-col items-center w-72 p-4">
+        <i class="fas fa-clipboard-list text-white text-4xl mb-2"></i>
+        <h3 class="text-white text-xl">Create a wishlist</h3>
+        <p class="text-fontcs text-center my-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia, odio?</p>
+      </article>
+    </section>
 
 <!-- <div class="container rounded-lg bg-containcolor py-10 px-5 my-10  overflow-hidden">
   <h1 class="text-fontc mb-5 text-5xl font-mono font-semibold">WELCOME TO PASS N'PLAY</h1>
