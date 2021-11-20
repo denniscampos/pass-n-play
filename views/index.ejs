@@ -1,25 +1,18 @@
 <%- include('partials/header') -%>
-<nav class="flex justify-between items-center my-1 mx-5">
-  <img class="w-32 object-contain h-24" src="img/pass-n-play-logo.png" alt="" />
-  <ul class="flex flex-wrap justify-center">
-    <li>
-      <a
-      href="login" class="text-fontcs font-semibold text-2xl mx-5 cursor-pointer">Login</a></li> <li><a href="register" class="
-        text-fontcs font-semibold
-        text-2xl
-        mx-5
-        cursor-pointer
-        href=""
-        >Register</a
-        >
-      </li>
-    </ul>
-  </nav>
+<nav class="flex items-center justify-between px-8">
+  <img class="object-contain h-24" src="img/pass-n-play-logo.png" alt="Logo">
+  <ul class="flex">
+    <li class="px-3 font-bold"><a class="text-fontcs hover:text-white" href="login">Login</a></li>
+    <li class="px-3 font-bold"><a class="text-fontcs hover:text-white" href="Register">Register</a></li>
+  </ul>
+</nav>
     <div class="flex flex-col justify-center h-screen bg-center bg-cover bg-no-repeat" style="background-image:linear-gradient(rgba(42, 42, 42, 0.486), rgba(29, 29, 29, 0.76)),url(img/hero-img.jpg)">
-      <div class="hero__contents__left absolute top-96 left-28 opacity-100">
-        <h2 class="text-7xl text-white mb-8">Pass and Play</h2>
-        <p class="text-white max-w-lg mb-8 font-semibold">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil ex neque veniam possimus itaque nam veritatis, soluta aperiam dolorem consequatur, sit maiores, natus accusamus debitis corporis deleniti modi reprehenderit dicta.</p>
-        <button class="rounded-md bg-charcoal w-36 py-2 px-4 text-white font-semibold tracking-wider">Get Started</button>
+      <div class="hero__contents__left ml-7 sm:ml-10 opacity-100">
+        <h2 class="text-5xl text-white mb-8 sm:text-7xl">Pass and Play</h2>
+        <p class="text-white max-w-md mb-8 font-semibold">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil ex neque veniam possimus itaque nam veritatis, soluta aperiam dolorem consequatur, sit maiores, natus accusamus debitis corporis deleniti modi reprehenderit dicta.</p>
+        <form action="/register">
+          <button class="rounded-md bg-charcoal w-36 py-2 px-4 text-white font-semibold tracking-wider">Get Started</button>
+        </form>
       </div>
     </div>
 
