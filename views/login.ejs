@@ -1,38 +1,44 @@
 <%- include("partials/header") -%>
 
-<div class="container flex items-center justify-evenly">
-  <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
-  <div class="text-red-600"><%= el.msg %></div>
-  <% }) %> <% } %> <% if (locals.messages.info) { %> <% messages.info.forEach(
-  el => { %>
-  <div class="text-red-600"><%= el.msg %></div>
-  <% }) %> <% } %>
-</div>
-
-<div
-  class="container flex flex-row flex-wrap my-36 items-center justify-evenly h-screen"
->
-  <a href="/"> <img class="w-48" src="img/pass-n-play-logo.png" alt="" /></a>
-  <form class="flex flex-col w-72" action="/login" method="POST">
+<div class="container flex flex-col justify-center items-center">
+  <a href="/"
+    ><img class="w-48" src="img/pass-n-play-logo.png" alt="Pass N Play Logo"
+  /></a>
+  <div class="container flex items-center justify-evenly">
+    <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
+    <div class="text-red-600"><%= el.msg %></div>
+    <% }) %> <% } %> <% if (locals.messages.info) { %> <% messages.info.forEach(
+    el => { %>
+    <div class="text-red-600"><%= el.msg %></div>
+    <% }) %> <% } %>
+  </div>
+  <form
+    class="flex bg-charcoal flex-col justify-center py-6 h-80 my-0 mx-auto w-96 rounded-md"
+    action="/login"
+    method="POST"
+  >
+    <label class="text-fontc font-bold mx-9 my-0">Email</label>
     <input
-      class="my-4 py-2 px-3 rounded-lg"
+      class="py-2 rounded-lg px-3 w-80 my-3 mx-auto"
       type="text"
       name="email"
-      placeholder="EMAIL"
     />
+    <label class="text-fontc font-bold mx-9 my-0">Password</label>
     <input
-      class="py-2 rounded-lg px-3"
+      class="py-2 rounded-lg px-3 w-80 my-3 mx-auto"
       type="password"
       name="password"
-      placeholder="PASSWORD"
     />
-    <button class="btn bg-fontcs hover:bg-gray-700 my-4" type="submit">
+    <button
+      class="btn bg-fontcs hover:bg-blue_yonger my-2 mx-auto"
+      type="submit"
+    >
       Login
     </button>
-    <a class="text-fontc text-center hover:text-gray-700" href="register"
+    <a
+      class="text-fontc hover:text-blue_yonger text-center m-auto"
+      href="register"
       >Create Account</a
     >
   </form>
 </div>
-
-<%- include("partials/homeFooter") -%>
