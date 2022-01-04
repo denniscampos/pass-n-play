@@ -1,53 +1,64 @@
 <%- include("partials/header") -%>
 
-<div class="container flex items-center justify-evenly">
-  <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
-  <div class="text-red-600"><%= el.msg %></div>
-  <% }) %> <% } %> <% if (locals.messages.info) { %> <% messages.info.forEach(
-  el => { %>
-  <div class="text-red-600"><%= el.msg %></div>
-  <% }) %> <% } %>
-</div>
-
-<div
-  class="container flex flex-row flex-wrap my-28 items-center justify-evenly"
->
-  <a href="/"> <img class="w-48" src="img/pass-n-play-logo.png" alt="" /></a>
-  <form class="flex flex-col w-72" action="/register" method="POST">
-    <label class="text-white" for="userName">Username</label>
+<div class="container flex flex-row flex-wrap items-center justify-evenly">
+  <a href="/"> <img src="img/pass-n-play-logo.png" alt="" /></a>
+  <div class="container flex items-center justify-evenly">
+    <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
+    <div class="text-red-600"><%= el.msg %></div>
+    <% }) %> <% } %> <% if (locals.messages.info) { %> <% messages.info.forEach(
+    el => { %>
+    <div class="text-red-600"><%= el.msg %></div>
+    <% }) %> <% } %>
+  </div>
+  <form
+    class="flex bg-charcoal flex-col justify-center h-100 py-4 my-0 mx-auto w-96 rounded-md"
+    action="/register"
+    method="POST"
+  >
+    <label class="text-fontc font-bold mx-9 my-0" for="userName"
+      >Username</label
+    >
     <input
-      class="my-3 py-2 px-3 rounded w-72"
+      class="py-2 rounded-lg px-3 w-80 my-3 mx-auto"
       type="text"
       id="userName"
       name="userName"
     />
-    <label class="text-white" for="emailInputEmail1">Email</label>
+    <label class="text-fontc font-bold mx-9 my-0" for="emailInputEmail1"
+      >Email</label
+    >
     <input
-      class="my-3 py-2 px-3 rounded w-72"
-      type="email"
+      class="py-2 rounded-lg px-3 w-80 my-3 mx-auto"
       id="exampleInputEmail1"
       aria-describedby="emailHelp"
       name="email"
+      type="email"
     />
-    <label class="text-white" for="password">Create Password</label>
+    <label class="text-fontc font-bold mx-9 my-0" for="password"
+      >Create Password</label
+    >
     <input
-      class="my-3 py-2 px-3 rounded w-72"
+      class="py-2 rounded-lg px-3 w-80 my-3 mx-auto"
       type="password"
       name="password"
       id="password"
     />
-    <label class="text-white" for="confirmPassword">Confirm Password</label>
+    <label class="text-fontc font-bold mx-9 my-0" for="confirmPassword"
+      >Confirm Password</label
+    >
     <input
-      class="my-3 py-2 px-3 rounded w-72"
+      class="py-2 rounded-lg px-3 w-80 my-3 mx-auto"
       type="password"
       name="confirmPassword"
       id="confirmPassword"
     />
-    <button class="btn bg-fontcs hover:bg-gray-700 my-4">Register</button>
-    <a class="text-fontc mx-10 hover:text-gray-700" href="/login"
-      >Have an account? Login</a
+    <button class="btn bg-fontcs hover:bg-blue_yonger my-2 mx-auto">
+      Register
+    </button>
+    <a
+      href="/login"
+      class="text-fontc hover:text-blue_yonger text-center my-3 mx-auto"
+      >Have an account? Login Here</a
     >
   </form>
 </div>
-
-<%- include("partials/homeFooter") -%>
